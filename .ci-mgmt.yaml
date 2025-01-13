@@ -8,7 +8,7 @@ organization: Grip-Security
 template: external-bridged-provider
 
 # The name of the GitHub organisation or username where the upstream terraform provider lives.
-upstreamProviderOrg: pulumi
+upstreamProviderOrg: temporalio
 
 # major version of the current provider - used in make files
 # This should always be set by all providers as this is key to go module paths.

@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import pulumi
-import pulumi_xyz
+import pulumi_temporalcloud as temporalcloud
 
-resource = pulumi_xyz.Resource("Resource", sample_attribute = "attr")
+namespace = temporalcloud.Namespace("Namespace", name="pulumi-test")
