@@ -48,10 +48,9 @@ dotnet add package Pulumi.Temporalcloud
 
 The following configuration points are available for the `temporalcloud` provider:
 
-- `temporalcloud:allow_insecure` (environment: `TEMPORAL_CLOUD_API_KEY`) - (Boolean) If set to True, it allows for an insecure connection to the Temporal Cloud API. This should never be set to 'true' in production and defaults to false.
+- `temporalcloud:allow_insecure` (environment: `TEMPORAL_CLOUD_ALLOW_INSECURE`) - (Boolean) If set to True, it allows for an insecure connection to the Temporal Cloud API. This should never be set to 'true' in production and defaults to false.
 - `temporalcloud:api_key` (environment: `TEMPORAL_CLOUD_API_KEY`) - (String, Sensitive) The API key for Temporal Cloud. See [this documentation](https://docs.temporal.io/cloud/api-keys) for information on how to obtain an API key.
-- `temporalcloud:endpoint` (environment: `TEMPORAL_CLOUD_API_KEY`) - (String) The endpoint for the Temporal Cloud API. Defaults to `saas-api.tmprl.cloud:443`.
-
+- `temporalcloud:endpoint` (environment: `TEMPORAL_CLOUD_ENDPOINT`) - (String) The endpoint for the Temporal Cloud API. Defaults to `saas-api.tmprl.cloud:443`.
 
 ## Reference
 
