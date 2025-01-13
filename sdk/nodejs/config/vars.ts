@@ -2,21 +2,42 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
-import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 declare var exports: any;
-const __config = new pulumi.Config("xyz");
+const __config = new pulumi.Config("temporalcloud");
 
 /**
- * A region which should be used.
+ * If set to True, it allows for an insecure connection to the Temporal Cloud API. This should never be set to 'true' in
+ * production and defaults to false.
  */
-export declare const region: enums.region.Region | undefined;
-Object.defineProperty(exports, "region", {
+export declare const allowInsecure: boolean | undefined;
+Object.defineProperty(exports, "allowInsecure", {
     get() {
-        return __config.getObject<enums.region.Region>("region");
+        return __config.getObject<boolean>("allowInsecure");
+    },
+    enumerable: true,
+});
+
+/**
+ * The API key for Temporal Cloud. See [this documentation](https://docs.temporal.io/cloud/api-keys) for information on how
+ * to obtain an API key.
+ */
+export declare const apiKey: string | undefined;
+Object.defineProperty(exports, "apiKey", {
+    get() {
+        return __config.get("apiKey");
+    },
+    enumerable: true,
+});
+
+/**
+ * The endpoint for the Temporal Cloud API. Defaults to `saas-api.tmprl.cloud:443`.
+ */
+export declare const endpoint: string | undefined;
+Object.defineProperty(exports, "endpoint", {
+    get() {
+        return __config.get("endpoint");
     },
     enumerable: true,
 });

@@ -5,20 +5,45 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export { GetDataSourceArgs, GetDataSourceResult, GetDataSourceOutputArgs } from "./getDataSource";
-export const getDataSource: typeof import("./getDataSource").getDataSource = null as any;
-export const getDataSourceOutput: typeof import("./getDataSource").getDataSourceOutput = null as any;
-utilities.lazyLoad(exports, ["getDataSource","getDataSourceOutput"], () => require("./getDataSource"));
+export { ApikeyArgs, ApikeyState } from "./apikey";
+export type Apikey = import("./apikey").Apikey;
+export const Apikey: typeof import("./apikey").Apikey = null as any;
+utilities.lazyLoad(exports, ["Apikey"], () => require("./apikey"));
+
+export { GetNamespacesResult } from "./getNamespaces";
+export const getNamespaces: typeof import("./getNamespaces").getNamespaces = null as any;
+export const getNamespacesOutput: typeof import("./getNamespaces").getNamespacesOutput = null as any;
+utilities.lazyLoad(exports, ["getNamespaces","getNamespacesOutput"], () => require("./getNamespaces"));
+
+export { GetRegionsResult } from "./getRegions";
+export const getRegions: typeof import("./getRegions").getRegions = null as any;
+export const getRegionsOutput: typeof import("./getRegions").getRegionsOutput = null as any;
+utilities.lazyLoad(exports, ["getRegions","getRegionsOutput"], () => require("./getRegions"));
+
+export { NamespaceArgs, NamespaceState } from "./namespace";
+export type Namespace = import("./namespace").Namespace;
+export const Namespace: typeof import("./namespace").Namespace = null as any;
+utilities.lazyLoad(exports, ["Namespace"], () => require("./namespace"));
+
+export { NamespaceSearchAttributeArgs, NamespaceSearchAttributeState } from "./namespaceSearchAttribute";
+export type NamespaceSearchAttribute = import("./namespaceSearchAttribute").NamespaceSearchAttribute;
+export const NamespaceSearchAttribute: typeof import("./namespaceSearchAttribute").NamespaceSearchAttribute = null as any;
+utilities.lazyLoad(exports, ["NamespaceSearchAttribute"], () => require("./namespaceSearchAttribute"));
 
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
-export { ResourceArgs, ResourceState } from "./resource";
-export type Resource = import("./resource").Resource;
-export const Resource: typeof import("./resource").Resource = null as any;
-utilities.lazyLoad(exports, ["Resource"], () => require("./resource"));
+export { ServiceAccountArgs, ServiceAccountState } from "./serviceAccount";
+export type ServiceAccount = import("./serviceAccount").ServiceAccount;
+export const ServiceAccount: typeof import("./serviceAccount").ServiceAccount = null as any;
+utilities.lazyLoad(exports, ["ServiceAccount"], () => require("./serviceAccount"));
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
 
 
 // Export sub-modules:
@@ -36,18 +61,30 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "xyz:index/resource:Resource":
-                return new Resource(name, <any>undefined, { urn })
+            case "temporalcloud:index/apikey:Apikey":
+                return new Apikey(name, <any>undefined, { urn })
+            case "temporalcloud:index/namespace:Namespace":
+                return new Namespace(name, <any>undefined, { urn })
+            case "temporalcloud:index/namespaceSearchAttribute:NamespaceSearchAttribute":
+                return new NamespaceSearchAttribute(name, <any>undefined, { urn })
+            case "temporalcloud:index/serviceAccount:ServiceAccount":
+                return new ServiceAccount(name, <any>undefined, { urn })
+            case "temporalcloud:index/user:User":
+                return new User(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("xyz", "index/resource", _module)
-pulumi.runtime.registerResourcePackage("xyz", {
+pulumi.runtime.registerResourceModule("temporalcloud", "index/apikey", _module)
+pulumi.runtime.registerResourceModule("temporalcloud", "index/namespace", _module)
+pulumi.runtime.registerResourceModule("temporalcloud", "index/namespaceSearchAttribute", _module)
+pulumi.runtime.registerResourceModule("temporalcloud", "index/serviceAccount", _module)
+pulumi.runtime.registerResourceModule("temporalcloud", "index/user", _module)
+pulumi.runtime.registerResourcePackage("temporalcloud", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {
-        if (type !== "pulumi:providers:xyz") {
+        if (type !== "pulumi:providers:temporalcloud") {
             throw new Error(`unknown provider type ${type}`);
         }
         return new Provider(name, <any>undefined, { urn });

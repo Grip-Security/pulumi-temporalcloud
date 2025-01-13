@@ -80,7 +80,7 @@ jobs:
         EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
         {
           echo "SCHEMA_CHANGES<<$EOF";
-          schema-tools compare -r github://api.github.com/pulumi -p xyz -o "${{ inputs.default_branch }}" -n --local-path=provider/cmd/pulumi-resource-xyz/schema.json;
+          schema-tools compare -r github://api.github.com/Grip-Security -p temporalcloud -o "${{ inputs.default_branch }}" -n --local-path=provider/cmd/pulumi-resource-temporalcloud/schema.json;
           echo "$EOF";
         } >> "$GITHUB_ENV"
     - if: inputs.is_pr && inputs.is_automated == false && github.actor != 'dependabot[bot]'
@@ -95,16 +95,16 @@ jobs:
 
           Maintainer note: consult the [runbook](https://github.com/pulumi/platform-providers-team/blob/main/playbooks/tf-provider-updating.md) for dealing with any breaking changes.
 
-    - name: Upload pulumi-tfgen-xyz
+    - name: Upload pulumi-tfgen-temporalcloud
       uses: actions/upload-artifact@6f51ac03b9356f520e9adb1b1b7802705f340c2b # v4.5.0
       with:
-        name: pulumi-tfgen-xyz
-        path: ${{ github.workspace }}/bin/pulumi-tfgen-xyz
+        name: pulumi-tfgen-temporalcloud
+        path: ${{ github.workspace }}/bin/pulumi-tfgen-temporalcloud
         retention-days: 30
 
     - name: Upload schema-embed.json
       uses: actions/upload-artifact@6f51ac03b9356f520e9adb1b1b7802705f340c2b # v4.5.0
       with:
         name: schema-embed.json
-        path: provider/cmd/pulumi-resource-xyz/schema-embed.json
+        path: provider/cmd/pulumi-resource-temporalcloud/schema-embed.json
         retention-days: 30

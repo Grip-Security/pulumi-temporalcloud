@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Pulumi.Xyz
+namespace Pulumi.Temporalcloud
 {
     public static class Config
     {
@@ -30,16 +30,38 @@ namespace Pulumi.Xyz
             }
         }
 
-        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("xyz");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("temporalcloud");
 
-        private static readonly __Value<Pulumi.Xyz.Region.Region?> _region = new __Value<Pulumi.Xyz.Region.Region?>(() => __config.GetObject<Pulumi.Xyz.Region.Region>("region"));
+        private static readonly __Value<bool?> _allowInsecure = new __Value<bool?>(() => __config.GetBoolean("allowInsecure"));
         /// <summary>
-        /// A region which should be used.
+        /// If set to True, it allows for an insecure connection to the Temporal Cloud API. This should never be set to 'true' in
+        /// production and defaults to false.
         /// </summary>
-        public static Pulumi.Xyz.Region.Region? Region
+        public static bool? AllowInsecure
         {
-            get => _region.Get();
-            set => _region.Set(value);
+            get => _allowInsecure.Get();
+            set => _allowInsecure.Set(value);
+        }
+
+        private static readonly __Value<string?> _apiKey = new __Value<string?>(() => __config.Get("apiKey"));
+        /// <summary>
+        /// The API key for Temporal Cloud. See [this documentation](https://docs.temporal.io/cloud/api-keys) for information on how
+        /// to obtain an API key.
+        /// </summary>
+        public static string? ApiKey
+        {
+            get => _apiKey.Get();
+            set => _apiKey.Set(value);
+        }
+
+        private static readonly __Value<string?> _endpoint = new __Value<string?>(() => __config.Get("endpoint"));
+        /// <summary>
+        /// The endpoint for the Temporal Cloud API. Defaults to `saas-api.tmprl.cloud:443`.
+        /// </summary>
+        public static string? Endpoint
+        {
+            get => _endpoint.Get();
+            set => _endpoint.Set(value);
         }
 
     }
