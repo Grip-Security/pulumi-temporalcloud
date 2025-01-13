@@ -14,10 +14,4 @@
 
 import pulumi_temporalcloud as temporalcloud
 
-namespace = temporalcloud.Namespace(
-    "Namespace",
-    name="pulumi-test",
-    regions=["aws-us-east-2"],
-    retention_days=14,
-    api_key_auth=True,
-)
+namespaces = temporalcloud.get_namespaces()
