@@ -44,6 +44,8 @@ jobs:
         with:
           module-path: provider
           ignore-modules: >-
+            github.com/temporalio/terraform-provider-temporalcloud/shim,
+            github.com/jpillora/maplock,
             github.com/aead/chacha20,
             github.com/apache/arrow/go/v12,
             github.com/apache/thrift/lib/go/thrift,
