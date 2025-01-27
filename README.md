@@ -11,13 +11,13 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @pulumi/temporalcloud
+npm install @grip-security/pulumi-temporalcloud
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @pulumi/temporalcloud
+yarn add @grip-security/pulumi-temporalcloud
 ```
 
 ### Python

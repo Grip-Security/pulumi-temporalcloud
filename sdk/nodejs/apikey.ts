@@ -4,7 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "./types/input";
 import * as outputs from "./types/output";
-import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -14,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as temporalcloud from "@pulumi/temporalcloud";
+ * import * as temporalcloud from "@grip-security/pulumi-temporalcloud";
  *
  * const globalServiceAccount = new temporalcloud.ServiceAccount("global_service_account", {
  *     name: "admin",

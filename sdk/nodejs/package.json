@@ -1,5 +1,5 @@
 {
-    "name": "@pulumi/temporalcloud",
+    "name": "@grip-security/pulumi-temporalcloud",
     "version": "1.0.0-alpha.0+dev",
     "description": "A Pulumi package for creating and managing temporalcloud cloud resources.",
     "keywords": [
