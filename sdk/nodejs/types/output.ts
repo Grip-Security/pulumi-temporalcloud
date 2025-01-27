@@ -173,6 +173,67 @@ export interface GetRegionsRegion {
     location: string;
 }
 
+export interface GetServiceAccountsServiceAccount {
+    /**
+     * The role on the account. Must be one of admin, developer, or read (case-insensitive).
+     */
+    accountAccess: string;
+    /**
+     * The creation time of the Service Account.
+     */
+    createdAt: string;
+    /**
+     * The description of the Service Account.
+     */
+    description: string;
+    /**
+     * The unique identifier of the Service Account.
+     */
+    id: string;
+    /**
+     * The name associated with the service account.
+     */
+    name: string;
+    /**
+     * The set of namespace permissions for this service account, including each namespace and its role.
+     */
+    namespaceAccesses: outputs.GetServiceAccountsServiceAccountNamespaceAccess[];
+    /**
+     * The current state of the Service Account.
+     */
+    state: string;
+    /**
+     * The last update time of the Service Account.
+     */
+    updatedAt: string;
+}
+
+export interface GetServiceAccountsServiceAccountNamespaceAccess {
+    /**
+     * The namespace to assign permissions to.
+     */
+    namespaceId: string;
+    /**
+     * The permission to assign. Must be one of admin, write, or read (case-insensitive)
+     */
+    permission: string;
+}
+
+export interface MetricsEndpointTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export interface NamespaceCertificateFilter {
     /**
      * The certificate's common name.
@@ -231,6 +292,28 @@ export interface NamespaceTimeouts {
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
     delete?: string;
+}
+
+export interface NexusEndpointTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+}
+
+export interface NexusEndpointWorkerTarget {
+    /**
+     * The target cloud namespace to route requests to. Namespace must be in same account as the endpoint.
+     */
+    namespaceId: string;
+    /**
+     * The task queue on the cloud namespace to route requests to.
+     */
+    taskQueue: string;
 }
 
 export interface ServiceAccountNamespaceAccess {

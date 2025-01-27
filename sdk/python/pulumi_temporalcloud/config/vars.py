@@ -29,6 +29,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_bool('allowInsecure')
 
     @property
+    def allowed_account_id(self) -> Optional[str]:
+        """
+        The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.
+        """
+        return __config__.get('allowedAccountId')
+
+    @property
     def api_key(self) -> Optional[str]:
         """
         The API key for Temporal Cloud. See [this documentation](https://docs.temporal.io/cloud/api-keys) for information on how

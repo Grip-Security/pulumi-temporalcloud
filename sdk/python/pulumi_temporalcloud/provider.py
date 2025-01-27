@@ -20,18 +20,22 @@ __all__ = ['ProviderArgs', 'Provider']
 class ProviderArgs:
     def __init__(__self__, *,
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
+                 allowed_account_id: Optional[pulumi.Input[str]] = None,
                  api_key: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[bool] allow_insecure: If set to True, it allows for an insecure connection to the Temporal Cloud API. This should never be set to 'true' in
                production and defaults to false.
+        :param pulumi.Input[str] allowed_account_id: The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.
         :param pulumi.Input[str] api_key: The API key for Temporal Cloud. See [this documentation](https://docs.temporal.io/cloud/api-keys) for information on how
                to obtain an API key.
         :param pulumi.Input[str] endpoint: The endpoint for the Temporal Cloud API. Defaults to `saas-api.tmprl.cloud:443`.
         """
         if allow_insecure is not None:
             pulumi.set(__self__, "allow_insecure", allow_insecure)
+        if allowed_account_id is not None:
+            pulumi.set(__self__, "allowed_account_id", allowed_account_id)
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
         if endpoint is not None:
@@ -49,6 +53,18 @@ class ProviderArgs:
     @allow_insecure.setter
     def allow_insecure(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_insecure", value)
+
+    @property
+    @pulumi.getter(name="allowedAccountId")
+    def allowed_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.
+        """
+        return pulumi.get(self, "allowed_account_id")
+
+    @allowed_account_id.setter
+    def allowed_account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allowed_account_id", value)
 
     @property
     @pulumi.getter(name="apiKey")
@@ -82,6 +98,7 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
+                 allowed_account_id: Optional[pulumi.Input[str]] = None,
                  api_key: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -95,6 +112,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_insecure: If set to True, it allows for an insecure connection to the Temporal Cloud API. This should never be set to 'true' in
                production and defaults to false.
+        :param pulumi.Input[str] allowed_account_id: The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.
         :param pulumi.Input[str] api_key: The API key for Temporal Cloud. See [this documentation](https://docs.temporal.io/cloud/api-keys) for information on how
                to obtain an API key.
         :param pulumi.Input[str] endpoint: The endpoint for the Temporal Cloud API. Defaults to `saas-api.tmprl.cloud:443`.
@@ -127,6 +145,7 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
+                 allowed_account_id: Optional[pulumi.Input[str]] = None,
                  api_key: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -139,6 +158,7 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["allow_insecure"] = pulumi.Output.from_input(allow_insecure).apply(pulumi.runtime.to_json) if allow_insecure is not None else None
+            __props__.__dict__["allowed_account_id"] = allowed_account_id
             __props__.__dict__["api_key"] = None if api_key is None else pulumi.Output.secret(api_key)
             __props__.__dict__["endpoint"] = endpoint
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["apiKey"])
@@ -148,6 +168,14 @@ class Provider(pulumi.ProviderResource):
             resource_name,
             __props__,
             opts)
+
+    @property
+    @pulumi.getter(name="allowedAccountId")
+    def allowed_account_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.
+        """
+        return pulumi.get(self, "allowed_account_id")
 
     @property
     @pulumi.getter(name="apiKey")

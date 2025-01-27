@@ -26,6 +26,10 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
+     * The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.
+     */
+    public readonly allowedAccountId!: pulumi.Output<string | undefined>;
+    /**
      * The API key for Temporal Cloud. See [this documentation](https://docs.temporal.io/cloud/api-keys) for information on how
      * to obtain an API key.
      */
@@ -47,6 +51,7 @@ export class Provider extends pulumi.ProviderResource {
         opts = opts || {};
         {
             resourceInputs["allowInsecure"] = pulumi.output(args ? args.allowInsecure : undefined).apply(JSON.stringify);
+            resourceInputs["allowedAccountId"] = args ? args.allowedAccountId : undefined;
             resourceInputs["apiKey"] = args?.apiKey ? pulumi.secret(args.apiKey) : undefined;
             resourceInputs["endpoint"] = args ? args.endpoint : undefined;
         }
@@ -66,6 +71,10 @@ export interface ProviderArgs {
      * production and defaults to false.
      */
     allowInsecure?: pulumi.Input<boolean>;
+    /**
+     * The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.
+     */
+    allowedAccountId?: pulumi.Input<string>;
     /**
      * The API key for Temporal Cloud. See [this documentation](https://docs.temporal.io/cloud/api-keys) for information on how
      * to obtain an API key.

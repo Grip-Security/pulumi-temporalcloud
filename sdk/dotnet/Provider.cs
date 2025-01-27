@@ -19,6 +19,12 @@ namespace Pulumi.Temporalcloud
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
+        /// The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.
+        /// </summary>
+        [Output("allowedAccountId")]
+        public Output<string?> AllowedAccountId { get; private set; } = null!;
+
+        /// <summary>
         /// The API key for Temporal Cloud. See [this documentation](https://docs.temporal.io/cloud/api-keys) for information on how
         /// to obtain an API key.
         /// </summary>
@@ -69,6 +75,12 @@ namespace Pulumi.Temporalcloud
         /// </summary>
         [Input("allowInsecure", json: true)]
         public Input<bool>? AllowInsecure { get; set; }
+
+        /// <summary>
+        /// The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.
+        /// </summary>
+        [Input("allowedAccountId")]
+        public Input<string>? AllowedAccountId { get; set; }
 
         [Input("apiKey")]
         private Input<string>? _apiKey;

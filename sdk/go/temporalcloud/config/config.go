@@ -17,6 +17,11 @@ func GetAllowInsecure(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "temporalcloud:allowInsecure")
 }
 
+// The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.
+func GetAllowedAccountId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "temporalcloud:allowedAccountId")
+}
+
 // The API key for Temporal Cloud. See [this documentation](https://docs.temporal.io/cloud/api-keys) for information on how
 // to obtain an API key.
 func GetApiKey(ctx *pulumi.Context) string {

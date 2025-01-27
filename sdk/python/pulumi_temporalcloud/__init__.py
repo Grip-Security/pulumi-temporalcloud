@@ -8,8 +8,11 @@ import typing
 from .apikey import *
 from .get_namespaces import *
 from .get_regions import *
+from .get_service_accounts import *
+from .metrics_endpoint import *
 from .namespace import *
 from .namespace_search_attribute import *
+from .nexus_endpoint import *
 from .provider import *
 from .service_account import *
 from .user import *
@@ -36,6 +39,14 @@ _utilities.register(
  },
  {
   "pkg": "temporalcloud",
+  "mod": "index/metricsEndpoint",
+  "fqn": "pulumi_temporalcloud",
+  "classes": {
+   "temporalcloud:index/metricsEndpoint:MetricsEndpoint": "MetricsEndpoint"
+  }
+ },
+ {
+  "pkg": "temporalcloud",
   "mod": "index/namespace",
   "fqn": "pulumi_temporalcloud",
   "classes": {
@@ -48,6 +59,14 @@ _utilities.register(
   "fqn": "pulumi_temporalcloud",
   "classes": {
    "temporalcloud:index/namespaceSearchAttribute:NamespaceSearchAttribute": "NamespaceSearchAttribute"
+  }
+ },
+ {
+  "pkg": "temporalcloud",
+  "mod": "index/nexusEndpoint",
+  "fqn": "pulumi_temporalcloud",
+  "classes": {
+   "temporalcloud:index/nexusEndpoint:NexusEndpoint": "NexusEndpoint"
   }
  },
  {

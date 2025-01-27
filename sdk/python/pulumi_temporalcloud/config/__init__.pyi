@@ -20,6 +20,11 @@ If set to True, it allows for an insecure connection to the Temporal Cloud API. 
 production and defaults to false.
 """
 
+allowedAccountId: Optional[str]
+"""
+The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.
+"""
+
 apiKey: Optional[str]
 """
 The API key for Temporal Cloud. See [this documentation](https://docs.temporal.io/cloud/api-keys) for information on how

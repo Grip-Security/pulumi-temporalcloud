@@ -43,6 +43,16 @@ namespace Pulumi.Temporalcloud
             set => _allowInsecure.Set(value);
         }
 
+        private static readonly __Value<string?> _allowedAccountId = new __Value<string?>(() => __config.Get("allowedAccountId"));
+        /// <summary>
+        /// The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.
+        /// </summary>
+        public static string? AllowedAccountId
+        {
+            get => _allowedAccountId.Get();
+            set => _allowedAccountId.Set(value);
+        }
+
         private static readonly __Value<string?> _apiKey = new __Value<string?>(() => __config.Get("apiKey"));
         /// <summary>
         /// The API key for Temporal Cloud. See [this documentation](https://docs.temporal.io/cloud/api-keys) for information on how

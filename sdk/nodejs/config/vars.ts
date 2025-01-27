@@ -20,6 +20,17 @@ Object.defineProperty(exports, "allowInsecure", {
 });
 
 /**
+ * The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.
+ */
+export declare const allowedAccountId: string | undefined;
+Object.defineProperty(exports, "allowedAccountId", {
+    get() {
+        return __config.get("allowedAccountId");
+    },
+    enumerable: true,
+});
+
+/**
  * The API key for Temporal Cloud. See [this documentation](https://docs.temporal.io/cloud/api-keys) for information on how
  * to obtain an API key.
  */
