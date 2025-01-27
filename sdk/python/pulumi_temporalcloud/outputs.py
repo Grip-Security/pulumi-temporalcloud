@@ -17,10 +17,13 @@ from . import outputs
 
 __all__ = [
     'ApikeyTimeouts',
+    'MetricsEndpointTimeouts',
     'NamespaceCertificateFilter',
     'NamespaceCodecServer',
     'NamespaceEndpoints',
     'NamespaceTimeouts',
+    'NexusEndpointTimeouts',
+    'NexusEndpointWorkerTarget',
     'ServiceAccountNamespaceAccess',
     'ServiceAccountTimeouts',
     'UserNamespaceAccess',
@@ -33,6 +36,8 @@ __all__ = [
     'GetNamespacesNamespacePrivateConnectivityResult',
     'GetNamespacesNamespacePrivateConnectivityAwsPrivateLinkInfoResult',
     'GetRegionsRegionResult',
+    'GetServiceAccountsServiceAccountResult',
+    'GetServiceAccountsServiceAccountNamespaceAccessResult',
 ]
 
 @pulumi.output_type
@@ -64,6 +69,49 @@ class ApikeyTimeouts(dict):
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
         """
         return pulumi.get(self, "delete")
+
+
+@pulumi.output_type
+class MetricsEndpointTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[str] = None,
+                 delete: Optional[str] = None,
+                 update: Optional[str] = None):
+        """
+        :param str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -296,6 +344,85 @@ class NamespaceTimeouts(dict):
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
         """
         return pulumi.get(self, "delete")
+
+
+@pulumi.output_type
+class NexusEndpointTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[str] = None,
+                 delete: Optional[str] = None):
+        """
+        :param str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+
+@pulumi.output_type
+class NexusEndpointWorkerTarget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "namespaceId":
+            suggest = "namespace_id"
+        elif key == "taskQueue":
+            suggest = "task_queue"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NexusEndpointWorkerTarget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NexusEndpointWorkerTarget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NexusEndpointWorkerTarget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 namespace_id: str,
+                 task_queue: str):
+        """
+        :param str namespace_id: The target cloud namespace to route requests to. Namespace must be in same account as the endpoint.
+        :param str task_queue: The task queue on the cloud namespace to route requests to.
+        """
+        pulumi.set(__self__, "namespace_id", namespace_id)
+        pulumi.set(__self__, "task_queue", task_queue)
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> str:
+        """
+        The target cloud namespace to route requests to. Namespace must be in same account as the endpoint.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @property
+    @pulumi.getter(name="taskQueue")
+    def task_queue(self) -> str:
+        """
+        The task queue on the cloud namespace to route requests to.
+        """
+        return pulumi.get(self, "task_queue")
 
 
 @pulumi.output_type
@@ -877,5 +1004,129 @@ class GetRegionsRegionResult(dict):
         The physical location of the region, e.g. "US East (N. Virginia)".
         """
         return pulumi.get(self, "location")
+
+
+@pulumi.output_type
+class GetServiceAccountsServiceAccountResult(dict):
+    def __init__(__self__, *,
+                 account_access: str,
+                 created_at: str,
+                 description: str,
+                 id: str,
+                 name: str,
+                 namespace_accesses: Sequence['outputs.GetServiceAccountsServiceAccountNamespaceAccessResult'],
+                 state: str,
+                 updated_at: str):
+        """
+        :param str account_access: The role on the account. Must be one of admin, developer, or read (case-insensitive).
+        :param str created_at: The creation time of the Service Account.
+        :param str description: The description of the Service Account.
+        :param str id: The unique identifier of the Service Account.
+        :param str name: The name associated with the service account.
+        :param Sequence['GetServiceAccountsServiceAccountNamespaceAccessArgs'] namespace_accesses: The set of namespace permissions for this service account, including each namespace and its role.
+        :param str state: The current state of the Service Account.
+        :param str updated_at: The last update time of the Service Account.
+        """
+        pulumi.set(__self__, "account_access", account_access)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace_accesses", namespace_accesses)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter(name="accountAccess")
+    def account_access(self) -> str:
+        """
+        The role on the account. Must be one of admin, developer, or read (case-insensitive).
+        """
+        return pulumi.get(self, "account_access")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The creation time of the Service Account.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the Service Account.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier of the Service Account.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name associated with the service account.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namespaceAccesses")
+    def namespace_accesses(self) -> Sequence['outputs.GetServiceAccountsServiceAccountNamespaceAccessResult']:
+        """
+        The set of namespace permissions for this service account, including each namespace and its role.
+        """
+        return pulumi.get(self, "namespace_accesses")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The current state of the Service Account.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
+        """
+        The last update time of the Service Account.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetServiceAccountsServiceAccountNamespaceAccessResult(dict):
+    def __init__(__self__, *,
+                 namespace_id: str,
+                 permission: str):
+        """
+        :param str namespace_id: The namespace to assign permissions to.
+        :param str permission: The permission to assign. Must be one of admin, write, or read (case-insensitive)
+        """
+        pulumi.set(__self__, "namespace_id", namespace_id)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> str:
+        """
+        The namespace to assign permissions to.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        The permission to assign. Must be one of admin, write, or read (case-insensitive)
+        """
+        return pulumi.get(self, "permission")
 
 

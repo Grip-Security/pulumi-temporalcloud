@@ -52,6 +52,10 @@
                 "type": "boolean",
                 "description": "If set to True, it allows for an insecure connection to the Temporal Cloud API. This should never be set to 'true' in\nproduction and defaults to false.\n"
             },
+            "allowedAccountId": {
+                "type": "string",
+                "description": "The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.\n"
+            },
             "apiKey": {
                 "type": "string",
                 "description": "The API key for Temporal Cloud. See [this documentation](https://docs.temporal.io/cloud/api-keys) for information on how\nto obtain an API key.\n",
@@ -73,6 +77,23 @@
                 "delete": {
                     "type": "string",
                     "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "temporalcloud:index/MetricsEndpointTimeouts:MetricsEndpointTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
                 }
             },
             "type": "object"
@@ -165,6 +186,36 @@
                 }
             },
             "type": "object"
+        },
+        "temporalcloud:index/NexusEndpointTimeouts:NexusEndpointTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "temporalcloud:index/NexusEndpointWorkerTarget:NexusEndpointWorkerTarget": {
+            "properties": {
+                "namespaceId": {
+                    "type": "string",
+                    "description": "The target cloud namespace to route requests to. Namespace must be in same account as the endpoint.\n"
+                },
+                "taskQueue": {
+                    "type": "string",
+                    "description": "The task queue on the cloud namespace to route requests to.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "namespaceId",
+                "taskQueue"
+            ]
         },
         "temporalcloud:index/ServiceAccountNamespaceAccess:ServiceAccountNamespaceAccess": {
             "properties": {
@@ -507,6 +558,83 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "temporalcloud:index/getServiceAccountsServiceAccount:getServiceAccountsServiceAccount": {
+            "properties": {
+                "accountAccess": {
+                    "type": "string",
+                    "description": "The role on the account. Must be one of admin, developer, or read (case-insensitive).\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The creation time of the Service Account.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the Service Account.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier of the Service Account.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name associated with the service account.\n"
+                },
+                "namespaceAccesses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/temporalcloud:index/getServiceAccountsServiceAccountNamespaceAccess:getServiceAccountsServiceAccountNamespaceAccess"
+                    },
+                    "description": "The set of namespace permissions for this service account, including each namespace and its role.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The current state of the Service Account.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The last update time of the Service Account.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accountAccess",
+                "createdAt",
+                "description",
+                "id",
+                "name",
+                "namespaceAccesses",
+                "state",
+                "updatedAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "temporalcloud:index/getServiceAccountsServiceAccountNamespaceAccess:getServiceAccountsServiceAccountNamespaceAccess": {
+            "properties": {
+                "namespaceId": {
+                    "type": "string",
+                    "description": "The namespace to assign permissions to.\n"
+                },
+                "permission": {
+                    "type": "string",
+                    "description": "The permission to assign. Must be one of admin, write, or read (case-insensitive)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "namespaceId",
+                "permission"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         }
     },
     "provider": {
@@ -515,6 +643,10 @@
             "allowInsecure": {
                 "type": "boolean",
                 "description": "If set to True, it allows for an insecure connection to the Temporal Cloud API. This should never be set to 'true' in\nproduction and defaults to false.\n"
+            },
+            "allowedAccountId": {
+                "type": "string",
+                "description": "The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.\n"
             },
             "apiKey": {
                 "type": "string",
@@ -530,6 +662,10 @@
             "allowInsecure": {
                 "type": "boolean",
                 "description": "If set to True, it allows for an insecure connection to the Temporal Cloud API. This should never be set to 'true' in\nproduction and defaults to false.\n"
+            },
+            "allowedAccountId": {
+                "type": "string",
+                "description": "The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.\n"
             },
             "apiKey": {
                 "type": "string",
@@ -663,6 +799,55 @@
                     "token": {
                         "type": "string",
                         "secret": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "temporalcloud:index/metricsEndpoint:MetricsEndpoint": {
+            "description": "Configures a Temporal Cloud account's metrics\n\n## Import\n\n```sh\n$ pulumi import temporalcloud:index/metricsEndpoint:MetricsEndpoint terraform terraform.account-11111-metrics\n```\n\n",
+            "properties": {
+                "acceptedClientCa": {
+                    "type": "string",
+                    "description": "The Base64-encoded CA cert in PEM format used to authenticate clients connecting to the metrics endpoint.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/temporalcloud:index/MetricsEndpointTimeouts:MetricsEndpointTimeouts"
+                },
+                "uri": {
+                    "type": "string",
+                    "description": "The Prometheus metrics endpoint URI\n"
+                }
+            },
+            "required": [
+                "acceptedClientCa",
+                "uri"
+            ],
+            "inputProperties": {
+                "acceptedClientCa": {
+                    "type": "string",
+                    "description": "The Base64-encoded CA cert in PEM format used to authenticate clients connecting to the metrics endpoint.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/temporalcloud:index/MetricsEndpointTimeouts:MetricsEndpointTimeouts"
+                }
+            },
+            "requiredInputs": [
+                "acceptedClientCa"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering MetricsEndpoint resources.\n",
+                "properties": {
+                    "acceptedClientCa": {
+                        "type": "string",
+                        "description": "The Base64-encoded CA cert in PEM format used to authenticate clients connecting to the metrics endpoint.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/temporalcloud:index/MetricsEndpointTimeouts:MetricsEndpointTimeouts"
+                    },
+                    "uri": {
+                        "type": "string",
+                        "description": "The Prometheus metrics endpoint URI\n"
                     }
                 },
                 "type": "object"
@@ -861,6 +1046,97 @@
                     "type": {
                         "type": "string",
                         "description": "The type of the search attribute. Must be one of `bool`, `datetime`, `double`, `int`, `keyword`, `keyword_list` or `text`. (case-insensitive)\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "temporalcloud:index/nexusEndpoint:NexusEndpoint": {
+            "description": "Provisions a Temporal Cloud Nexus endpoint.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.temporalcloud.Namespace;\nimport com.pulumi.temporalcloud.NamespaceArgs;\nimport com.pulumi.temporalcloud.NexusEndpoint;\nimport com.pulumi.temporalcloud.NexusEndpointArgs;\nimport com.pulumi.temporalcloud.inputs.NexusEndpointWorkerTargetArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var targetNamespace = new Namespace(\"targetNamespace\", NamespaceArgs.builder()\n            .name(\"terraform-target-namespace\")\n            .regions(\"aws-us-west-2\")\n            .apiKeyAuth(true)\n            .retentionDays(14)\n            .build());\n\n        var callerNamespace = new Namespace(\"callerNamespace\", NamespaceArgs.builder()\n            .name(\"terraform-caller-namespace\")\n            .regions(\"aws-us-east-1\")\n            .apiKeyAuth(true)\n            .retentionDays(14)\n            .build());\n\n        var callerNamespace2 = new Namespace(\"callerNamespace2\", NamespaceArgs.builder()\n            .name(\"terraform-caller-namespace-2\")\n            .regions(\"gcp-us-central1\")\n            .apiKeyAuth(true)\n            .retentionDays(14)\n            .build());\n\n        var nexusEndpoint = new NexusEndpoint(\"nexusEndpoint\", NexusEndpointArgs.builder()\n            .name(\"terraform-nexus-endpoint\")\n            .description(\"\"\"\nService Name:\n  my-hello-service\nOperation Names:\n  echo\n  say-hello\n\nInput / Output arguments are in the following repository:\nhttps://github.com/temporalio/samples-go/blob/main/nexus/service/api.go\n            \"\"\")\n            .workerTarget(NexusEndpointWorkerTargetArgs.builder()\n                .namespace_id(targetNamespace.id())\n                .task_queue(\"terraform-task-queue\")\n                .build())\n            .allowedCallerNamespaces(            \n                callerNamespace.id(),\n                callerNamespace2.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  targetNamespace:\n    type: temporalcloud:Namespace\n    name: target_namespace\n    properties:\n      name: terraform-target-namespace\n      regions:\n        - aws-us-west-2\n      apiKeyAuth: true\n      retentionDays: 14\n  callerNamespace:\n    type: temporalcloud:Namespace\n    name: caller_namespace\n    properties:\n      name: terraform-caller-namespace\n      regions:\n        - aws-us-east-1\n      apiKeyAuth: true\n      retentionDays: 14\n  callerNamespace2:\n    type: temporalcloud:Namespace\n    name: caller_namespace_2\n    properties:\n      name: terraform-caller-namespace-2\n      regions:\n        - gcp-us-central1\n      apiKeyAuth: true\n      retentionDays: 14\n  nexusEndpoint:\n    type: temporalcloud:NexusEndpoint\n    name: nexus_endpoint\n    properties:\n      name: terraform-nexus-endpoint\n      description: |\n        Service Name:\n          my-hello-service\n        Operation Names:\n          echo\n          say-hello\n\n        Input / Output arguments are in the following repository:\n        https://github.com/temporalio/samples-go/blob/main/nexus/service/api.go\n      workerTarget:\n        namespace_id: ${targetNamespace.id}\n        task_queue: terraform-task-queue\n      allowedCallerNamespaces:\n        - ${callerNamespace.id}\n        - ${callerNamespace2.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nNexus Endpoints can be imported to incorporate existing Nexus Endpoints into your Terraform pipeline. \n\nTo import a Nexus Endpoint, you need\n\n- a resource configuration in your Terraform configuration file/module to accept the imported Nexus Endpoint. In the example below, the placeholder is \"temporalcloud_nexus_endpoint\" \"nexus_endpoint\"\n\n- the Nexus Endpoint's ID, which is found using the Temporal Cloud CLI tcld nexus endpoint list. In the example below, this is 405f7da4224a43d99c211904ed9b3819\n\n```sh\n$ pulumi import temporalcloud:index/nexusEndpoint:NexusEndpoint nexus_endpoint 405f7da4224a43d99c211904ed9b3819\n```\n\n",
+            "properties": {
+                "allowedCallerNamespaces": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Namespace Id(s) that are allowed to call this Endpoint.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description for the Nexus endpoint.\n",
+                    "secret": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the endpoint. Must be unique within an account and match `^[a-zA-Z][a-zA-Z0-9\\-]*[a-zA-Z0-9]$`\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/temporalcloud:index/NexusEndpointTimeouts:NexusEndpointTimeouts"
+                },
+                "workerTarget": {
+                    "$ref": "#/types/temporalcloud:index/NexusEndpointWorkerTarget:NexusEndpointWorkerTarget",
+                    "description": "A target spec for routing nexus requests to a specific cloud namespace worker.\n"
+                }
+            },
+            "required": [
+                "allowedCallerNamespaces",
+                "name",
+                "workerTarget"
+            ],
+            "inputProperties": {
+                "allowedCallerNamespaces": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Namespace Id(s) that are allowed to call this Endpoint.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description for the Nexus endpoint.\n",
+                    "secret": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the endpoint. Must be unique within an account and match `^[a-zA-Z][a-zA-Z0-9\\-]*[a-zA-Z0-9]$`\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/temporalcloud:index/NexusEndpointTimeouts:NexusEndpointTimeouts"
+                },
+                "workerTarget": {
+                    "$ref": "#/types/temporalcloud:index/NexusEndpointWorkerTarget:NexusEndpointWorkerTarget",
+                    "description": "A target spec for routing nexus requests to a specific cloud namespace worker.\n"
+                }
+            },
+            "requiredInputs": [
+                "allowedCallerNamespaces",
+                "workerTarget"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering NexusEndpoint resources.\n",
+                "properties": {
+                    "allowedCallerNamespaces": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Namespace Id(s) that are allowed to call this Endpoint.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description for the Nexus endpoint.\n",
+                        "secret": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the endpoint. Must be unique within an account and match `^[a-zA-Z][a-zA-Z0-9\\-]*[a-zA-Z0-9]$`\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/temporalcloud:index/NexusEndpointTimeouts:NexusEndpointTimeouts"
+                    },
+                    "workerTarget": {
+                        "$ref": "#/types/temporalcloud:index/NexusEndpointWorkerTarget:NexusEndpointWorkerTarget",
+                        "description": "A target spec for routing nexus requests to a specific cloud namespace worker.\n"
                     }
                 },
                 "type": "object"
@@ -1077,6 +1353,30 @@
                 "required": [
                     "id",
                     "regions"
+                ],
+                "type": "object"
+            }
+        },
+        "temporalcloud:index/getServiceAccounts:getServiceAccounts": {
+            "description": "Fetches details about all Service Accounts.\n",
+            "outputs": {
+                "description": "A collection of values returned by getServiceAccounts.\n",
+                "properties": {
+                    "id": {
+                        "description": "The unique identifier of the Service Accounts data source.\n",
+                        "type": "string"
+                    },
+                    "serviceAccounts": {
+                        "description": "The list of Service Accounts.\n",
+                        "items": {
+                            "$ref": "#/types/temporalcloud:index/getServiceAccountsServiceAccount:getServiceAccountsServiceAccount"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id",
+                    "serviceAccounts"
                 ],
                 "type": "object"
             }

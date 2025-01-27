@@ -5,6 +5,10 @@
                 "current": "temporalcloud:index/apikey:Apikey",
                 "majorVersion": 1
             },
+            "temporalcloud_metrics_endpoint": {
+                "current": "temporalcloud:index/metricsEndpoint:MetricsEndpoint",
+                "majorVersion": 1
+            },
             "temporalcloud_namespace": {
                 "current": "temporalcloud:index/namespace:Namespace",
                 "majorVersion": 1,
@@ -20,6 +24,15 @@
             "temporalcloud_namespace_search_attribute": {
                 "current": "temporalcloud:index/namespaceSearchAttribute:NamespaceSearchAttribute",
                 "majorVersion": 1
+            },
+            "temporalcloud_nexus_endpoint": {
+                "current": "temporalcloud:index/nexusEndpoint:NexusEndpoint",
+                "majorVersion": 1,
+                "fields": {
+                    "allowed_caller_namespaces": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "temporalcloud_service_account": {
                 "current": "temporalcloud:index/serviceAccount:ServiceAccount",
@@ -83,6 +96,22 @@
                 "fields": {
                     "regions": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "temporalcloud_service_accounts": {
+                "current": "temporalcloud:index/getServiceAccounts:getServiceAccounts",
+                "majorVersion": 1,
+                "fields": {
+                    "service_accounts": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "namespace_accesses": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             }

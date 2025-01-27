@@ -169,6 +169,181 @@ func (o ApikeyTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type MetricsEndpointTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// MetricsEndpointTimeoutsInput is an input type that accepts MetricsEndpointTimeoutsArgs and MetricsEndpointTimeoutsOutput values.
+// You can construct a concrete instance of `MetricsEndpointTimeoutsInput` via:
+//
+//	MetricsEndpointTimeoutsArgs{...}
+type MetricsEndpointTimeoutsInput interface {
+	pulumi.Input
+
+	ToMetricsEndpointTimeoutsOutput() MetricsEndpointTimeoutsOutput
+	ToMetricsEndpointTimeoutsOutputWithContext(context.Context) MetricsEndpointTimeoutsOutput
+}
+
+type MetricsEndpointTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (MetricsEndpointTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsEndpointTimeouts)(nil)).Elem()
+}
+
+func (i MetricsEndpointTimeoutsArgs) ToMetricsEndpointTimeoutsOutput() MetricsEndpointTimeoutsOutput {
+	return i.ToMetricsEndpointTimeoutsOutputWithContext(context.Background())
+}
+
+func (i MetricsEndpointTimeoutsArgs) ToMetricsEndpointTimeoutsOutputWithContext(ctx context.Context) MetricsEndpointTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsEndpointTimeoutsOutput)
+}
+
+func (i MetricsEndpointTimeoutsArgs) ToMetricsEndpointTimeoutsPtrOutput() MetricsEndpointTimeoutsPtrOutput {
+	return i.ToMetricsEndpointTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i MetricsEndpointTimeoutsArgs) ToMetricsEndpointTimeoutsPtrOutputWithContext(ctx context.Context) MetricsEndpointTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsEndpointTimeoutsOutput).ToMetricsEndpointTimeoutsPtrOutputWithContext(ctx)
+}
+
+// MetricsEndpointTimeoutsPtrInput is an input type that accepts MetricsEndpointTimeoutsArgs, MetricsEndpointTimeoutsPtr and MetricsEndpointTimeoutsPtrOutput values.
+// You can construct a concrete instance of `MetricsEndpointTimeoutsPtrInput` via:
+//
+//	        MetricsEndpointTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetricsEndpointTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToMetricsEndpointTimeoutsPtrOutput() MetricsEndpointTimeoutsPtrOutput
+	ToMetricsEndpointTimeoutsPtrOutputWithContext(context.Context) MetricsEndpointTimeoutsPtrOutput
+}
+
+type metricsEndpointTimeoutsPtrType MetricsEndpointTimeoutsArgs
+
+func MetricsEndpointTimeoutsPtr(v *MetricsEndpointTimeoutsArgs) MetricsEndpointTimeoutsPtrInput {
+	return (*metricsEndpointTimeoutsPtrType)(v)
+}
+
+func (*metricsEndpointTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsEndpointTimeouts)(nil)).Elem()
+}
+
+func (i *metricsEndpointTimeoutsPtrType) ToMetricsEndpointTimeoutsPtrOutput() MetricsEndpointTimeoutsPtrOutput {
+	return i.ToMetricsEndpointTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *metricsEndpointTimeoutsPtrType) ToMetricsEndpointTimeoutsPtrOutputWithContext(ctx context.Context) MetricsEndpointTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsEndpointTimeoutsPtrOutput)
+}
+
+type MetricsEndpointTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (MetricsEndpointTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsEndpointTimeouts)(nil)).Elem()
+}
+
+func (o MetricsEndpointTimeoutsOutput) ToMetricsEndpointTimeoutsOutput() MetricsEndpointTimeoutsOutput {
+	return o
+}
+
+func (o MetricsEndpointTimeoutsOutput) ToMetricsEndpointTimeoutsOutputWithContext(ctx context.Context) MetricsEndpointTimeoutsOutput {
+	return o
+}
+
+func (o MetricsEndpointTimeoutsOutput) ToMetricsEndpointTimeoutsPtrOutput() MetricsEndpointTimeoutsPtrOutput {
+	return o.ToMetricsEndpointTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o MetricsEndpointTimeoutsOutput) ToMetricsEndpointTimeoutsPtrOutputWithContext(ctx context.Context) MetricsEndpointTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricsEndpointTimeouts) *MetricsEndpointTimeouts {
+		return &v
+	}).(MetricsEndpointTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o MetricsEndpointTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricsEndpointTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o MetricsEndpointTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricsEndpointTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o MetricsEndpointTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricsEndpointTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type MetricsEndpointTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (MetricsEndpointTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsEndpointTimeouts)(nil)).Elem()
+}
+
+func (o MetricsEndpointTimeoutsPtrOutput) ToMetricsEndpointTimeoutsPtrOutput() MetricsEndpointTimeoutsPtrOutput {
+	return o
+}
+
+func (o MetricsEndpointTimeoutsPtrOutput) ToMetricsEndpointTimeoutsPtrOutputWithContext(ctx context.Context) MetricsEndpointTimeoutsPtrOutput {
+	return o
+}
+
+func (o MetricsEndpointTimeoutsPtrOutput) Elem() MetricsEndpointTimeoutsOutput {
+	return o.ApplyT(func(v *MetricsEndpointTimeouts) MetricsEndpointTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret MetricsEndpointTimeouts
+		return ret
+	}).(MetricsEndpointTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o MetricsEndpointTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricsEndpointTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o MetricsEndpointTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricsEndpointTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o MetricsEndpointTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricsEndpointTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type NamespaceCertificateFilter struct {
 	// The certificate's common name.
 	CommonName *string `pulumi:"commonName"`
@@ -796,6 +971,318 @@ func (o NamespaceTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+type NexusEndpointTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+}
+
+// NexusEndpointTimeoutsInput is an input type that accepts NexusEndpointTimeoutsArgs and NexusEndpointTimeoutsOutput values.
+// You can construct a concrete instance of `NexusEndpointTimeoutsInput` via:
+//
+//	NexusEndpointTimeoutsArgs{...}
+type NexusEndpointTimeoutsInput interface {
+	pulumi.Input
+
+	ToNexusEndpointTimeoutsOutput() NexusEndpointTimeoutsOutput
+	ToNexusEndpointTimeoutsOutputWithContext(context.Context) NexusEndpointTimeoutsOutput
+}
+
+type NexusEndpointTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+}
+
+func (NexusEndpointTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NexusEndpointTimeouts)(nil)).Elem()
+}
+
+func (i NexusEndpointTimeoutsArgs) ToNexusEndpointTimeoutsOutput() NexusEndpointTimeoutsOutput {
+	return i.ToNexusEndpointTimeoutsOutputWithContext(context.Background())
+}
+
+func (i NexusEndpointTimeoutsArgs) ToNexusEndpointTimeoutsOutputWithContext(ctx context.Context) NexusEndpointTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NexusEndpointTimeoutsOutput)
+}
+
+func (i NexusEndpointTimeoutsArgs) ToNexusEndpointTimeoutsPtrOutput() NexusEndpointTimeoutsPtrOutput {
+	return i.ToNexusEndpointTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i NexusEndpointTimeoutsArgs) ToNexusEndpointTimeoutsPtrOutputWithContext(ctx context.Context) NexusEndpointTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NexusEndpointTimeoutsOutput).ToNexusEndpointTimeoutsPtrOutputWithContext(ctx)
+}
+
+// NexusEndpointTimeoutsPtrInput is an input type that accepts NexusEndpointTimeoutsArgs, NexusEndpointTimeoutsPtr and NexusEndpointTimeoutsPtrOutput values.
+// You can construct a concrete instance of `NexusEndpointTimeoutsPtrInput` via:
+//
+//	        NexusEndpointTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type NexusEndpointTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToNexusEndpointTimeoutsPtrOutput() NexusEndpointTimeoutsPtrOutput
+	ToNexusEndpointTimeoutsPtrOutputWithContext(context.Context) NexusEndpointTimeoutsPtrOutput
+}
+
+type nexusEndpointTimeoutsPtrType NexusEndpointTimeoutsArgs
+
+func NexusEndpointTimeoutsPtr(v *NexusEndpointTimeoutsArgs) NexusEndpointTimeoutsPtrInput {
+	return (*nexusEndpointTimeoutsPtrType)(v)
+}
+
+func (*nexusEndpointTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NexusEndpointTimeouts)(nil)).Elem()
+}
+
+func (i *nexusEndpointTimeoutsPtrType) ToNexusEndpointTimeoutsPtrOutput() NexusEndpointTimeoutsPtrOutput {
+	return i.ToNexusEndpointTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *nexusEndpointTimeoutsPtrType) ToNexusEndpointTimeoutsPtrOutputWithContext(ctx context.Context) NexusEndpointTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NexusEndpointTimeoutsPtrOutput)
+}
+
+type NexusEndpointTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (NexusEndpointTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NexusEndpointTimeouts)(nil)).Elem()
+}
+
+func (o NexusEndpointTimeoutsOutput) ToNexusEndpointTimeoutsOutput() NexusEndpointTimeoutsOutput {
+	return o
+}
+
+func (o NexusEndpointTimeoutsOutput) ToNexusEndpointTimeoutsOutputWithContext(ctx context.Context) NexusEndpointTimeoutsOutput {
+	return o
+}
+
+func (o NexusEndpointTimeoutsOutput) ToNexusEndpointTimeoutsPtrOutput() NexusEndpointTimeoutsPtrOutput {
+	return o.ToNexusEndpointTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o NexusEndpointTimeoutsOutput) ToNexusEndpointTimeoutsPtrOutputWithContext(ctx context.Context) NexusEndpointTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NexusEndpointTimeouts) *NexusEndpointTimeouts {
+		return &v
+	}).(NexusEndpointTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o NexusEndpointTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NexusEndpointTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o NexusEndpointTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NexusEndpointTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+type NexusEndpointTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (NexusEndpointTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NexusEndpointTimeouts)(nil)).Elem()
+}
+
+func (o NexusEndpointTimeoutsPtrOutput) ToNexusEndpointTimeoutsPtrOutput() NexusEndpointTimeoutsPtrOutput {
+	return o
+}
+
+func (o NexusEndpointTimeoutsPtrOutput) ToNexusEndpointTimeoutsPtrOutputWithContext(ctx context.Context) NexusEndpointTimeoutsPtrOutput {
+	return o
+}
+
+func (o NexusEndpointTimeoutsPtrOutput) Elem() NexusEndpointTimeoutsOutput {
+	return o.ApplyT(func(v *NexusEndpointTimeouts) NexusEndpointTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret NexusEndpointTimeouts
+		return ret
+	}).(NexusEndpointTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o NexusEndpointTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NexusEndpointTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o NexusEndpointTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NexusEndpointTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+type NexusEndpointWorkerTarget struct {
+	// The target cloud namespace to route requests to. Namespace must be in same account as the endpoint.
+	NamespaceId string `pulumi:"namespaceId"`
+	// The task queue on the cloud namespace to route requests to.
+	TaskQueue string `pulumi:"taskQueue"`
+}
+
+// NexusEndpointWorkerTargetInput is an input type that accepts NexusEndpointWorkerTargetArgs and NexusEndpointWorkerTargetOutput values.
+// You can construct a concrete instance of `NexusEndpointWorkerTargetInput` via:
+//
+//	NexusEndpointWorkerTargetArgs{...}
+type NexusEndpointWorkerTargetInput interface {
+	pulumi.Input
+
+	ToNexusEndpointWorkerTargetOutput() NexusEndpointWorkerTargetOutput
+	ToNexusEndpointWorkerTargetOutputWithContext(context.Context) NexusEndpointWorkerTargetOutput
+}
+
+type NexusEndpointWorkerTargetArgs struct {
+	// The target cloud namespace to route requests to. Namespace must be in same account as the endpoint.
+	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
+	// The task queue on the cloud namespace to route requests to.
+	TaskQueue pulumi.StringInput `pulumi:"taskQueue"`
+}
+
+func (NexusEndpointWorkerTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NexusEndpointWorkerTarget)(nil)).Elem()
+}
+
+func (i NexusEndpointWorkerTargetArgs) ToNexusEndpointWorkerTargetOutput() NexusEndpointWorkerTargetOutput {
+	return i.ToNexusEndpointWorkerTargetOutputWithContext(context.Background())
+}
+
+func (i NexusEndpointWorkerTargetArgs) ToNexusEndpointWorkerTargetOutputWithContext(ctx context.Context) NexusEndpointWorkerTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NexusEndpointWorkerTargetOutput)
+}
+
+func (i NexusEndpointWorkerTargetArgs) ToNexusEndpointWorkerTargetPtrOutput() NexusEndpointWorkerTargetPtrOutput {
+	return i.ToNexusEndpointWorkerTargetPtrOutputWithContext(context.Background())
+}
+
+func (i NexusEndpointWorkerTargetArgs) ToNexusEndpointWorkerTargetPtrOutputWithContext(ctx context.Context) NexusEndpointWorkerTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NexusEndpointWorkerTargetOutput).ToNexusEndpointWorkerTargetPtrOutputWithContext(ctx)
+}
+
+// NexusEndpointWorkerTargetPtrInput is an input type that accepts NexusEndpointWorkerTargetArgs, NexusEndpointWorkerTargetPtr and NexusEndpointWorkerTargetPtrOutput values.
+// You can construct a concrete instance of `NexusEndpointWorkerTargetPtrInput` via:
+//
+//	        NexusEndpointWorkerTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type NexusEndpointWorkerTargetPtrInput interface {
+	pulumi.Input
+
+	ToNexusEndpointWorkerTargetPtrOutput() NexusEndpointWorkerTargetPtrOutput
+	ToNexusEndpointWorkerTargetPtrOutputWithContext(context.Context) NexusEndpointWorkerTargetPtrOutput
+}
+
+type nexusEndpointWorkerTargetPtrType NexusEndpointWorkerTargetArgs
+
+func NexusEndpointWorkerTargetPtr(v *NexusEndpointWorkerTargetArgs) NexusEndpointWorkerTargetPtrInput {
+	return (*nexusEndpointWorkerTargetPtrType)(v)
+}
+
+func (*nexusEndpointWorkerTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NexusEndpointWorkerTarget)(nil)).Elem()
+}
+
+func (i *nexusEndpointWorkerTargetPtrType) ToNexusEndpointWorkerTargetPtrOutput() NexusEndpointWorkerTargetPtrOutput {
+	return i.ToNexusEndpointWorkerTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *nexusEndpointWorkerTargetPtrType) ToNexusEndpointWorkerTargetPtrOutputWithContext(ctx context.Context) NexusEndpointWorkerTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NexusEndpointWorkerTargetPtrOutput)
+}
+
+type NexusEndpointWorkerTargetOutput struct{ *pulumi.OutputState }
+
+func (NexusEndpointWorkerTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NexusEndpointWorkerTarget)(nil)).Elem()
+}
+
+func (o NexusEndpointWorkerTargetOutput) ToNexusEndpointWorkerTargetOutput() NexusEndpointWorkerTargetOutput {
+	return o
+}
+
+func (o NexusEndpointWorkerTargetOutput) ToNexusEndpointWorkerTargetOutputWithContext(ctx context.Context) NexusEndpointWorkerTargetOutput {
+	return o
+}
+
+func (o NexusEndpointWorkerTargetOutput) ToNexusEndpointWorkerTargetPtrOutput() NexusEndpointWorkerTargetPtrOutput {
+	return o.ToNexusEndpointWorkerTargetPtrOutputWithContext(context.Background())
+}
+
+func (o NexusEndpointWorkerTargetOutput) ToNexusEndpointWorkerTargetPtrOutputWithContext(ctx context.Context) NexusEndpointWorkerTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NexusEndpointWorkerTarget) *NexusEndpointWorkerTarget {
+		return &v
+	}).(NexusEndpointWorkerTargetPtrOutput)
+}
+
+// The target cloud namespace to route requests to. Namespace must be in same account as the endpoint.
+func (o NexusEndpointWorkerTargetOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v NexusEndpointWorkerTarget) string { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+// The task queue on the cloud namespace to route requests to.
+func (o NexusEndpointWorkerTargetOutput) TaskQueue() pulumi.StringOutput {
+	return o.ApplyT(func(v NexusEndpointWorkerTarget) string { return v.TaskQueue }).(pulumi.StringOutput)
+}
+
+type NexusEndpointWorkerTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (NexusEndpointWorkerTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NexusEndpointWorkerTarget)(nil)).Elem()
+}
+
+func (o NexusEndpointWorkerTargetPtrOutput) ToNexusEndpointWorkerTargetPtrOutput() NexusEndpointWorkerTargetPtrOutput {
+	return o
+}
+
+func (o NexusEndpointWorkerTargetPtrOutput) ToNexusEndpointWorkerTargetPtrOutputWithContext(ctx context.Context) NexusEndpointWorkerTargetPtrOutput {
+	return o
+}
+
+func (o NexusEndpointWorkerTargetPtrOutput) Elem() NexusEndpointWorkerTargetOutput {
+	return o.ApplyT(func(v *NexusEndpointWorkerTarget) NexusEndpointWorkerTarget {
+		if v != nil {
+			return *v
+		}
+		var ret NexusEndpointWorkerTarget
+		return ret
+	}).(NexusEndpointWorkerTargetOutput)
+}
+
+// The target cloud namespace to route requests to. Namespace must be in same account as the endpoint.
+func (o NexusEndpointWorkerTargetPtrOutput) NamespaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NexusEndpointWorkerTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NamespaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The task queue on the cloud namespace to route requests to.
+func (o NexusEndpointWorkerTargetPtrOutput) TaskQueue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NexusEndpointWorkerTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TaskQueue
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2158,9 +2645,279 @@ func (o GetRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionOu
 	}).(GetRegionsRegionOutput)
 }
 
+type GetServiceAccountsServiceAccount struct {
+	// The role on the account. Must be one of admin, developer, or read (case-insensitive).
+	AccountAccess string `pulumi:"accountAccess"`
+	// The creation time of the Service Account.
+	CreatedAt string `pulumi:"createdAt"`
+	// The description of the Service Account.
+	Description string `pulumi:"description"`
+	// The unique identifier of the Service Account.
+	Id string `pulumi:"id"`
+	// The name associated with the service account.
+	Name string `pulumi:"name"`
+	// The set of namespace permissions for this service account, including each namespace and its role.
+	NamespaceAccesses []GetServiceAccountsServiceAccountNamespaceAccess `pulumi:"namespaceAccesses"`
+	// The current state of the Service Account.
+	State string `pulumi:"state"`
+	// The last update time of the Service Account.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetServiceAccountsServiceAccountInput is an input type that accepts GetServiceAccountsServiceAccountArgs and GetServiceAccountsServiceAccountOutput values.
+// You can construct a concrete instance of `GetServiceAccountsServiceAccountInput` via:
+//
+//	GetServiceAccountsServiceAccountArgs{...}
+type GetServiceAccountsServiceAccountInput interface {
+	pulumi.Input
+
+	ToGetServiceAccountsServiceAccountOutput() GetServiceAccountsServiceAccountOutput
+	ToGetServiceAccountsServiceAccountOutputWithContext(context.Context) GetServiceAccountsServiceAccountOutput
+}
+
+type GetServiceAccountsServiceAccountArgs struct {
+	// The role on the account. Must be one of admin, developer, or read (case-insensitive).
+	AccountAccess pulumi.StringInput `pulumi:"accountAccess"`
+	// The creation time of the Service Account.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The description of the Service Account.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The unique identifier of the Service Account.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name associated with the service account.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The set of namespace permissions for this service account, including each namespace and its role.
+	NamespaceAccesses GetServiceAccountsServiceAccountNamespaceAccessArrayInput `pulumi:"namespaceAccesses"`
+	// The current state of the Service Account.
+	State pulumi.StringInput `pulumi:"state"`
+	// The last update time of the Service Account.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetServiceAccountsServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAccountsServiceAccount)(nil)).Elem()
+}
+
+func (i GetServiceAccountsServiceAccountArgs) ToGetServiceAccountsServiceAccountOutput() GetServiceAccountsServiceAccountOutput {
+	return i.ToGetServiceAccountsServiceAccountOutputWithContext(context.Background())
+}
+
+func (i GetServiceAccountsServiceAccountArgs) ToGetServiceAccountsServiceAccountOutputWithContext(ctx context.Context) GetServiceAccountsServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAccountsServiceAccountOutput)
+}
+
+// GetServiceAccountsServiceAccountArrayInput is an input type that accepts GetServiceAccountsServiceAccountArray and GetServiceAccountsServiceAccountArrayOutput values.
+// You can construct a concrete instance of `GetServiceAccountsServiceAccountArrayInput` via:
+//
+//	GetServiceAccountsServiceAccountArray{ GetServiceAccountsServiceAccountArgs{...} }
+type GetServiceAccountsServiceAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceAccountsServiceAccountArrayOutput() GetServiceAccountsServiceAccountArrayOutput
+	ToGetServiceAccountsServiceAccountArrayOutputWithContext(context.Context) GetServiceAccountsServiceAccountArrayOutput
+}
+
+type GetServiceAccountsServiceAccountArray []GetServiceAccountsServiceAccountInput
+
+func (GetServiceAccountsServiceAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAccountsServiceAccount)(nil)).Elem()
+}
+
+func (i GetServiceAccountsServiceAccountArray) ToGetServiceAccountsServiceAccountArrayOutput() GetServiceAccountsServiceAccountArrayOutput {
+	return i.ToGetServiceAccountsServiceAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceAccountsServiceAccountArray) ToGetServiceAccountsServiceAccountArrayOutputWithContext(ctx context.Context) GetServiceAccountsServiceAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAccountsServiceAccountArrayOutput)
+}
+
+type GetServiceAccountsServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAccountsServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAccountsServiceAccount)(nil)).Elem()
+}
+
+func (o GetServiceAccountsServiceAccountOutput) ToGetServiceAccountsServiceAccountOutput() GetServiceAccountsServiceAccountOutput {
+	return o
+}
+
+func (o GetServiceAccountsServiceAccountOutput) ToGetServiceAccountsServiceAccountOutputWithContext(ctx context.Context) GetServiceAccountsServiceAccountOutput {
+	return o
+}
+
+// The role on the account. Must be one of admin, developer, or read (case-insensitive).
+func (o GetServiceAccountsServiceAccountOutput) AccountAccess() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAccountsServiceAccount) string { return v.AccountAccess }).(pulumi.StringOutput)
+}
+
+// The creation time of the Service Account.
+func (o GetServiceAccountsServiceAccountOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAccountsServiceAccount) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The description of the Service Account.
+func (o GetServiceAccountsServiceAccountOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAccountsServiceAccount) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the Service Account.
+func (o GetServiceAccountsServiceAccountOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAccountsServiceAccount) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name associated with the service account.
+func (o GetServiceAccountsServiceAccountOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAccountsServiceAccount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The set of namespace permissions for this service account, including each namespace and its role.
+func (o GetServiceAccountsServiceAccountOutput) NamespaceAccesses() GetServiceAccountsServiceAccountNamespaceAccessArrayOutput {
+	return o.ApplyT(func(v GetServiceAccountsServiceAccount) []GetServiceAccountsServiceAccountNamespaceAccess {
+		return v.NamespaceAccesses
+	}).(GetServiceAccountsServiceAccountNamespaceAccessArrayOutput)
+}
+
+// The current state of the Service Account.
+func (o GetServiceAccountsServiceAccountOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAccountsServiceAccount) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The last update time of the Service Account.
+func (o GetServiceAccountsServiceAccountOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAccountsServiceAccount) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetServiceAccountsServiceAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAccountsServiceAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAccountsServiceAccount)(nil)).Elem()
+}
+
+func (o GetServiceAccountsServiceAccountArrayOutput) ToGetServiceAccountsServiceAccountArrayOutput() GetServiceAccountsServiceAccountArrayOutput {
+	return o
+}
+
+func (o GetServiceAccountsServiceAccountArrayOutput) ToGetServiceAccountsServiceAccountArrayOutputWithContext(ctx context.Context) GetServiceAccountsServiceAccountArrayOutput {
+	return o
+}
+
+func (o GetServiceAccountsServiceAccountArrayOutput) Index(i pulumi.IntInput) GetServiceAccountsServiceAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceAccountsServiceAccount {
+		return vs[0].([]GetServiceAccountsServiceAccount)[vs[1].(int)]
+	}).(GetServiceAccountsServiceAccountOutput)
+}
+
+type GetServiceAccountsServiceAccountNamespaceAccess struct {
+	// The namespace to assign permissions to.
+	NamespaceId string `pulumi:"namespaceId"`
+	// The permission to assign. Must be one of admin, write, or read (case-insensitive)
+	Permission string `pulumi:"permission"`
+}
+
+// GetServiceAccountsServiceAccountNamespaceAccessInput is an input type that accepts GetServiceAccountsServiceAccountNamespaceAccessArgs and GetServiceAccountsServiceAccountNamespaceAccessOutput values.
+// You can construct a concrete instance of `GetServiceAccountsServiceAccountNamespaceAccessInput` via:
+//
+//	GetServiceAccountsServiceAccountNamespaceAccessArgs{...}
+type GetServiceAccountsServiceAccountNamespaceAccessInput interface {
+	pulumi.Input
+
+	ToGetServiceAccountsServiceAccountNamespaceAccessOutput() GetServiceAccountsServiceAccountNamespaceAccessOutput
+	ToGetServiceAccountsServiceAccountNamespaceAccessOutputWithContext(context.Context) GetServiceAccountsServiceAccountNamespaceAccessOutput
+}
+
+type GetServiceAccountsServiceAccountNamespaceAccessArgs struct {
+	// The namespace to assign permissions to.
+	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
+	// The permission to assign. Must be one of admin, write, or read (case-insensitive)
+	Permission pulumi.StringInput `pulumi:"permission"`
+}
+
+func (GetServiceAccountsServiceAccountNamespaceAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAccountsServiceAccountNamespaceAccess)(nil)).Elem()
+}
+
+func (i GetServiceAccountsServiceAccountNamespaceAccessArgs) ToGetServiceAccountsServiceAccountNamespaceAccessOutput() GetServiceAccountsServiceAccountNamespaceAccessOutput {
+	return i.ToGetServiceAccountsServiceAccountNamespaceAccessOutputWithContext(context.Background())
+}
+
+func (i GetServiceAccountsServiceAccountNamespaceAccessArgs) ToGetServiceAccountsServiceAccountNamespaceAccessOutputWithContext(ctx context.Context) GetServiceAccountsServiceAccountNamespaceAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAccountsServiceAccountNamespaceAccessOutput)
+}
+
+// GetServiceAccountsServiceAccountNamespaceAccessArrayInput is an input type that accepts GetServiceAccountsServiceAccountNamespaceAccessArray and GetServiceAccountsServiceAccountNamespaceAccessArrayOutput values.
+// You can construct a concrete instance of `GetServiceAccountsServiceAccountNamespaceAccessArrayInput` via:
+//
+//	GetServiceAccountsServiceAccountNamespaceAccessArray{ GetServiceAccountsServiceAccountNamespaceAccessArgs{...} }
+type GetServiceAccountsServiceAccountNamespaceAccessArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceAccountsServiceAccountNamespaceAccessArrayOutput() GetServiceAccountsServiceAccountNamespaceAccessArrayOutput
+	ToGetServiceAccountsServiceAccountNamespaceAccessArrayOutputWithContext(context.Context) GetServiceAccountsServiceAccountNamespaceAccessArrayOutput
+}
+
+type GetServiceAccountsServiceAccountNamespaceAccessArray []GetServiceAccountsServiceAccountNamespaceAccessInput
+
+func (GetServiceAccountsServiceAccountNamespaceAccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAccountsServiceAccountNamespaceAccess)(nil)).Elem()
+}
+
+func (i GetServiceAccountsServiceAccountNamespaceAccessArray) ToGetServiceAccountsServiceAccountNamespaceAccessArrayOutput() GetServiceAccountsServiceAccountNamespaceAccessArrayOutput {
+	return i.ToGetServiceAccountsServiceAccountNamespaceAccessArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceAccountsServiceAccountNamespaceAccessArray) ToGetServiceAccountsServiceAccountNamespaceAccessArrayOutputWithContext(ctx context.Context) GetServiceAccountsServiceAccountNamespaceAccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAccountsServiceAccountNamespaceAccessArrayOutput)
+}
+
+type GetServiceAccountsServiceAccountNamespaceAccessOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAccountsServiceAccountNamespaceAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAccountsServiceAccountNamespaceAccess)(nil)).Elem()
+}
+
+func (o GetServiceAccountsServiceAccountNamespaceAccessOutput) ToGetServiceAccountsServiceAccountNamespaceAccessOutput() GetServiceAccountsServiceAccountNamespaceAccessOutput {
+	return o
+}
+
+func (o GetServiceAccountsServiceAccountNamespaceAccessOutput) ToGetServiceAccountsServiceAccountNamespaceAccessOutputWithContext(ctx context.Context) GetServiceAccountsServiceAccountNamespaceAccessOutput {
+	return o
+}
+
+// The namespace to assign permissions to.
+func (o GetServiceAccountsServiceAccountNamespaceAccessOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAccountsServiceAccountNamespaceAccess) string { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+// The permission to assign. Must be one of admin, write, or read (case-insensitive)
+func (o GetServiceAccountsServiceAccountNamespaceAccessOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAccountsServiceAccountNamespaceAccess) string { return v.Permission }).(pulumi.StringOutput)
+}
+
+type GetServiceAccountsServiceAccountNamespaceAccessArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAccountsServiceAccountNamespaceAccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAccountsServiceAccountNamespaceAccess)(nil)).Elem()
+}
+
+func (o GetServiceAccountsServiceAccountNamespaceAccessArrayOutput) ToGetServiceAccountsServiceAccountNamespaceAccessArrayOutput() GetServiceAccountsServiceAccountNamespaceAccessArrayOutput {
+	return o
+}
+
+func (o GetServiceAccountsServiceAccountNamespaceAccessArrayOutput) ToGetServiceAccountsServiceAccountNamespaceAccessArrayOutputWithContext(ctx context.Context) GetServiceAccountsServiceAccountNamespaceAccessArrayOutput {
+	return o
+}
+
+func (o GetServiceAccountsServiceAccountNamespaceAccessArrayOutput) Index(i pulumi.IntInput) GetServiceAccountsServiceAccountNamespaceAccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceAccountsServiceAccountNamespaceAccess {
+		return vs[0].([]GetServiceAccountsServiceAccountNamespaceAccess)[vs[1].(int)]
+	}).(GetServiceAccountsServiceAccountNamespaceAccessOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApikeyTimeoutsInput)(nil)).Elem(), ApikeyTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApikeyTimeoutsPtrInput)(nil)).Elem(), ApikeyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsEndpointTimeoutsInput)(nil)).Elem(), MetricsEndpointTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsEndpointTimeoutsPtrInput)(nil)).Elem(), MetricsEndpointTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceCertificateFilterInput)(nil)).Elem(), NamespaceCertificateFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceCertificateFilterArrayInput)(nil)).Elem(), NamespaceCertificateFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceCodecServerInput)(nil)).Elem(), NamespaceCodecServerArgs{})
@@ -2169,6 +2926,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceEndpointsPtrInput)(nil)).Elem(), NamespaceEndpointsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceTimeoutsInput)(nil)).Elem(), NamespaceTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceTimeoutsPtrInput)(nil)).Elem(), NamespaceTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NexusEndpointTimeoutsInput)(nil)).Elem(), NexusEndpointTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NexusEndpointTimeoutsPtrInput)(nil)).Elem(), NexusEndpointTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NexusEndpointWorkerTargetInput)(nil)).Elem(), NexusEndpointWorkerTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NexusEndpointWorkerTargetPtrInput)(nil)).Elem(), NexusEndpointWorkerTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountNamespaceAccessInput)(nil)).Elem(), ServiceAccountNamespaceAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountNamespaceAccessArrayInput)(nil)).Elem(), ServiceAccountNamespaceAccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountTimeoutsInput)(nil)).Elem(), ServiceAccountTimeoutsArgs{})
@@ -2189,8 +2950,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespacePrivateConnectivityAwsPrivateLinkInfoInput)(nil)).Elem(), GetNamespacesNamespacePrivateConnectivityAwsPrivateLinkInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionInput)(nil)).Elem(), GetRegionsRegionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionArrayInput)(nil)).Elem(), GetRegionsRegionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAccountsServiceAccountInput)(nil)).Elem(), GetServiceAccountsServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAccountsServiceAccountArrayInput)(nil)).Elem(), GetServiceAccountsServiceAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAccountsServiceAccountNamespaceAccessInput)(nil)).Elem(), GetServiceAccountsServiceAccountNamespaceAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAccountsServiceAccountNamespaceAccessArrayInput)(nil)).Elem(), GetServiceAccountsServiceAccountNamespaceAccessArray{})
 	pulumi.RegisterOutputType(ApikeyTimeoutsOutput{})
 	pulumi.RegisterOutputType(ApikeyTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(MetricsEndpointTimeoutsOutput{})
+	pulumi.RegisterOutputType(MetricsEndpointTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(NamespaceCertificateFilterOutput{})
 	pulumi.RegisterOutputType(NamespaceCertificateFilterArrayOutput{})
 	pulumi.RegisterOutputType(NamespaceCodecServerOutput{})
@@ -2199,6 +2966,10 @@ func init() {
 	pulumi.RegisterOutputType(NamespaceEndpointsPtrOutput{})
 	pulumi.RegisterOutputType(NamespaceTimeoutsOutput{})
 	pulumi.RegisterOutputType(NamespaceTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(NexusEndpointTimeoutsOutput{})
+	pulumi.RegisterOutputType(NexusEndpointTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(NexusEndpointWorkerTargetOutput{})
+	pulumi.RegisterOutputType(NexusEndpointWorkerTargetPtrOutput{})
 	pulumi.RegisterOutputType(ServiceAccountNamespaceAccessOutput{})
 	pulumi.RegisterOutputType(ServiceAccountNamespaceAccessArrayOutput{})
 	pulumi.RegisterOutputType(ServiceAccountTimeoutsOutput{})
@@ -2219,4 +2990,8 @@ func init() {
 	pulumi.RegisterOutputType(GetNamespacesNamespacePrivateConnectivityAwsPrivateLinkInfoOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceAccountsServiceAccountOutput{})
+	pulumi.RegisterOutputType(GetServiceAccountsServiceAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceAccountsServiceAccountNamespaceAccessOutput{})
+	pulumi.RegisterOutputType(GetServiceAccountsServiceAccountNamespaceAccessArrayOutput{})
 }

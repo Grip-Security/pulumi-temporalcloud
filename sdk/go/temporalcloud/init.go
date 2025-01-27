@@ -23,10 +23,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "temporalcloud:index/apikey:Apikey":
 		r = &Apikey{}
+	case "temporalcloud:index/metricsEndpoint:MetricsEndpoint":
+		r = &MetricsEndpoint{}
 	case "temporalcloud:index/namespace:Namespace":
 		r = &Namespace{}
 	case "temporalcloud:index/namespaceSearchAttribute:NamespaceSearchAttribute":
 		r = &NamespaceSearchAttribute{}
+	case "temporalcloud:index/nexusEndpoint:NexusEndpoint":
+		r = &NexusEndpoint{}
 	case "temporalcloud:index/serviceAccount:ServiceAccount":
 		r = &ServiceAccount{}
 	case "temporalcloud:index/user:User":
@@ -69,12 +73,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"temporalcloud",
+		"index/metricsEndpoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"temporalcloud",
 		"index/namespace",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"temporalcloud",
 		"index/namespaceSearchAttribute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"temporalcloud",
+		"index/nexusEndpoint",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

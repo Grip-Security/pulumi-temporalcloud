@@ -18,6 +18,8 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
+	// The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.
+	AllowedAccountId pulumi.StringPtrOutput `pulumi:"allowedAccountId"`
 	// The API key for Temporal Cloud. See [this documentation](https://docs.temporal.io/cloud/api-keys) for information on how
 	// to obtain an API key.
 	ApiKey pulumi.StringPtrOutput `pulumi:"apiKey"`
@@ -52,6 +54,8 @@ type providerArgs struct {
 	// If set to True, it allows for an insecure connection to the Temporal Cloud API. This should never be set to 'true' in
 	// production and defaults to false.
 	AllowInsecure *bool `pulumi:"allowInsecure"`
+	// The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.
+	AllowedAccountId *string `pulumi:"allowedAccountId"`
 	// The API key for Temporal Cloud. See [this documentation](https://docs.temporal.io/cloud/api-keys) for information on how
 	// to obtain an API key.
 	ApiKey *string `pulumi:"apiKey"`
@@ -64,6 +68,8 @@ type ProviderArgs struct {
 	// If set to True, it allows for an insecure connection to the Temporal Cloud API. This should never be set to 'true' in
 	// production and defaults to false.
 	AllowInsecure pulumi.BoolPtrInput
+	// The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.
+	AllowedAccountId pulumi.StringPtrInput
 	// The API key for Temporal Cloud. See [this documentation](https://docs.temporal.io/cloud/api-keys) for information on how
 	// to obtain an API key.
 	ApiKey pulumi.StringPtrInput
@@ -106,6 +112,11 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
+}
+
+// The ID of the account to operate on. Prevents accidental mutation of accounts other than that provided.
+func (o ProviderOutput) AllowedAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AllowedAccountId }).(pulumi.StringPtrOutput)
 }
 
 // The API key for Temporal Cloud. See [this documentation](https://docs.temporal.io/cloud/api-keys) for information on how
