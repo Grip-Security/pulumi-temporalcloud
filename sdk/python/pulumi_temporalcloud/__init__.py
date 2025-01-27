@@ -20,11 +20,8 @@ from . import outputs
 if typing.TYPE_CHECKING:
     import pulumi_temporalcloud.config as __config
     config = __config
-    import pulumi_temporalcloud.region as __region
-    region = __region
 else:
     config = _utilities.lazy_import('pulumi_temporalcloud.config')
-    region = _utilities.lazy_import('pulumi_temporalcloud.region')
 
 _utilities.register(
     resource_modules="""
