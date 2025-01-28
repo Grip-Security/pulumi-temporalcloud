@@ -1,10 +1,11 @@
 {
     "name": "@grip-security/pulumi-temporalcloud",
     "version": "1.0.0-alpha.0+dev",
-    "description": "A Pulumi package for creating and managing temporalcloud cloud resources.",
+    "description": "A Pulumi package for creating and managing Temporal Cloud resources.",
     "keywords": [
         "temporalcloud",
-        "category/cloud"
+        "category/cloud",
+        "category/infrastructure"
     ],
     "homepage": "https://grip.security",
     "repository": "https://github.com/Grip-Security/pulumi-temporalcloud",

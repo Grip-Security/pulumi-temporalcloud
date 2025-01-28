@@ -126,11 +126,11 @@ func Provider() tfbridge.ProviderInfo {
 		// for use in Pulumi programs
 		// e.g. https://github.com/org/pulumi-provider-name/releases/download/v${VERSION}/
 		PluginDownloadURL: "",
-		Description:       "A Pulumi package for creating and managing temporalcloud cloud resources.",
+		Description:       "A Pulumi package for creating and managing Temporal Cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"temporalcloud", "category/cloud"},
+		Keywords:   []string{"temporalcloud", "category/cloud", "category/infrastructure"},
 		License:    "Apache-2.0",
 		Homepage:   "https://grip.security",
 		Repository: "https://github.com/Grip-Security/pulumi-temporalcloud",

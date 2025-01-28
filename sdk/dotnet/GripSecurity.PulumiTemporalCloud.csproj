@@ -4,7 +4,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Grip Security</Authors>
     <Company>Grip Security</Company>
-    <Description>A Pulumi package for creating and managing temporalcloud cloud resources.</Description>
+    <Description>A Pulumi package for creating and managing Temporal Cloud resources.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://grip.security</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Grip-Security/pulumi-temporalcloud</RepositoryUrl>

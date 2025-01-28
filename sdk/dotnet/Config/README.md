@@ -1,1 +1,1 @@
-A Pulumi package for creating and managing temporalcloud cloud resources.
+A Pulumi package for creating and managing Temporal Cloud resources.
