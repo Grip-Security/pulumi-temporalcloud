@@ -19,7 +19,7 @@ namespace GripSecurity.Temporalcloud
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Temporalcloud = GripSecurity.Temporalcloud;
+        /// using Temporalcloud = Pulumi.Temporalcloud;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -42,7 +42,7 @@ namespace GripSecurity.Temporalcloud
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Temporalcloud = GripSecurity.Temporalcloud;
+        /// using Temporalcloud = Pulumi.Temporalcloud;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -65,7 +65,7 @@ namespace GripSecurity.Temporalcloud
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Temporalcloud = GripSecurity.Temporalcloud;
+        /// using Temporalcloud = Pulumi.Temporalcloud;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
