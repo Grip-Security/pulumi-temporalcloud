@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace GripSecurity.PulumiTemporalCloud
+namespace GripSecurity.Temporalcloud
 {
     /// <summary>
     /// Configures a Temporal Cloud account's metrics
@@ -19,7 +19,7 @@ namespace GripSecurity.PulumiTemporalCloud
     /// $ pulumi import temporalcloud:index/metricsEndpoint:MetricsEndpoint terraform terraform.account-11111-metrics
     /// ```
     /// </summary>
-    [PulumiTemporalCloudResourceType("temporalcloud:index/metricsEndpoint:MetricsEndpoint")]
+    [TemporalcloudResourceType("temporalcloud:index/metricsEndpoint:MetricsEndpoint")]
     public partial class MetricsEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>

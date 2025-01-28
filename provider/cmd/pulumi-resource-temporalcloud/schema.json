@@ -20,9 +20,6 @@
             "packageReferences": {
                 "Pulumi": "3.*"
             },
-            "namespaces": {
-                "temporalcloud": "PulumiTemporalCloud"
-            },
             "compatibility": "tfbridge20",
             "rootNamespace": "GripSecurity",
             "respectSchemaVersion": true

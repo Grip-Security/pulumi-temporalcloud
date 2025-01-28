@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace GripSecurity.PulumiTemporalCloud
+namespace GripSecurity.Temporalcloud
 {
     public static class GetNamespaces
     {

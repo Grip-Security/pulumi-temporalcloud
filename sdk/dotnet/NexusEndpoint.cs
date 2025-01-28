@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace GripSecurity.PulumiTemporalCloud
+namespace GripSecurity.Temporalcloud
 {
     /// <summary>
     /// Provisions a Temporal Cloud Nexus endpoint.
@@ -27,7 +27,7 @@ namespace GripSecurity.PulumiTemporalCloud
     /// $ pulumi import temporalcloud:index/nexusEndpoint:NexusEndpoint nexus_endpoint 405f7da4224a43d99c211904ed9b3819
     /// ```
     /// </summary>
-    [PulumiTemporalCloudResourceType("temporalcloud:index/nexusEndpoint:NexusEndpoint")]
+    [TemporalcloudResourceType("temporalcloud:index/nexusEndpoint:NexusEndpoint")]
     public partial class NexusEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>

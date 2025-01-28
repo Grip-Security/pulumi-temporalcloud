@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace GripSecurity.PulumiTemporalCloud.Outputs
+namespace GripSecurity.Temporalcloud.Outputs
 {
 
     [OutputType]

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace GripSecurity.PulumiTemporalCloud.Inputs
+namespace GripSecurity.Temporalcloud.Inputs
 {
 
     public sealed class MetricsEndpointTimeoutsArgs : global::Pulumi.ResourceArgs

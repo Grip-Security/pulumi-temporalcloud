@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace GripSecurity.PulumiTemporalCloud
+namespace GripSecurity.Temporalcloud
 {
     /// <summary>
     /// Provisions a Temporal Cloud user.
@@ -27,7 +27,7 @@ namespace GripSecurity.PulumiTemporalCloud
     /// $ pulumi import temporalcloud:index/user:User user 72360058153949edb2f1d47019c1e85f
     /// ```
     /// </summary>
-    [PulumiTemporalCloudResourceType("temporalcloud:index/user:User")]
+    [TemporalcloudResourceType("temporalcloud:index/user:User")]
     public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
