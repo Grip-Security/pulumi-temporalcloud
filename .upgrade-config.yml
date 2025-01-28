@@ -1,3 +1,0 @@
-upstream-provider-name: terraform-provider-temporalcloud
-pulumi-infer-version: true
-remove-plugins: true
