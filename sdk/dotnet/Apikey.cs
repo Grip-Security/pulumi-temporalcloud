@@ -19,7 +19,7 @@ namespace GripSecurity.Temporalcloud
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Temporalcloud = Pulumi.Temporalcloud;
+    /// using Temporalcloud = GripSecurity.Temporalcloud;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
