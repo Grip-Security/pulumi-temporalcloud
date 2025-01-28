@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Temporalcloud
+namespace GripSecurity.PulumiTemporalCloud
 {
     /// <summary>
     /// Provisions a Temporal Cloud API key.
@@ -18,7 +19,7 @@ namespace Pulumi.Temporalcloud
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Temporalcloud = Pulumi.Temporalcloud;
+    /// using Temporalcloud = GripSecurity.Temporalcloud;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -40,7 +41,7 @@ namespace Pulumi.Temporalcloud
     /// });
     /// ```
     /// </summary>
-    [TemporalcloudResourceType("temporalcloud:index/apikey:Apikey")]
+    [PulumiTemporalCloudResourceType("temporalcloud:index/apikey:Apikey")]
     public partial class Apikey : global::Pulumi.CustomResource
     {
         /// <summary>

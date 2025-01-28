@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Temporalcloud
+namespace GripSecurity.PulumiTemporalCloud
 {
     /// <summary>
     /// Provisions a Temporal Cloud Service Account.
@@ -26,7 +27,7 @@ namespace Pulumi.Temporalcloud
     /// $ pulumi import temporalcloud:index/serviceAccount:ServiceAccount saimport e3cb94fbdbb845f480044d053d00665b
     /// ```
     /// </summary>
-    [TemporalcloudResourceType("temporalcloud:index/serviceAccount:ServiceAccount")]
+    [PulumiTemporalCloudResourceType("temporalcloud:index/serviceAccount:ServiceAccount")]
     public partial class ServiceAccount : global::Pulumi.CustomResource
     {
         /// <summary>

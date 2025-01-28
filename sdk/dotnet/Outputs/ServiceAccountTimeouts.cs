@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Temporalcloud.Outputs
+namespace GripSecurity.PulumiTemporalCloud.Outputs
 {
 
     [OutputType]

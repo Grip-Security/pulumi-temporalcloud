@@ -168,6 +168,8 @@ func Provider() tfbridge.ProviderInfo {
 			RespectSchemaVersion: true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
+			RootNamespace: "GripSecurity",
+			Namespaces:    map[string]string{mainPkg: "PulumiTemporalCloud"},
 			// RespectSchemaVersion ensures the SDK is generated linking to the correct version of the provider.
 			RespectSchemaVersion: true,
 			// Use a wildcard import so NuGet will prefer the latest possible version.

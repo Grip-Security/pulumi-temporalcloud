@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Temporalcloud
+namespace GripSecurity.PulumiTemporalCloud
 {
     /// <summary>
     /// The provider type for the temporalcloud package. By default, resources use package-wide configuration
@@ -15,7 +16,7 @@ namespace Pulumi.Temporalcloud
     /// construction to achieve fine-grained programmatic control over provider settings. See the
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
-    [TemporalcloudResourceType("pulumi:providers:temporalcloud")]
+    [PulumiTemporalCloudResourceType("pulumi:providers:temporalcloud")]
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>

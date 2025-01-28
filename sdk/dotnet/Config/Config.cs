@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Pulumi.Temporalcloud
+namespace GripSecurity.PulumiTemporalCloud
 {
     public static class Config
     {

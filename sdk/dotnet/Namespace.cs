@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Temporalcloud
+namespace GripSecurity.PulumiTemporalCloud
 {
     /// <summary>
     /// Provisions a Temporal Cloud namespace.
@@ -26,7 +27,7 @@ namespace Pulumi.Temporalcloud
     /// $ pulumi import temporalcloud:index/namespace:Namespace terraform namespaceid.acctid
     /// ```
     /// </summary>
-    [TemporalcloudResourceType("temporalcloud:index/namespace:Namespace")]
+    [PulumiTemporalCloudResourceType("temporalcloud:index/namespace:Namespace")]
     public partial class Namespace : global::Pulumi.CustomResource
     {
         /// <summary>

@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Temporalcloud
+namespace GripSecurity.PulumiTemporalCloud
 {
     /// <summary>
     /// Create a [search attribute](https://docs.temporal.io/visibility#search-attribute) in a Temporal Cloud namespace. Note the limits on [quantity](https://docs.temporal.io/cloud/limits#number-of-custom-search-attributes) and [naming](https://docs.temporal.io/cloud/limits#custom-search-attribute-names).
@@ -28,7 +29,7 @@ namespace Pulumi.Temporalcloud
     /// $ pulumi import temporalcloud:index/namespaceSearchAttribute:NamespaceSearchAttribute saimport namespaceid.acctid/searchAttr
     /// ```
     /// </summary>
-    [TemporalcloudResourceType("temporalcloud:index/namespaceSearchAttribute:NamespaceSearchAttribute")]
+    [PulumiTemporalCloudResourceType("temporalcloud:index/namespaceSearchAttribute:NamespaceSearchAttribute")]
     public partial class NamespaceSearchAttribute : global::Pulumi.CustomResource
     {
         /// <summary>

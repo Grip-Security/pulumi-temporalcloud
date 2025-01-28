@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Temporalcloud
+namespace GripSecurity.PulumiTemporalCloud
 {
     /// <summary>
     /// Provisions a Temporal Cloud user.
@@ -26,7 +27,7 @@ namespace Pulumi.Temporalcloud
     /// $ pulumi import temporalcloud:index/user:User user 72360058153949edb2f1d47019c1e85f
     /// ```
     /// </summary>
-    [TemporalcloudResourceType("temporalcloud:index/user:User")]
+    [PulumiTemporalCloudResourceType("temporalcloud:index/user:User")]
     public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>

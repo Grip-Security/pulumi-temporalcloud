@@ -8,10 +8,10 @@ layout: package
 
 The Pulumi Temporal Cloud provider is available as a package in all Pulumi languages:
 
-* JavaScript/TypeScript: [`@pulumi/temporalcloud`](https://www.npmjs.com/package/@pulumi/temporalcloud)
-* Python: [`temporalcloud`](https://pypi.org/project/pulumi-temporalcloud/)
-* Go: [`github.com/pulumi/pulumi-temporalcloud/sdk/go/temporalcloud`](https://pkg.go.dev/github.com/pulumi/pulumi-temporalcloud/sdk)
-* .NET: [`Pulumi.Temporalcloud`](https://www.nuget.org/packages/Pulumi.Temporalcloud)
+* JavaScript/TypeScript: [`@grip-security/pulumi-temporalcloud`](https://www.npmjs.com/package/@grip-security/pulumi-temporalcloud)
+* Python: [`pulumi-temporalcloud`](https://pypi.org/project/pulumi-temporalcloud/)
+* Go: [`github.com/Grip-Security/pulumi-temporalcloud/sdk/go/temporalcloud`](https://pkg.go.dev/github.com/Grip-Security/pulumi-temporalcloud/sdk)
+* .NET: [`GripSecurity.PulumiTemporalCloud`](https://www.nuget.org/packages/GripSecurity.PulumiTemporalCloud)
 
 ### Provider Binary
 

@@ -64,7 +64,7 @@ func getCSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	base := getBaseOptions(t)
 	baseJS := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			"Pulumi.Temporalcloud",
+			"GripSecurity.PulumiTemporalCloud",
 		},
 	})
 
