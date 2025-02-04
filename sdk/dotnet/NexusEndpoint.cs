@@ -80,6 +80,7 @@ namespace GripSecurity.Temporalcloud
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                PluginDownloadURL = "https://github.com/Grip-Security/pulumi-temporalcloud/releases/download/v${VERSION}/",
                 AdditionalSecretOutputs =
                 {
                     "description",
