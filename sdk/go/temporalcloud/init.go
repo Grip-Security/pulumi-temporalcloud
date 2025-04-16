@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MetricsEndpoint{}
 	case "temporalcloud:index/namespace:Namespace":
 		r = &Namespace{}
+	case "temporalcloud:index/namespaceExportSink:NamespaceExportSink":
+		r = &NamespaceExportSink{}
 	case "temporalcloud:index/namespaceSearchAttribute:NamespaceSearchAttribute":
 		r = &NamespaceSearchAttribute{}
 	case "temporalcloud:index/nexusEndpoint:NexusEndpoint":
@@ -79,6 +81,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"temporalcloud",
 		"index/namespace",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"temporalcloud",
+		"index/namespaceExportSink",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

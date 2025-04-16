@@ -56,7 +56,7 @@ export class Namespace extends pulumi.CustomResource {
      */
     public readonly acceptedClientCa!: pulumi.Output<string | undefined>;
     /**
-     * If true, Temporal Cloud will use API key authentication for this namespace. If false, mutual TLS (mTLS) authentication will be used.
+     * If true, Temporal Cloud will enable API key authentication for this namespace.
      */
     public readonly apiKeyAuth!: pulumi.Output<boolean>;
     /**
@@ -75,6 +75,9 @@ export class Namespace extends pulumi.CustomResource {
      * The name of the namespace.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The list of regions that this namespace is available in. If more than one region is specified, this namespace is a "Multi-region Namespace". Please note that changing, adding, or removing regions is not supported and the provider will attempt to recreate the namespace. For Multi-region Namespaces the provider will ignore order changes on regions which can happen if the namespace fails over.
+     */
     public readonly regions!: pulumi.Output<string[]>;
     /**
      * The number of days to retain workflow history. Any changes to the retention period will be applied to all new running workflows.
@@ -136,7 +139,7 @@ export interface NamespaceState {
      */
     acceptedClientCa?: pulumi.Input<string>;
     /**
-     * If true, Temporal Cloud will use API key authentication for this namespace. If false, mutual TLS (mTLS) authentication will be used.
+     * If true, Temporal Cloud will enable API key authentication for this namespace.
      */
     apiKeyAuth?: pulumi.Input<boolean>;
     /**
@@ -155,6 +158,9 @@ export interface NamespaceState {
      * The name of the namespace.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The list of regions that this namespace is available in. If more than one region is specified, this namespace is a "Multi-region Namespace". Please note that changing, adding, or removing regions is not supported and the provider will attempt to recreate the namespace. For Multi-region Namespaces the provider will ignore order changes on regions which can happen if the namespace fails over.
+     */
     regions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The number of days to retain workflow history. Any changes to the retention period will be applied to all new running workflows.
@@ -172,7 +178,7 @@ export interface NamespaceArgs {
      */
     acceptedClientCa?: pulumi.Input<string>;
     /**
-     * If true, Temporal Cloud will use API key authentication for this namespace. If false, mutual TLS (mTLS) authentication will be used.
+     * If true, Temporal Cloud will enable API key authentication for this namespace.
      */
     apiKeyAuth?: pulumi.Input<boolean>;
     /**
@@ -187,6 +193,9 @@ export interface NamespaceArgs {
      * The name of the namespace.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The list of regions that this namespace is available in. If more than one region is specified, this namespace is a "Multi-region Namespace". Please note that changing, adding, or removing regions is not supported and the provider will attempt to recreate the namespace. For Multi-region Namespaces the provider will ignore order changes on regions which can happen if the namespace fails over.
+     */
     regions: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The number of days to retain workflow history. Any changes to the retention period will be applied to all new running workflows.

@@ -818,6 +818,569 @@ func (o NamespaceEndpointsPtrOutput) WebAddress() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type NamespaceExportSinkGcs struct {
+	// The name of the destination GCS bucket where Temporal will send data.
+	BucketName string `pulumi:"bucketName"`
+	// The GCP project ID associated with the GCS bucket and service account.
+	GcpProjectId string `pulumi:"gcpProjectId"`
+	// The region of the gcs bucket
+	Region string `pulumi:"region"`
+	// The customer service account ID that Temporal Cloud impersonates for writing records to the customer's GCS bucket.
+	ServiceAccountId string `pulumi:"serviceAccountId"`
+}
+
+// NamespaceExportSinkGcsInput is an input type that accepts NamespaceExportSinkGcsArgs and NamespaceExportSinkGcsOutput values.
+// You can construct a concrete instance of `NamespaceExportSinkGcsInput` via:
+//
+//	NamespaceExportSinkGcsArgs{...}
+type NamespaceExportSinkGcsInput interface {
+	pulumi.Input
+
+	ToNamespaceExportSinkGcsOutput() NamespaceExportSinkGcsOutput
+	ToNamespaceExportSinkGcsOutputWithContext(context.Context) NamespaceExportSinkGcsOutput
+}
+
+type NamespaceExportSinkGcsArgs struct {
+	// The name of the destination GCS bucket where Temporal will send data.
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// The GCP project ID associated with the GCS bucket and service account.
+	GcpProjectId pulumi.StringInput `pulumi:"gcpProjectId"`
+	// The region of the gcs bucket
+	Region pulumi.StringInput `pulumi:"region"`
+	// The customer service account ID that Temporal Cloud impersonates for writing records to the customer's GCS bucket.
+	ServiceAccountId pulumi.StringInput `pulumi:"serviceAccountId"`
+}
+
+func (NamespaceExportSinkGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceExportSinkGcs)(nil)).Elem()
+}
+
+func (i NamespaceExportSinkGcsArgs) ToNamespaceExportSinkGcsOutput() NamespaceExportSinkGcsOutput {
+	return i.ToNamespaceExportSinkGcsOutputWithContext(context.Background())
+}
+
+func (i NamespaceExportSinkGcsArgs) ToNamespaceExportSinkGcsOutputWithContext(ctx context.Context) NamespaceExportSinkGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceExportSinkGcsOutput)
+}
+
+func (i NamespaceExportSinkGcsArgs) ToNamespaceExportSinkGcsPtrOutput() NamespaceExportSinkGcsPtrOutput {
+	return i.ToNamespaceExportSinkGcsPtrOutputWithContext(context.Background())
+}
+
+func (i NamespaceExportSinkGcsArgs) ToNamespaceExportSinkGcsPtrOutputWithContext(ctx context.Context) NamespaceExportSinkGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceExportSinkGcsOutput).ToNamespaceExportSinkGcsPtrOutputWithContext(ctx)
+}
+
+// NamespaceExportSinkGcsPtrInput is an input type that accepts NamespaceExportSinkGcsArgs, NamespaceExportSinkGcsPtr and NamespaceExportSinkGcsPtrOutput values.
+// You can construct a concrete instance of `NamespaceExportSinkGcsPtrInput` via:
+//
+//	        NamespaceExportSinkGcsArgs{...}
+//
+//	or:
+//
+//	        nil
+type NamespaceExportSinkGcsPtrInput interface {
+	pulumi.Input
+
+	ToNamespaceExportSinkGcsPtrOutput() NamespaceExportSinkGcsPtrOutput
+	ToNamespaceExportSinkGcsPtrOutputWithContext(context.Context) NamespaceExportSinkGcsPtrOutput
+}
+
+type namespaceExportSinkGcsPtrType NamespaceExportSinkGcsArgs
+
+func NamespaceExportSinkGcsPtr(v *NamespaceExportSinkGcsArgs) NamespaceExportSinkGcsPtrInput {
+	return (*namespaceExportSinkGcsPtrType)(v)
+}
+
+func (*namespaceExportSinkGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceExportSinkGcs)(nil)).Elem()
+}
+
+func (i *namespaceExportSinkGcsPtrType) ToNamespaceExportSinkGcsPtrOutput() NamespaceExportSinkGcsPtrOutput {
+	return i.ToNamespaceExportSinkGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *namespaceExportSinkGcsPtrType) ToNamespaceExportSinkGcsPtrOutputWithContext(ctx context.Context) NamespaceExportSinkGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceExportSinkGcsPtrOutput)
+}
+
+type NamespaceExportSinkGcsOutput struct{ *pulumi.OutputState }
+
+func (NamespaceExportSinkGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceExportSinkGcs)(nil)).Elem()
+}
+
+func (o NamespaceExportSinkGcsOutput) ToNamespaceExportSinkGcsOutput() NamespaceExportSinkGcsOutput {
+	return o
+}
+
+func (o NamespaceExportSinkGcsOutput) ToNamespaceExportSinkGcsOutputWithContext(ctx context.Context) NamespaceExportSinkGcsOutput {
+	return o
+}
+
+func (o NamespaceExportSinkGcsOutput) ToNamespaceExportSinkGcsPtrOutput() NamespaceExportSinkGcsPtrOutput {
+	return o.ToNamespaceExportSinkGcsPtrOutputWithContext(context.Background())
+}
+
+func (o NamespaceExportSinkGcsOutput) ToNamespaceExportSinkGcsPtrOutputWithContext(ctx context.Context) NamespaceExportSinkGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceExportSinkGcs) *NamespaceExportSinkGcs {
+		return &v
+	}).(NamespaceExportSinkGcsPtrOutput)
+}
+
+// The name of the destination GCS bucket where Temporal will send data.
+func (o NamespaceExportSinkGcsOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceExportSinkGcs) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// The GCP project ID associated with the GCS bucket and service account.
+func (o NamespaceExportSinkGcsOutput) GcpProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceExportSinkGcs) string { return v.GcpProjectId }).(pulumi.StringOutput)
+}
+
+// The region of the gcs bucket
+func (o NamespaceExportSinkGcsOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceExportSinkGcs) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The customer service account ID that Temporal Cloud impersonates for writing records to the customer's GCS bucket.
+func (o NamespaceExportSinkGcsOutput) ServiceAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceExportSinkGcs) string { return v.ServiceAccountId }).(pulumi.StringOutput)
+}
+
+type NamespaceExportSinkGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (NamespaceExportSinkGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceExportSinkGcs)(nil)).Elem()
+}
+
+func (o NamespaceExportSinkGcsPtrOutput) ToNamespaceExportSinkGcsPtrOutput() NamespaceExportSinkGcsPtrOutput {
+	return o
+}
+
+func (o NamespaceExportSinkGcsPtrOutput) ToNamespaceExportSinkGcsPtrOutputWithContext(ctx context.Context) NamespaceExportSinkGcsPtrOutput {
+	return o
+}
+
+func (o NamespaceExportSinkGcsPtrOutput) Elem() NamespaceExportSinkGcsOutput {
+	return o.ApplyT(func(v *NamespaceExportSinkGcs) NamespaceExportSinkGcs {
+		if v != nil {
+			return *v
+		}
+		var ret NamespaceExportSinkGcs
+		return ret
+	}).(NamespaceExportSinkGcsOutput)
+}
+
+// The name of the destination GCS bucket where Temporal will send data.
+func (o NamespaceExportSinkGcsPtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceExportSinkGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The GCP project ID associated with the GCS bucket and service account.
+func (o NamespaceExportSinkGcsPtrOutput) GcpProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceExportSinkGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GcpProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region of the gcs bucket
+func (o NamespaceExportSinkGcsPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceExportSinkGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The customer service account ID that Temporal Cloud impersonates for writing records to the customer's GCS bucket.
+func (o NamespaceExportSinkGcsPtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceExportSinkGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+type NamespaceExportSinkS3 struct {
+	// The AWS account ID associated with the S3 bucket and the assumed role.
+	AwsAccountId string `pulumi:"awsAccountId"`
+	// The name of the destination S3 bucket where Temporal will send data.
+	BucketName string `pulumi:"bucketName"`
+	// The AWS Key Management Service (KMS) ARN used for encryption.
+	KmsArn string `pulumi:"kmsArn"`
+	// The region where the S3 bucket is located.
+	Region string `pulumi:"region"`
+	// The IAM role that Temporal Cloud assumes for writing records to the customer's S3 bucket.
+	RoleName string `pulumi:"roleName"`
+}
+
+// NamespaceExportSinkS3Input is an input type that accepts NamespaceExportSinkS3Args and NamespaceExportSinkS3Output values.
+// You can construct a concrete instance of `NamespaceExportSinkS3Input` via:
+//
+//	NamespaceExportSinkS3Args{...}
+type NamespaceExportSinkS3Input interface {
+	pulumi.Input
+
+	ToNamespaceExportSinkS3Output() NamespaceExportSinkS3Output
+	ToNamespaceExportSinkS3OutputWithContext(context.Context) NamespaceExportSinkS3Output
+}
+
+type NamespaceExportSinkS3Args struct {
+	// The AWS account ID associated with the S3 bucket and the assumed role.
+	AwsAccountId pulumi.StringInput `pulumi:"awsAccountId"`
+	// The name of the destination S3 bucket where Temporal will send data.
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// The AWS Key Management Service (KMS) ARN used for encryption.
+	KmsArn pulumi.StringInput `pulumi:"kmsArn"`
+	// The region where the S3 bucket is located.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The IAM role that Temporal Cloud assumes for writing records to the customer's S3 bucket.
+	RoleName pulumi.StringInput `pulumi:"roleName"`
+}
+
+func (NamespaceExportSinkS3Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceExportSinkS3)(nil)).Elem()
+}
+
+func (i NamespaceExportSinkS3Args) ToNamespaceExportSinkS3Output() NamespaceExportSinkS3Output {
+	return i.ToNamespaceExportSinkS3OutputWithContext(context.Background())
+}
+
+func (i NamespaceExportSinkS3Args) ToNamespaceExportSinkS3OutputWithContext(ctx context.Context) NamespaceExportSinkS3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceExportSinkS3Output)
+}
+
+func (i NamespaceExportSinkS3Args) ToNamespaceExportSinkS3PtrOutput() NamespaceExportSinkS3PtrOutput {
+	return i.ToNamespaceExportSinkS3PtrOutputWithContext(context.Background())
+}
+
+func (i NamespaceExportSinkS3Args) ToNamespaceExportSinkS3PtrOutputWithContext(ctx context.Context) NamespaceExportSinkS3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceExportSinkS3Output).ToNamespaceExportSinkS3PtrOutputWithContext(ctx)
+}
+
+// NamespaceExportSinkS3PtrInput is an input type that accepts NamespaceExportSinkS3Args, NamespaceExportSinkS3Ptr and NamespaceExportSinkS3PtrOutput values.
+// You can construct a concrete instance of `NamespaceExportSinkS3PtrInput` via:
+//
+//	        NamespaceExportSinkS3Args{...}
+//
+//	or:
+//
+//	        nil
+type NamespaceExportSinkS3PtrInput interface {
+	pulumi.Input
+
+	ToNamespaceExportSinkS3PtrOutput() NamespaceExportSinkS3PtrOutput
+	ToNamespaceExportSinkS3PtrOutputWithContext(context.Context) NamespaceExportSinkS3PtrOutput
+}
+
+type namespaceExportSinkS3PtrType NamespaceExportSinkS3Args
+
+func NamespaceExportSinkS3Ptr(v *NamespaceExportSinkS3Args) NamespaceExportSinkS3PtrInput {
+	return (*namespaceExportSinkS3PtrType)(v)
+}
+
+func (*namespaceExportSinkS3PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceExportSinkS3)(nil)).Elem()
+}
+
+func (i *namespaceExportSinkS3PtrType) ToNamespaceExportSinkS3PtrOutput() NamespaceExportSinkS3PtrOutput {
+	return i.ToNamespaceExportSinkS3PtrOutputWithContext(context.Background())
+}
+
+func (i *namespaceExportSinkS3PtrType) ToNamespaceExportSinkS3PtrOutputWithContext(ctx context.Context) NamespaceExportSinkS3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceExportSinkS3PtrOutput)
+}
+
+type NamespaceExportSinkS3Output struct{ *pulumi.OutputState }
+
+func (NamespaceExportSinkS3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceExportSinkS3)(nil)).Elem()
+}
+
+func (o NamespaceExportSinkS3Output) ToNamespaceExportSinkS3Output() NamespaceExportSinkS3Output {
+	return o
+}
+
+func (o NamespaceExportSinkS3Output) ToNamespaceExportSinkS3OutputWithContext(ctx context.Context) NamespaceExportSinkS3Output {
+	return o
+}
+
+func (o NamespaceExportSinkS3Output) ToNamespaceExportSinkS3PtrOutput() NamespaceExportSinkS3PtrOutput {
+	return o.ToNamespaceExportSinkS3PtrOutputWithContext(context.Background())
+}
+
+func (o NamespaceExportSinkS3Output) ToNamespaceExportSinkS3PtrOutputWithContext(ctx context.Context) NamespaceExportSinkS3PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceExportSinkS3) *NamespaceExportSinkS3 {
+		return &v
+	}).(NamespaceExportSinkS3PtrOutput)
+}
+
+// The AWS account ID associated with the S3 bucket and the assumed role.
+func (o NamespaceExportSinkS3Output) AwsAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceExportSinkS3) string { return v.AwsAccountId }).(pulumi.StringOutput)
+}
+
+// The name of the destination S3 bucket where Temporal will send data.
+func (o NamespaceExportSinkS3Output) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceExportSinkS3) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// The AWS Key Management Service (KMS) ARN used for encryption.
+func (o NamespaceExportSinkS3Output) KmsArn() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceExportSinkS3) string { return v.KmsArn }).(pulumi.StringOutput)
+}
+
+// The region where the S3 bucket is located.
+func (o NamespaceExportSinkS3Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceExportSinkS3) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The IAM role that Temporal Cloud assumes for writing records to the customer's S3 bucket.
+func (o NamespaceExportSinkS3Output) RoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceExportSinkS3) string { return v.RoleName }).(pulumi.StringOutput)
+}
+
+type NamespaceExportSinkS3PtrOutput struct{ *pulumi.OutputState }
+
+func (NamespaceExportSinkS3PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceExportSinkS3)(nil)).Elem()
+}
+
+func (o NamespaceExportSinkS3PtrOutput) ToNamespaceExportSinkS3PtrOutput() NamespaceExportSinkS3PtrOutput {
+	return o
+}
+
+func (o NamespaceExportSinkS3PtrOutput) ToNamespaceExportSinkS3PtrOutputWithContext(ctx context.Context) NamespaceExportSinkS3PtrOutput {
+	return o
+}
+
+func (o NamespaceExportSinkS3PtrOutput) Elem() NamespaceExportSinkS3Output {
+	return o.ApplyT(func(v *NamespaceExportSinkS3) NamespaceExportSinkS3 {
+		if v != nil {
+			return *v
+		}
+		var ret NamespaceExportSinkS3
+		return ret
+	}).(NamespaceExportSinkS3Output)
+}
+
+// The AWS account ID associated with the S3 bucket and the assumed role.
+func (o NamespaceExportSinkS3PtrOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceExportSinkS3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AwsAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the destination S3 bucket where Temporal will send data.
+func (o NamespaceExportSinkS3PtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceExportSinkS3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS Key Management Service (KMS) ARN used for encryption.
+func (o NamespaceExportSinkS3PtrOutput) KmsArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceExportSinkS3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region where the S3 bucket is located.
+func (o NamespaceExportSinkS3PtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceExportSinkS3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IAM role that Temporal Cloud assumes for writing records to the customer's S3 bucket.
+func (o NamespaceExportSinkS3PtrOutput) RoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceExportSinkS3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RoleName
+	}).(pulumi.StringPtrOutput)
+}
+
+type NamespaceExportSinkTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+}
+
+// NamespaceExportSinkTimeoutsInput is an input type that accepts NamespaceExportSinkTimeoutsArgs and NamespaceExportSinkTimeoutsOutput values.
+// You can construct a concrete instance of `NamespaceExportSinkTimeoutsInput` via:
+//
+//	NamespaceExportSinkTimeoutsArgs{...}
+type NamespaceExportSinkTimeoutsInput interface {
+	pulumi.Input
+
+	ToNamespaceExportSinkTimeoutsOutput() NamespaceExportSinkTimeoutsOutput
+	ToNamespaceExportSinkTimeoutsOutputWithContext(context.Context) NamespaceExportSinkTimeoutsOutput
+}
+
+type NamespaceExportSinkTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+}
+
+func (NamespaceExportSinkTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceExportSinkTimeouts)(nil)).Elem()
+}
+
+func (i NamespaceExportSinkTimeoutsArgs) ToNamespaceExportSinkTimeoutsOutput() NamespaceExportSinkTimeoutsOutput {
+	return i.ToNamespaceExportSinkTimeoutsOutputWithContext(context.Background())
+}
+
+func (i NamespaceExportSinkTimeoutsArgs) ToNamespaceExportSinkTimeoutsOutputWithContext(ctx context.Context) NamespaceExportSinkTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceExportSinkTimeoutsOutput)
+}
+
+func (i NamespaceExportSinkTimeoutsArgs) ToNamespaceExportSinkTimeoutsPtrOutput() NamespaceExportSinkTimeoutsPtrOutput {
+	return i.ToNamespaceExportSinkTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i NamespaceExportSinkTimeoutsArgs) ToNamespaceExportSinkTimeoutsPtrOutputWithContext(ctx context.Context) NamespaceExportSinkTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceExportSinkTimeoutsOutput).ToNamespaceExportSinkTimeoutsPtrOutputWithContext(ctx)
+}
+
+// NamespaceExportSinkTimeoutsPtrInput is an input type that accepts NamespaceExportSinkTimeoutsArgs, NamespaceExportSinkTimeoutsPtr and NamespaceExportSinkTimeoutsPtrOutput values.
+// You can construct a concrete instance of `NamespaceExportSinkTimeoutsPtrInput` via:
+//
+//	        NamespaceExportSinkTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type NamespaceExportSinkTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToNamespaceExportSinkTimeoutsPtrOutput() NamespaceExportSinkTimeoutsPtrOutput
+	ToNamespaceExportSinkTimeoutsPtrOutputWithContext(context.Context) NamespaceExportSinkTimeoutsPtrOutput
+}
+
+type namespaceExportSinkTimeoutsPtrType NamespaceExportSinkTimeoutsArgs
+
+func NamespaceExportSinkTimeoutsPtr(v *NamespaceExportSinkTimeoutsArgs) NamespaceExportSinkTimeoutsPtrInput {
+	return (*namespaceExportSinkTimeoutsPtrType)(v)
+}
+
+func (*namespaceExportSinkTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceExportSinkTimeouts)(nil)).Elem()
+}
+
+func (i *namespaceExportSinkTimeoutsPtrType) ToNamespaceExportSinkTimeoutsPtrOutput() NamespaceExportSinkTimeoutsPtrOutput {
+	return i.ToNamespaceExportSinkTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *namespaceExportSinkTimeoutsPtrType) ToNamespaceExportSinkTimeoutsPtrOutputWithContext(ctx context.Context) NamespaceExportSinkTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceExportSinkTimeoutsPtrOutput)
+}
+
+type NamespaceExportSinkTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (NamespaceExportSinkTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceExportSinkTimeouts)(nil)).Elem()
+}
+
+func (o NamespaceExportSinkTimeoutsOutput) ToNamespaceExportSinkTimeoutsOutput() NamespaceExportSinkTimeoutsOutput {
+	return o
+}
+
+func (o NamespaceExportSinkTimeoutsOutput) ToNamespaceExportSinkTimeoutsOutputWithContext(ctx context.Context) NamespaceExportSinkTimeoutsOutput {
+	return o
+}
+
+func (o NamespaceExportSinkTimeoutsOutput) ToNamespaceExportSinkTimeoutsPtrOutput() NamespaceExportSinkTimeoutsPtrOutput {
+	return o.ToNamespaceExportSinkTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o NamespaceExportSinkTimeoutsOutput) ToNamespaceExportSinkTimeoutsPtrOutputWithContext(ctx context.Context) NamespaceExportSinkTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceExportSinkTimeouts) *NamespaceExportSinkTimeouts {
+		return &v
+	}).(NamespaceExportSinkTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o NamespaceExportSinkTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceExportSinkTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o NamespaceExportSinkTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceExportSinkTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceExportSinkTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (NamespaceExportSinkTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceExportSinkTimeouts)(nil)).Elem()
+}
+
+func (o NamespaceExportSinkTimeoutsPtrOutput) ToNamespaceExportSinkTimeoutsPtrOutput() NamespaceExportSinkTimeoutsPtrOutput {
+	return o
+}
+
+func (o NamespaceExportSinkTimeoutsPtrOutput) ToNamespaceExportSinkTimeoutsPtrOutputWithContext(ctx context.Context) NamespaceExportSinkTimeoutsPtrOutput {
+	return o
+}
+
+func (o NamespaceExportSinkTimeoutsPtrOutput) Elem() NamespaceExportSinkTimeoutsOutput {
+	return o.ApplyT(func(v *NamespaceExportSinkTimeouts) NamespaceExportSinkTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret NamespaceExportSinkTimeouts
+		return ret
+	}).(NamespaceExportSinkTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o NamespaceExportSinkTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceExportSinkTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o NamespaceExportSinkTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespaceExportSinkTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
 type NamespaceTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 	Create *string `pulumi:"create"`
@@ -1810,6 +2373,587 @@ func (o UserTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetNamespaceCertificateFilter struct {
+	// The certificate's common name.
+	CommonName string `pulumi:"commonName"`
+	// The certificate's organization.
+	Organization string `pulumi:"organization"`
+	// The certificate's organizational unit.
+	OrganizationalUnit string `pulumi:"organizationalUnit"`
+	// The certificate's subject alternative name (or SAN).
+	SubjectAlternativeName string `pulumi:"subjectAlternativeName"`
+}
+
+// GetNamespaceCertificateFilterInput is an input type that accepts GetNamespaceCertificateFilterArgs and GetNamespaceCertificateFilterOutput values.
+// You can construct a concrete instance of `GetNamespaceCertificateFilterInput` via:
+//
+//	GetNamespaceCertificateFilterArgs{...}
+type GetNamespaceCertificateFilterInput interface {
+	pulumi.Input
+
+	ToGetNamespaceCertificateFilterOutput() GetNamespaceCertificateFilterOutput
+	ToGetNamespaceCertificateFilterOutputWithContext(context.Context) GetNamespaceCertificateFilterOutput
+}
+
+type GetNamespaceCertificateFilterArgs struct {
+	// The certificate's common name.
+	CommonName pulumi.StringInput `pulumi:"commonName"`
+	// The certificate's organization.
+	Organization pulumi.StringInput `pulumi:"organization"`
+	// The certificate's organizational unit.
+	OrganizationalUnit pulumi.StringInput `pulumi:"organizationalUnit"`
+	// The certificate's subject alternative name (or SAN).
+	SubjectAlternativeName pulumi.StringInput `pulumi:"subjectAlternativeName"`
+}
+
+func (GetNamespaceCertificateFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceCertificateFilter)(nil)).Elem()
+}
+
+func (i GetNamespaceCertificateFilterArgs) ToGetNamespaceCertificateFilterOutput() GetNamespaceCertificateFilterOutput {
+	return i.ToGetNamespaceCertificateFilterOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceCertificateFilterArgs) ToGetNamespaceCertificateFilterOutputWithContext(ctx context.Context) GetNamespaceCertificateFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceCertificateFilterOutput)
+}
+
+// GetNamespaceCertificateFilterArrayInput is an input type that accepts GetNamespaceCertificateFilterArray and GetNamespaceCertificateFilterArrayOutput values.
+// You can construct a concrete instance of `GetNamespaceCertificateFilterArrayInput` via:
+//
+//	GetNamespaceCertificateFilterArray{ GetNamespaceCertificateFilterArgs{...} }
+type GetNamespaceCertificateFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetNamespaceCertificateFilterArrayOutput() GetNamespaceCertificateFilterArrayOutput
+	ToGetNamespaceCertificateFilterArrayOutputWithContext(context.Context) GetNamespaceCertificateFilterArrayOutput
+}
+
+type GetNamespaceCertificateFilterArray []GetNamespaceCertificateFilterInput
+
+func (GetNamespaceCertificateFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespaceCertificateFilter)(nil)).Elem()
+}
+
+func (i GetNamespaceCertificateFilterArray) ToGetNamespaceCertificateFilterArrayOutput() GetNamespaceCertificateFilterArrayOutput {
+	return i.ToGetNamespaceCertificateFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceCertificateFilterArray) ToGetNamespaceCertificateFilterArrayOutputWithContext(ctx context.Context) GetNamespaceCertificateFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceCertificateFilterArrayOutput)
+}
+
+type GetNamespaceCertificateFilterOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceCertificateFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceCertificateFilter)(nil)).Elem()
+}
+
+func (o GetNamespaceCertificateFilterOutput) ToGetNamespaceCertificateFilterOutput() GetNamespaceCertificateFilterOutput {
+	return o
+}
+
+func (o GetNamespaceCertificateFilterOutput) ToGetNamespaceCertificateFilterOutputWithContext(ctx context.Context) GetNamespaceCertificateFilterOutput {
+	return o
+}
+
+// The certificate's common name.
+func (o GetNamespaceCertificateFilterOutput) CommonName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceCertificateFilter) string { return v.CommonName }).(pulumi.StringOutput)
+}
+
+// The certificate's organization.
+func (o GetNamespaceCertificateFilterOutput) Organization() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceCertificateFilter) string { return v.Organization }).(pulumi.StringOutput)
+}
+
+// The certificate's organizational unit.
+func (o GetNamespaceCertificateFilterOutput) OrganizationalUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceCertificateFilter) string { return v.OrganizationalUnit }).(pulumi.StringOutput)
+}
+
+// The certificate's subject alternative name (or SAN).
+func (o GetNamespaceCertificateFilterOutput) SubjectAlternativeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceCertificateFilter) string { return v.SubjectAlternativeName }).(pulumi.StringOutput)
+}
+
+type GetNamespaceCertificateFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceCertificateFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespaceCertificateFilter)(nil)).Elem()
+}
+
+func (o GetNamespaceCertificateFilterArrayOutput) ToGetNamespaceCertificateFilterArrayOutput() GetNamespaceCertificateFilterArrayOutput {
+	return o
+}
+
+func (o GetNamespaceCertificateFilterArrayOutput) ToGetNamespaceCertificateFilterArrayOutputWithContext(ctx context.Context) GetNamespaceCertificateFilterArrayOutput {
+	return o
+}
+
+func (o GetNamespaceCertificateFilterArrayOutput) Index(i pulumi.IntInput) GetNamespaceCertificateFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNamespaceCertificateFilter {
+		return vs[0].([]GetNamespaceCertificateFilter)[vs[1].(int)]
+	}).(GetNamespaceCertificateFilterOutput)
+}
+
+type GetNamespaceCodecServer struct {
+	// The endpoint of the codec server.
+	Endpoint string `pulumi:"endpoint"`
+	// If true, Temporal Cloud will include cross-origin credentials in requests to the codec server.
+	IncludeCrossOriginCredentials bool `pulumi:"includeCrossOriginCredentials"`
+	// If true, Temporal Cloud will pass the access token to the codec server upon each request.
+	PassAccessToken bool `pulumi:"passAccessToken"`
+}
+
+// GetNamespaceCodecServerInput is an input type that accepts GetNamespaceCodecServerArgs and GetNamespaceCodecServerOutput values.
+// You can construct a concrete instance of `GetNamespaceCodecServerInput` via:
+//
+//	GetNamespaceCodecServerArgs{...}
+type GetNamespaceCodecServerInput interface {
+	pulumi.Input
+
+	ToGetNamespaceCodecServerOutput() GetNamespaceCodecServerOutput
+	ToGetNamespaceCodecServerOutputWithContext(context.Context) GetNamespaceCodecServerOutput
+}
+
+type GetNamespaceCodecServerArgs struct {
+	// The endpoint of the codec server.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// If true, Temporal Cloud will include cross-origin credentials in requests to the codec server.
+	IncludeCrossOriginCredentials pulumi.BoolInput `pulumi:"includeCrossOriginCredentials"`
+	// If true, Temporal Cloud will pass the access token to the codec server upon each request.
+	PassAccessToken pulumi.BoolInput `pulumi:"passAccessToken"`
+}
+
+func (GetNamespaceCodecServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceCodecServer)(nil)).Elem()
+}
+
+func (i GetNamespaceCodecServerArgs) ToGetNamespaceCodecServerOutput() GetNamespaceCodecServerOutput {
+	return i.ToGetNamespaceCodecServerOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceCodecServerArgs) ToGetNamespaceCodecServerOutputWithContext(ctx context.Context) GetNamespaceCodecServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceCodecServerOutput)
+}
+
+func (i GetNamespaceCodecServerArgs) ToGetNamespaceCodecServerPtrOutput() GetNamespaceCodecServerPtrOutput {
+	return i.ToGetNamespaceCodecServerPtrOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceCodecServerArgs) ToGetNamespaceCodecServerPtrOutputWithContext(ctx context.Context) GetNamespaceCodecServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceCodecServerOutput).ToGetNamespaceCodecServerPtrOutputWithContext(ctx)
+}
+
+// GetNamespaceCodecServerPtrInput is an input type that accepts GetNamespaceCodecServerArgs, GetNamespaceCodecServerPtr and GetNamespaceCodecServerPtrOutput values.
+// You can construct a concrete instance of `GetNamespaceCodecServerPtrInput` via:
+//
+//	        GetNamespaceCodecServerArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetNamespaceCodecServerPtrInput interface {
+	pulumi.Input
+
+	ToGetNamespaceCodecServerPtrOutput() GetNamespaceCodecServerPtrOutput
+	ToGetNamespaceCodecServerPtrOutputWithContext(context.Context) GetNamespaceCodecServerPtrOutput
+}
+
+type getNamespaceCodecServerPtrType GetNamespaceCodecServerArgs
+
+func GetNamespaceCodecServerPtr(v *GetNamespaceCodecServerArgs) GetNamespaceCodecServerPtrInput {
+	return (*getNamespaceCodecServerPtrType)(v)
+}
+
+func (*getNamespaceCodecServerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetNamespaceCodecServer)(nil)).Elem()
+}
+
+func (i *getNamespaceCodecServerPtrType) ToGetNamespaceCodecServerPtrOutput() GetNamespaceCodecServerPtrOutput {
+	return i.ToGetNamespaceCodecServerPtrOutputWithContext(context.Background())
+}
+
+func (i *getNamespaceCodecServerPtrType) ToGetNamespaceCodecServerPtrOutputWithContext(ctx context.Context) GetNamespaceCodecServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceCodecServerPtrOutput)
+}
+
+type GetNamespaceCodecServerOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceCodecServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceCodecServer)(nil)).Elem()
+}
+
+func (o GetNamespaceCodecServerOutput) ToGetNamespaceCodecServerOutput() GetNamespaceCodecServerOutput {
+	return o
+}
+
+func (o GetNamespaceCodecServerOutput) ToGetNamespaceCodecServerOutputWithContext(ctx context.Context) GetNamespaceCodecServerOutput {
+	return o
+}
+
+func (o GetNamespaceCodecServerOutput) ToGetNamespaceCodecServerPtrOutput() GetNamespaceCodecServerPtrOutput {
+	return o.ToGetNamespaceCodecServerPtrOutputWithContext(context.Background())
+}
+
+func (o GetNamespaceCodecServerOutput) ToGetNamespaceCodecServerPtrOutputWithContext(ctx context.Context) GetNamespaceCodecServerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetNamespaceCodecServer) *GetNamespaceCodecServer {
+		return &v
+	}).(GetNamespaceCodecServerPtrOutput)
+}
+
+// The endpoint of the codec server.
+func (o GetNamespaceCodecServerOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceCodecServer) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// If true, Temporal Cloud will include cross-origin credentials in requests to the codec server.
+func (o GetNamespaceCodecServerOutput) IncludeCrossOriginCredentials() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNamespaceCodecServer) bool { return v.IncludeCrossOriginCredentials }).(pulumi.BoolOutput)
+}
+
+// If true, Temporal Cloud will pass the access token to the codec server upon each request.
+func (o GetNamespaceCodecServerOutput) PassAccessToken() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNamespaceCodecServer) bool { return v.PassAccessToken }).(pulumi.BoolOutput)
+}
+
+type GetNamespaceCodecServerPtrOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceCodecServerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetNamespaceCodecServer)(nil)).Elem()
+}
+
+func (o GetNamespaceCodecServerPtrOutput) ToGetNamespaceCodecServerPtrOutput() GetNamespaceCodecServerPtrOutput {
+	return o
+}
+
+func (o GetNamespaceCodecServerPtrOutput) ToGetNamespaceCodecServerPtrOutputWithContext(ctx context.Context) GetNamespaceCodecServerPtrOutput {
+	return o
+}
+
+func (o GetNamespaceCodecServerPtrOutput) Elem() GetNamespaceCodecServerOutput {
+	return o.ApplyT(func(v *GetNamespaceCodecServer) GetNamespaceCodecServer {
+		if v != nil {
+			return *v
+		}
+		var ret GetNamespaceCodecServer
+		return ret
+	}).(GetNamespaceCodecServerOutput)
+}
+
+// The endpoint of the codec server.
+func (o GetNamespaceCodecServerPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetNamespaceCodecServer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, Temporal Cloud will include cross-origin credentials in requests to the codec server.
+func (o GetNamespaceCodecServerPtrOutput) IncludeCrossOriginCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetNamespaceCodecServer) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IncludeCrossOriginCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, Temporal Cloud will pass the access token to the codec server upon each request.
+func (o GetNamespaceCodecServerPtrOutput) PassAccessToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetNamespaceCodecServer) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.PassAccessToken
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetNamespaceEndpoints struct {
+	// The gRPC hostport address that the temporal workers, clients and tctl connect to.
+	GrpcAddress string `pulumi:"grpcAddress"`
+	// The web UI address.
+	WebAddress string `pulumi:"webAddress"`
+}
+
+// GetNamespaceEndpointsInput is an input type that accepts GetNamespaceEndpointsArgs and GetNamespaceEndpointsOutput values.
+// You can construct a concrete instance of `GetNamespaceEndpointsInput` via:
+//
+//	GetNamespaceEndpointsArgs{...}
+type GetNamespaceEndpointsInput interface {
+	pulumi.Input
+
+	ToGetNamespaceEndpointsOutput() GetNamespaceEndpointsOutput
+	ToGetNamespaceEndpointsOutputWithContext(context.Context) GetNamespaceEndpointsOutput
+}
+
+type GetNamespaceEndpointsArgs struct {
+	// The gRPC hostport address that the temporal workers, clients and tctl connect to.
+	GrpcAddress pulumi.StringInput `pulumi:"grpcAddress"`
+	// The web UI address.
+	WebAddress pulumi.StringInput `pulumi:"webAddress"`
+}
+
+func (GetNamespaceEndpointsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceEndpoints)(nil)).Elem()
+}
+
+func (i GetNamespaceEndpointsArgs) ToGetNamespaceEndpointsOutput() GetNamespaceEndpointsOutput {
+	return i.ToGetNamespaceEndpointsOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceEndpointsArgs) ToGetNamespaceEndpointsOutputWithContext(ctx context.Context) GetNamespaceEndpointsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceEndpointsOutput)
+}
+
+type GetNamespaceEndpointsOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceEndpointsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceEndpoints)(nil)).Elem()
+}
+
+func (o GetNamespaceEndpointsOutput) ToGetNamespaceEndpointsOutput() GetNamespaceEndpointsOutput {
+	return o
+}
+
+func (o GetNamespaceEndpointsOutput) ToGetNamespaceEndpointsOutputWithContext(ctx context.Context) GetNamespaceEndpointsOutput {
+	return o
+}
+
+// The gRPC hostport address that the temporal workers, clients and tctl connect to.
+func (o GetNamespaceEndpointsOutput) GrpcAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceEndpoints) string { return v.GrpcAddress }).(pulumi.StringOutput)
+}
+
+// The web UI address.
+func (o GetNamespaceEndpointsOutput) WebAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespaceEndpoints) string { return v.WebAddress }).(pulumi.StringOutput)
+}
+
+type GetNamespaceLimits struct {
+	// The number of actions per second (APS) that is currently allowed for the namespace. The namespace may be throttled if its APS exceeds the limit.
+	ActionsPerSecondLimit int `pulumi:"actionsPerSecondLimit"`
+}
+
+// GetNamespaceLimitsInput is an input type that accepts GetNamespaceLimitsArgs and GetNamespaceLimitsOutput values.
+// You can construct a concrete instance of `GetNamespaceLimitsInput` via:
+//
+//	GetNamespaceLimitsArgs{...}
+type GetNamespaceLimitsInput interface {
+	pulumi.Input
+
+	ToGetNamespaceLimitsOutput() GetNamespaceLimitsOutput
+	ToGetNamespaceLimitsOutputWithContext(context.Context) GetNamespaceLimitsOutput
+}
+
+type GetNamespaceLimitsArgs struct {
+	// The number of actions per second (APS) that is currently allowed for the namespace. The namespace may be throttled if its APS exceeds the limit.
+	ActionsPerSecondLimit pulumi.IntInput `pulumi:"actionsPerSecondLimit"`
+}
+
+func (GetNamespaceLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceLimits)(nil)).Elem()
+}
+
+func (i GetNamespaceLimitsArgs) ToGetNamespaceLimitsOutput() GetNamespaceLimitsOutput {
+	return i.ToGetNamespaceLimitsOutputWithContext(context.Background())
+}
+
+func (i GetNamespaceLimitsArgs) ToGetNamespaceLimitsOutputWithContext(ctx context.Context) GetNamespaceLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespaceLimitsOutput)
+}
+
+type GetNamespaceLimitsOutput struct{ *pulumi.OutputState }
+
+func (GetNamespaceLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespaceLimits)(nil)).Elem()
+}
+
+func (o GetNamespaceLimitsOutput) ToGetNamespaceLimitsOutput() GetNamespaceLimitsOutput {
+	return o
+}
+
+func (o GetNamespaceLimitsOutput) ToGetNamespaceLimitsOutputWithContext(ctx context.Context) GetNamespaceLimitsOutput {
+	return o
+}
+
+// The number of actions per second (APS) that is currently allowed for the namespace. The namespace may be throttled if its APS exceeds the limit.
+func (o GetNamespaceLimitsOutput) ActionsPerSecondLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNamespaceLimits) int { return v.ActionsPerSecondLimit }).(pulumi.IntOutput)
+}
+
+type GetNamespacePrivateConnectivity struct {
+	// The AWS PrivateLink info. This will only be set for namespaces whose cloud provider is AWS.
+	AwsPrivateLinkInfo GetNamespacePrivateConnectivityAwsPrivateLinkInfo `pulumi:"awsPrivateLinkInfo"`
+	// The id of the region where the private connectivity applies.
+	Region string `pulumi:"region"`
+}
+
+// GetNamespacePrivateConnectivityInput is an input type that accepts GetNamespacePrivateConnectivityArgs and GetNamespacePrivateConnectivityOutput values.
+// You can construct a concrete instance of `GetNamespacePrivateConnectivityInput` via:
+//
+//	GetNamespacePrivateConnectivityArgs{...}
+type GetNamespacePrivateConnectivityInput interface {
+	pulumi.Input
+
+	ToGetNamespacePrivateConnectivityOutput() GetNamespacePrivateConnectivityOutput
+	ToGetNamespacePrivateConnectivityOutputWithContext(context.Context) GetNamespacePrivateConnectivityOutput
+}
+
+type GetNamespacePrivateConnectivityArgs struct {
+	// The AWS PrivateLink info. This will only be set for namespaces whose cloud provider is AWS.
+	AwsPrivateLinkInfo GetNamespacePrivateConnectivityAwsPrivateLinkInfoInput `pulumi:"awsPrivateLinkInfo"`
+	// The id of the region where the private connectivity applies.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetNamespacePrivateConnectivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespacePrivateConnectivity)(nil)).Elem()
+}
+
+func (i GetNamespacePrivateConnectivityArgs) ToGetNamespacePrivateConnectivityOutput() GetNamespacePrivateConnectivityOutput {
+	return i.ToGetNamespacePrivateConnectivityOutputWithContext(context.Background())
+}
+
+func (i GetNamespacePrivateConnectivityArgs) ToGetNamespacePrivateConnectivityOutputWithContext(ctx context.Context) GetNamespacePrivateConnectivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespacePrivateConnectivityOutput)
+}
+
+// GetNamespacePrivateConnectivityArrayInput is an input type that accepts GetNamespacePrivateConnectivityArray and GetNamespacePrivateConnectivityArrayOutput values.
+// You can construct a concrete instance of `GetNamespacePrivateConnectivityArrayInput` via:
+//
+//	GetNamespacePrivateConnectivityArray{ GetNamespacePrivateConnectivityArgs{...} }
+type GetNamespacePrivateConnectivityArrayInput interface {
+	pulumi.Input
+
+	ToGetNamespacePrivateConnectivityArrayOutput() GetNamespacePrivateConnectivityArrayOutput
+	ToGetNamespacePrivateConnectivityArrayOutputWithContext(context.Context) GetNamespacePrivateConnectivityArrayOutput
+}
+
+type GetNamespacePrivateConnectivityArray []GetNamespacePrivateConnectivityInput
+
+func (GetNamespacePrivateConnectivityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespacePrivateConnectivity)(nil)).Elem()
+}
+
+func (i GetNamespacePrivateConnectivityArray) ToGetNamespacePrivateConnectivityArrayOutput() GetNamespacePrivateConnectivityArrayOutput {
+	return i.ToGetNamespacePrivateConnectivityArrayOutputWithContext(context.Background())
+}
+
+func (i GetNamespacePrivateConnectivityArray) ToGetNamespacePrivateConnectivityArrayOutputWithContext(ctx context.Context) GetNamespacePrivateConnectivityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespacePrivateConnectivityArrayOutput)
+}
+
+type GetNamespacePrivateConnectivityOutput struct{ *pulumi.OutputState }
+
+func (GetNamespacePrivateConnectivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespacePrivateConnectivity)(nil)).Elem()
+}
+
+func (o GetNamespacePrivateConnectivityOutput) ToGetNamespacePrivateConnectivityOutput() GetNamespacePrivateConnectivityOutput {
+	return o
+}
+
+func (o GetNamespacePrivateConnectivityOutput) ToGetNamespacePrivateConnectivityOutputWithContext(ctx context.Context) GetNamespacePrivateConnectivityOutput {
+	return o
+}
+
+// The AWS PrivateLink info. This will only be set for namespaces whose cloud provider is AWS.
+func (o GetNamespacePrivateConnectivityOutput) AwsPrivateLinkInfo() GetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput {
+	return o.ApplyT(func(v GetNamespacePrivateConnectivity) GetNamespacePrivateConnectivityAwsPrivateLinkInfo {
+		return v.AwsPrivateLinkInfo
+	}).(GetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput)
+}
+
+// The id of the region where the private connectivity applies.
+func (o GetNamespacePrivateConnectivityOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespacePrivateConnectivity) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetNamespacePrivateConnectivityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNamespacePrivateConnectivityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespacePrivateConnectivity)(nil)).Elem()
+}
+
+func (o GetNamespacePrivateConnectivityArrayOutput) ToGetNamespacePrivateConnectivityArrayOutput() GetNamespacePrivateConnectivityArrayOutput {
+	return o
+}
+
+func (o GetNamespacePrivateConnectivityArrayOutput) ToGetNamespacePrivateConnectivityArrayOutputWithContext(ctx context.Context) GetNamespacePrivateConnectivityArrayOutput {
+	return o
+}
+
+func (o GetNamespacePrivateConnectivityArrayOutput) Index(i pulumi.IntInput) GetNamespacePrivateConnectivityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNamespacePrivateConnectivity {
+		return vs[0].([]GetNamespacePrivateConnectivity)[vs[1].(int)]
+	}).(GetNamespacePrivateConnectivityOutput)
+}
+
+type GetNamespacePrivateConnectivityAwsPrivateLinkInfo struct {
+	// The list of principal arns that are allowed to access the namespace on the private link.
+	AllowedPrincipalArns []string `pulumi:"allowedPrincipalArns"`
+	// The list of vpc endpoint service names that are associated with the namespace.
+	VpcEndpointServiceNames []string `pulumi:"vpcEndpointServiceNames"`
+}
+
+// GetNamespacePrivateConnectivityAwsPrivateLinkInfoInput is an input type that accepts GetNamespacePrivateConnectivityAwsPrivateLinkInfoArgs and GetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput values.
+// You can construct a concrete instance of `GetNamespacePrivateConnectivityAwsPrivateLinkInfoInput` via:
+//
+//	GetNamespacePrivateConnectivityAwsPrivateLinkInfoArgs{...}
+type GetNamespacePrivateConnectivityAwsPrivateLinkInfoInput interface {
+	pulumi.Input
+
+	ToGetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput() GetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput
+	ToGetNamespacePrivateConnectivityAwsPrivateLinkInfoOutputWithContext(context.Context) GetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput
+}
+
+type GetNamespacePrivateConnectivityAwsPrivateLinkInfoArgs struct {
+	// The list of principal arns that are allowed to access the namespace on the private link.
+	AllowedPrincipalArns pulumi.StringArrayInput `pulumi:"allowedPrincipalArns"`
+	// The list of vpc endpoint service names that are associated with the namespace.
+	VpcEndpointServiceNames pulumi.StringArrayInput `pulumi:"vpcEndpointServiceNames"`
+}
+
+func (GetNamespacePrivateConnectivityAwsPrivateLinkInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespacePrivateConnectivityAwsPrivateLinkInfo)(nil)).Elem()
+}
+
+func (i GetNamespacePrivateConnectivityAwsPrivateLinkInfoArgs) ToGetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput() GetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput {
+	return i.ToGetNamespacePrivateConnectivityAwsPrivateLinkInfoOutputWithContext(context.Background())
+}
+
+func (i GetNamespacePrivateConnectivityAwsPrivateLinkInfoArgs) ToGetNamespacePrivateConnectivityAwsPrivateLinkInfoOutputWithContext(ctx context.Context) GetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput)
+}
+
+type GetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput struct{ *pulumi.OutputState }
+
+func (GetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespacePrivateConnectivityAwsPrivateLinkInfo)(nil)).Elem()
+}
+
+func (o GetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput) ToGetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput() GetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput {
+	return o
+}
+
+func (o GetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput) ToGetNamespacePrivateConnectivityAwsPrivateLinkInfoOutputWithContext(ctx context.Context) GetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput {
+	return o
+}
+
+// The list of principal arns that are allowed to access the namespace on the private link.
+func (o GetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput) AllowedPrincipalArns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNamespacePrivateConnectivityAwsPrivateLinkInfo) []string { return v.AllowedPrincipalArns }).(pulumi.StringArrayOutput)
+}
+
+// The list of vpc endpoint service names that are associated with the namespace.
+func (o GetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput) VpcEndpointServiceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNamespacePrivateConnectivityAwsPrivateLinkInfo) []string { return v.VpcEndpointServiceNames }).(pulumi.StringArrayOutput)
+}
+
 type GetNamespacesNamespace struct {
 	// The Base64-encoded CA cert in PEM format that clients use when authenticating with Temporal Cloud.
 	AcceptedClientCa string `pulumi:"acceptedClientCa"`
@@ -2645,6 +3789,112 @@ func (o GetRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionOu
 	}).(GetRegionsRegionOutput)
 }
 
+type GetServiceAccountNamespaceAccess struct {
+	// The namespace to assign permissions to.
+	NamespaceId string `pulumi:"namespaceId"`
+	// The permission to assign. Must be one of admin, write, or read (case-insensitive)
+	Permission string `pulumi:"permission"`
+}
+
+// GetServiceAccountNamespaceAccessInput is an input type that accepts GetServiceAccountNamespaceAccessArgs and GetServiceAccountNamespaceAccessOutput values.
+// You can construct a concrete instance of `GetServiceAccountNamespaceAccessInput` via:
+//
+//	GetServiceAccountNamespaceAccessArgs{...}
+type GetServiceAccountNamespaceAccessInput interface {
+	pulumi.Input
+
+	ToGetServiceAccountNamespaceAccessOutput() GetServiceAccountNamespaceAccessOutput
+	ToGetServiceAccountNamespaceAccessOutputWithContext(context.Context) GetServiceAccountNamespaceAccessOutput
+}
+
+type GetServiceAccountNamespaceAccessArgs struct {
+	// The namespace to assign permissions to.
+	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
+	// The permission to assign. Must be one of admin, write, or read (case-insensitive)
+	Permission pulumi.StringInput `pulumi:"permission"`
+}
+
+func (GetServiceAccountNamespaceAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAccountNamespaceAccess)(nil)).Elem()
+}
+
+func (i GetServiceAccountNamespaceAccessArgs) ToGetServiceAccountNamespaceAccessOutput() GetServiceAccountNamespaceAccessOutput {
+	return i.ToGetServiceAccountNamespaceAccessOutputWithContext(context.Background())
+}
+
+func (i GetServiceAccountNamespaceAccessArgs) ToGetServiceAccountNamespaceAccessOutputWithContext(ctx context.Context) GetServiceAccountNamespaceAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAccountNamespaceAccessOutput)
+}
+
+// GetServiceAccountNamespaceAccessArrayInput is an input type that accepts GetServiceAccountNamespaceAccessArray and GetServiceAccountNamespaceAccessArrayOutput values.
+// You can construct a concrete instance of `GetServiceAccountNamespaceAccessArrayInput` via:
+//
+//	GetServiceAccountNamespaceAccessArray{ GetServiceAccountNamespaceAccessArgs{...} }
+type GetServiceAccountNamespaceAccessArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceAccountNamespaceAccessArrayOutput() GetServiceAccountNamespaceAccessArrayOutput
+	ToGetServiceAccountNamespaceAccessArrayOutputWithContext(context.Context) GetServiceAccountNamespaceAccessArrayOutput
+}
+
+type GetServiceAccountNamespaceAccessArray []GetServiceAccountNamespaceAccessInput
+
+func (GetServiceAccountNamespaceAccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAccountNamespaceAccess)(nil)).Elem()
+}
+
+func (i GetServiceAccountNamespaceAccessArray) ToGetServiceAccountNamespaceAccessArrayOutput() GetServiceAccountNamespaceAccessArrayOutput {
+	return i.ToGetServiceAccountNamespaceAccessArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceAccountNamespaceAccessArray) ToGetServiceAccountNamespaceAccessArrayOutputWithContext(ctx context.Context) GetServiceAccountNamespaceAccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAccountNamespaceAccessArrayOutput)
+}
+
+type GetServiceAccountNamespaceAccessOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAccountNamespaceAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAccountNamespaceAccess)(nil)).Elem()
+}
+
+func (o GetServiceAccountNamespaceAccessOutput) ToGetServiceAccountNamespaceAccessOutput() GetServiceAccountNamespaceAccessOutput {
+	return o
+}
+
+func (o GetServiceAccountNamespaceAccessOutput) ToGetServiceAccountNamespaceAccessOutputWithContext(ctx context.Context) GetServiceAccountNamespaceAccessOutput {
+	return o
+}
+
+// The namespace to assign permissions to.
+func (o GetServiceAccountNamespaceAccessOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAccountNamespaceAccess) string { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+// The permission to assign. Must be one of admin, write, or read (case-insensitive)
+func (o GetServiceAccountNamespaceAccessOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAccountNamespaceAccess) string { return v.Permission }).(pulumi.StringOutput)
+}
+
+type GetServiceAccountNamespaceAccessArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAccountNamespaceAccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAccountNamespaceAccess)(nil)).Elem()
+}
+
+func (o GetServiceAccountNamespaceAccessArrayOutput) ToGetServiceAccountNamespaceAccessArrayOutput() GetServiceAccountNamespaceAccessArrayOutput {
+	return o
+}
+
+func (o GetServiceAccountNamespaceAccessArrayOutput) ToGetServiceAccountNamespaceAccessArrayOutputWithContext(ctx context.Context) GetServiceAccountNamespaceAccessArrayOutput {
+	return o
+}
+
+func (o GetServiceAccountNamespaceAccessArrayOutput) Index(i pulumi.IntInput) GetServiceAccountNamespaceAccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceAccountNamespaceAccess {
+		return vs[0].([]GetServiceAccountNamespaceAccess)[vs[1].(int)]
+	}).(GetServiceAccountNamespaceAccessOutput)
+}
+
 type GetServiceAccountsServiceAccount struct {
 	// The role on the account. Must be one of admin, developer, or read (case-insensitive).
 	AccountAccess string `pulumi:"accountAccess"`
@@ -2924,6 +4174,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceCodecServerPtrInput)(nil)).Elem(), NamespaceCodecServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceEndpointsInput)(nil)).Elem(), NamespaceEndpointsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceEndpointsPtrInput)(nil)).Elem(), NamespaceEndpointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceExportSinkGcsInput)(nil)).Elem(), NamespaceExportSinkGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceExportSinkGcsPtrInput)(nil)).Elem(), NamespaceExportSinkGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceExportSinkS3Input)(nil)).Elem(), NamespaceExportSinkS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceExportSinkS3PtrInput)(nil)).Elem(), NamespaceExportSinkS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceExportSinkTimeoutsInput)(nil)).Elem(), NamespaceExportSinkTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceExportSinkTimeoutsPtrInput)(nil)).Elem(), NamespaceExportSinkTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceTimeoutsInput)(nil)).Elem(), NamespaceTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceTimeoutsPtrInput)(nil)).Elem(), NamespaceTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NexusEndpointTimeoutsInput)(nil)).Elem(), NexusEndpointTimeoutsArgs{})
@@ -2938,6 +4194,15 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UserNamespaceAccessArrayInput)(nil)).Elem(), UserNamespaceAccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserTimeoutsInput)(nil)).Elem(), UserTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserTimeoutsPtrInput)(nil)).Elem(), UserTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceCertificateFilterInput)(nil)).Elem(), GetNamespaceCertificateFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceCertificateFilterArrayInput)(nil)).Elem(), GetNamespaceCertificateFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceCodecServerInput)(nil)).Elem(), GetNamespaceCodecServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceCodecServerPtrInput)(nil)).Elem(), GetNamespaceCodecServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceEndpointsInput)(nil)).Elem(), GetNamespaceEndpointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespaceLimitsInput)(nil)).Elem(), GetNamespaceLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacePrivateConnectivityInput)(nil)).Elem(), GetNamespacePrivateConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacePrivateConnectivityArrayInput)(nil)).Elem(), GetNamespacePrivateConnectivityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacePrivateConnectivityAwsPrivateLinkInfoInput)(nil)).Elem(), GetNamespacePrivateConnectivityAwsPrivateLinkInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceInput)(nil)).Elem(), GetNamespacesNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceArrayInput)(nil)).Elem(), GetNamespacesNamespaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceCertificateFilterInput)(nil)).Elem(), GetNamespacesNamespaceCertificateFilterArgs{})
@@ -2950,6 +4215,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespacePrivateConnectivityAwsPrivateLinkInfoInput)(nil)).Elem(), GetNamespacesNamespacePrivateConnectivityAwsPrivateLinkInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionInput)(nil)).Elem(), GetRegionsRegionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionArrayInput)(nil)).Elem(), GetRegionsRegionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAccountNamespaceAccessInput)(nil)).Elem(), GetServiceAccountNamespaceAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAccountNamespaceAccessArrayInput)(nil)).Elem(), GetServiceAccountNamespaceAccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAccountsServiceAccountInput)(nil)).Elem(), GetServiceAccountsServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAccountsServiceAccountArrayInput)(nil)).Elem(), GetServiceAccountsServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAccountsServiceAccountNamespaceAccessInput)(nil)).Elem(), GetServiceAccountsServiceAccountNamespaceAccessArgs{})
@@ -2964,6 +4231,12 @@ func init() {
 	pulumi.RegisterOutputType(NamespaceCodecServerPtrOutput{})
 	pulumi.RegisterOutputType(NamespaceEndpointsOutput{})
 	pulumi.RegisterOutputType(NamespaceEndpointsPtrOutput{})
+	pulumi.RegisterOutputType(NamespaceExportSinkGcsOutput{})
+	pulumi.RegisterOutputType(NamespaceExportSinkGcsPtrOutput{})
+	pulumi.RegisterOutputType(NamespaceExportSinkS3Output{})
+	pulumi.RegisterOutputType(NamespaceExportSinkS3PtrOutput{})
+	pulumi.RegisterOutputType(NamespaceExportSinkTimeoutsOutput{})
+	pulumi.RegisterOutputType(NamespaceExportSinkTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(NamespaceTimeoutsOutput{})
 	pulumi.RegisterOutputType(NamespaceTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(NexusEndpointTimeoutsOutput{})
@@ -2978,6 +4251,15 @@ func init() {
 	pulumi.RegisterOutputType(UserNamespaceAccessArrayOutput{})
 	pulumi.RegisterOutputType(UserTimeoutsOutput{})
 	pulumi.RegisterOutputType(UserTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetNamespaceCertificateFilterOutput{})
+	pulumi.RegisterOutputType(GetNamespaceCertificateFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetNamespaceCodecServerOutput{})
+	pulumi.RegisterOutputType(GetNamespaceCodecServerPtrOutput{})
+	pulumi.RegisterOutputType(GetNamespaceEndpointsOutput{})
+	pulumi.RegisterOutputType(GetNamespaceLimitsOutput{})
+	pulumi.RegisterOutputType(GetNamespacePrivateConnectivityOutput{})
+	pulumi.RegisterOutputType(GetNamespacePrivateConnectivityArrayOutput{})
+	pulumi.RegisterOutputType(GetNamespacePrivateConnectivityAwsPrivateLinkInfoOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceArrayOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceCertificateFilterOutput{})
@@ -2990,6 +4272,8 @@ func init() {
 	pulumi.RegisterOutputType(GetNamespacesNamespacePrivateConnectivityAwsPrivateLinkInfoOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceAccountNamespaceAccessOutput{})
+	pulumi.RegisterOutputType(GetServiceAccountNamespaceAccessArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceAccountsServiceAccountOutput{})
 	pulumi.RegisterOutputType(GetServiceAccountsServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceAccountsServiceAccountNamespaceAccessOutput{})

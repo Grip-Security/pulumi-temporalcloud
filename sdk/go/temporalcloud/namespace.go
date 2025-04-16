@@ -32,7 +32,7 @@ type Namespace struct {
 
 	// The Base64-encoded CA cert in PEM format that clients use when authenticating with Temporal Cloud. This is a required field when a Namespace uses mTLS authentication.
 	AcceptedClientCa pulumi.StringPtrOutput `pulumi:"acceptedClientCa"`
-	// If true, Temporal Cloud will use API key authentication for this namespace. If false, mutual TLS (mTLS) authentication will be used.
+	// If true, Temporal Cloud will enable API key authentication for this namespace.
 	ApiKeyAuth pulumi.BoolOutput `pulumi:"apiKeyAuth"`
 	// A list of filters to apply to client certificates when initiating a connection Temporal Cloud. If present, connections will only be allowed from client certificates whose distinguished name properties match at least one of the filters. Empty lists are not allowed, omit the attribute instead.
 	CertificateFilters NamespaceCertificateFilterArrayOutput `pulumi:"certificateFilters"`
@@ -41,7 +41,8 @@ type Namespace struct {
 	// The endpoints for the namespace.
 	Endpoints NamespaceEndpointsOutput `pulumi:"endpoints"`
 	// The name of the namespace.
-	Name    pulumi.StringOutput      `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The list of regions that this namespace is available in. If more than one region is specified, this namespace is a "Multi-region Namespace". Please note that changing, adding, or removing regions is not supported and the provider will attempt to recreate the namespace. For Multi-region Namespaces the provider will ignore order changes on regions which can happen if the namespace fails over.
 	Regions pulumi.StringArrayOutput `pulumi:"regions"`
 	// The number of days to retain workflow history. Any changes to the retention period will be applied to all new running workflows.
 	RetentionDays pulumi.IntOutput           `pulumi:"retentionDays"`
@@ -86,7 +87,7 @@ func GetNamespace(ctx *pulumi.Context,
 type namespaceState struct {
 	// The Base64-encoded CA cert in PEM format that clients use when authenticating with Temporal Cloud. This is a required field when a Namespace uses mTLS authentication.
 	AcceptedClientCa *string `pulumi:"acceptedClientCa"`
-	// If true, Temporal Cloud will use API key authentication for this namespace. If false, mutual TLS (mTLS) authentication will be used.
+	// If true, Temporal Cloud will enable API key authentication for this namespace.
 	ApiKeyAuth *bool `pulumi:"apiKeyAuth"`
 	// A list of filters to apply to client certificates when initiating a connection Temporal Cloud. If present, connections will only be allowed from client certificates whose distinguished name properties match at least one of the filters. Empty lists are not allowed, omit the attribute instead.
 	CertificateFilters []NamespaceCertificateFilter `pulumi:"certificateFilters"`
@@ -95,7 +96,8 @@ type namespaceState struct {
 	// The endpoints for the namespace.
 	Endpoints *NamespaceEndpoints `pulumi:"endpoints"`
 	// The name of the namespace.
-	Name    *string  `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The list of regions that this namespace is available in. If more than one region is specified, this namespace is a "Multi-region Namespace". Please note that changing, adding, or removing regions is not supported and the provider will attempt to recreate the namespace. For Multi-region Namespaces the provider will ignore order changes on regions which can happen if the namespace fails over.
 	Regions []string `pulumi:"regions"`
 	// The number of days to retain workflow history. Any changes to the retention period will be applied to all new running workflows.
 	RetentionDays *int               `pulumi:"retentionDays"`
@@ -105,7 +107,7 @@ type namespaceState struct {
 type NamespaceState struct {
 	// The Base64-encoded CA cert in PEM format that clients use when authenticating with Temporal Cloud. This is a required field when a Namespace uses mTLS authentication.
 	AcceptedClientCa pulumi.StringPtrInput
-	// If true, Temporal Cloud will use API key authentication for this namespace. If false, mutual TLS (mTLS) authentication will be used.
+	// If true, Temporal Cloud will enable API key authentication for this namespace.
 	ApiKeyAuth pulumi.BoolPtrInput
 	// A list of filters to apply to client certificates when initiating a connection Temporal Cloud. If present, connections will only be allowed from client certificates whose distinguished name properties match at least one of the filters. Empty lists are not allowed, omit the attribute instead.
 	CertificateFilters NamespaceCertificateFilterArrayInput
@@ -114,7 +116,8 @@ type NamespaceState struct {
 	// The endpoints for the namespace.
 	Endpoints NamespaceEndpointsPtrInput
 	// The name of the namespace.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The list of regions that this namespace is available in. If more than one region is specified, this namespace is a "Multi-region Namespace". Please note that changing, adding, or removing regions is not supported and the provider will attempt to recreate the namespace. For Multi-region Namespaces the provider will ignore order changes on regions which can happen if the namespace fails over.
 	Regions pulumi.StringArrayInput
 	// The number of days to retain workflow history. Any changes to the retention period will be applied to all new running workflows.
 	RetentionDays pulumi.IntPtrInput
@@ -128,14 +131,15 @@ func (NamespaceState) ElementType() reflect.Type {
 type namespaceArgs struct {
 	// The Base64-encoded CA cert in PEM format that clients use when authenticating with Temporal Cloud. This is a required field when a Namespace uses mTLS authentication.
 	AcceptedClientCa *string `pulumi:"acceptedClientCa"`
-	// If true, Temporal Cloud will use API key authentication for this namespace. If false, mutual TLS (mTLS) authentication will be used.
+	// If true, Temporal Cloud will enable API key authentication for this namespace.
 	ApiKeyAuth *bool `pulumi:"apiKeyAuth"`
 	// A list of filters to apply to client certificates when initiating a connection Temporal Cloud. If present, connections will only be allowed from client certificates whose distinguished name properties match at least one of the filters. Empty lists are not allowed, omit the attribute instead.
 	CertificateFilters []NamespaceCertificateFilter `pulumi:"certificateFilters"`
 	// A codec server is used by the Temporal Cloud UI to decode payloads for all users interacting with this namespace, even if the workflow history itself is encrypted.
 	CodecServer *NamespaceCodecServer `pulumi:"codecServer"`
 	// The name of the namespace.
-	Name    *string  `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The list of regions that this namespace is available in. If more than one region is specified, this namespace is a "Multi-region Namespace". Please note that changing, adding, or removing regions is not supported and the provider will attempt to recreate the namespace. For Multi-region Namespaces the provider will ignore order changes on regions which can happen if the namespace fails over.
 	Regions []string `pulumi:"regions"`
 	// The number of days to retain workflow history. Any changes to the retention period will be applied to all new running workflows.
 	RetentionDays int                `pulumi:"retentionDays"`
@@ -146,14 +150,15 @@ type namespaceArgs struct {
 type NamespaceArgs struct {
 	// The Base64-encoded CA cert in PEM format that clients use when authenticating with Temporal Cloud. This is a required field when a Namespace uses mTLS authentication.
 	AcceptedClientCa pulumi.StringPtrInput
-	// If true, Temporal Cloud will use API key authentication for this namespace. If false, mutual TLS (mTLS) authentication will be used.
+	// If true, Temporal Cloud will enable API key authentication for this namespace.
 	ApiKeyAuth pulumi.BoolPtrInput
 	// A list of filters to apply to client certificates when initiating a connection Temporal Cloud. If present, connections will only be allowed from client certificates whose distinguished name properties match at least one of the filters. Empty lists are not allowed, omit the attribute instead.
 	CertificateFilters NamespaceCertificateFilterArrayInput
 	// A codec server is used by the Temporal Cloud UI to decode payloads for all users interacting with this namespace, even if the workflow history itself is encrypted.
 	CodecServer NamespaceCodecServerPtrInput
 	// The name of the namespace.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The list of regions that this namespace is available in. If more than one region is specified, this namespace is a "Multi-region Namespace". Please note that changing, adding, or removing regions is not supported and the provider will attempt to recreate the namespace. For Multi-region Namespaces the provider will ignore order changes on regions which can happen if the namespace fails over.
 	Regions pulumi.StringArrayInput
 	// The number of days to retain workflow history. Any changes to the retention period will be applied to all new running workflows.
 	RetentionDays pulumi.IntInput
@@ -252,7 +257,7 @@ func (o NamespaceOutput) AcceptedClientCa() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringPtrOutput { return v.AcceptedClientCa }).(pulumi.StringPtrOutput)
 }
 
-// If true, Temporal Cloud will use API key authentication for this namespace. If false, mutual TLS (mTLS) authentication will be used.
+// If true, Temporal Cloud will enable API key authentication for this namespace.
 func (o NamespaceOutput) ApiKeyAuth() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.BoolOutput { return v.ApiKeyAuth }).(pulumi.BoolOutput)
 }
@@ -277,6 +282,7 @@ func (o NamespaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The list of regions that this namespace is available in. If more than one region is specified, this namespace is a "Multi-region Namespace". Please note that changing, adding, or removing regions is not supported and the provider will attempt to recreate the namespace. For Multi-region Namespaces the provider will ignore order changes on regions which can happen if the namespace fails over.
 func (o NamespaceOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringArrayOutput { return v.Regions }).(pulumi.StringArrayOutput)
 }

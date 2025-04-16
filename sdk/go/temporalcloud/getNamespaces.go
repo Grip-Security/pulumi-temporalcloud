@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Fetches details about all Namespaces.
+//
 // ## Example Usage
 //
 // ```go

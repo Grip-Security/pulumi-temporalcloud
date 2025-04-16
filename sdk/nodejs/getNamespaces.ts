@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Fetches details about all Namespaces.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,6 +36,8 @@ export interface GetNamespacesResult {
     readonly namespaces: outputs.GetNamespacesNamespace[];
 }
 /**
+ * Fetches details about all Namespaces.
+ *
  * ## Example Usage
  *
  * ```typescript

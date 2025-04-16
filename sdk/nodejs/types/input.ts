@@ -16,6 +16,140 @@ export interface ApikeyTimeouts {
     delete?: pulumi.Input<string>;
 }
 
+export interface GetNamespaceCertificateFilter {
+    /**
+     * The certificate's common name.
+     */
+    commonName?: string;
+    /**
+     * The certificate's organization.
+     */
+    organization?: string;
+    /**
+     * The certificate's organizational unit.
+     */
+    organizationalUnit?: string;
+    /**
+     * The certificate's subject alternative name (or SAN).
+     */
+    subjectAlternativeName?: string;
+}
+
+export interface GetNamespaceCertificateFilterArgs {
+    /**
+     * The certificate's common name.
+     */
+    commonName?: pulumi.Input<string>;
+    /**
+     * The certificate's organization.
+     */
+    organization?: pulumi.Input<string>;
+    /**
+     * The certificate's organizational unit.
+     */
+    organizationalUnit?: pulumi.Input<string>;
+    /**
+     * The certificate's subject alternative name (or SAN).
+     */
+    subjectAlternativeName?: pulumi.Input<string>;
+}
+
+export interface GetNamespaceCodecServer {
+    /**
+     * The endpoint of the codec server.
+     */
+    endpoint?: string;
+    /**
+     * If true, Temporal Cloud will include cross-origin credentials in requests to the codec server.
+     */
+    includeCrossOriginCredentials?: boolean;
+    /**
+     * If true, Temporal Cloud will pass the access token to the codec server upon each request.
+     */
+    passAccessToken?: boolean;
+}
+
+export interface GetNamespaceCodecServerArgs {
+    /**
+     * The endpoint of the codec server.
+     */
+    endpoint?: pulumi.Input<string>;
+    /**
+     * If true, Temporal Cloud will include cross-origin credentials in requests to the codec server.
+     */
+    includeCrossOriginCredentials?: pulumi.Input<boolean>;
+    /**
+     * If true, Temporal Cloud will pass the access token to the codec server upon each request.
+     */
+    passAccessToken?: pulumi.Input<boolean>;
+}
+
+export interface GetNamespacePrivateConnectivity {
+    /**
+     * The AWS PrivateLink info. This will only be set for namespaces whose cloud provider is AWS.
+     */
+    awsPrivateLinkInfo?: inputs.GetNamespacePrivateConnectivityAwsPrivateLinkInfo;
+    /**
+     * The id of the region where the private connectivity applies.
+     */
+    region?: string;
+}
+
+export interface GetNamespacePrivateConnectivityArgs {
+    /**
+     * The AWS PrivateLink info. This will only be set for namespaces whose cloud provider is AWS.
+     */
+    awsPrivateLinkInfo?: pulumi.Input<inputs.GetNamespacePrivateConnectivityAwsPrivateLinkInfoArgs>;
+    /**
+     * The id of the region where the private connectivity applies.
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface GetNamespacePrivateConnectivityAwsPrivateLinkInfo {
+    /**
+     * The list of principal arns that are allowed to access the namespace on the private link.
+     */
+    allowedPrincipalArns?: string[];
+    /**
+     * The list of vpc endpoint service names that are associated with the namespace.
+     */
+    vpcEndpointServiceNames?: string[];
+}
+
+export interface GetNamespacePrivateConnectivityAwsPrivateLinkInfoArgs {
+    /**
+     * The list of principal arns that are allowed to access the namespace on the private link.
+     */
+    allowedPrincipalArns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of vpc endpoint service names that are associated with the namespace.
+     */
+    vpcEndpointServiceNames?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetServiceAccountNamespaceAccess {
+    /**
+     * The namespace to assign permissions to.
+     */
+    namespaceId?: string;
+    /**
+     * The permission to assign. Must be one of admin, write, or read (case-insensitive)
+     */
+    permission?: string;
+}
+
+export interface GetServiceAccountNamespaceAccessArgs {
+    /**
+     * The namespace to assign permissions to.
+     */
+    namespaceId?: pulumi.Input<string>;
+    /**
+     * The permission to assign. Must be one of admin, write, or read (case-insensitive)
+     */
+    permission?: pulumi.Input<string>;
+}
+
 export interface MetricsEndpointTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -78,6 +212,59 @@ export interface NamespaceEndpoints {
      * The address in the Temporal Cloud Web UI for the namespace
      */
     webAddress?: pulumi.Input<string>;
+}
+
+export interface NamespaceExportSinkGcs {
+    /**
+     * The name of the destination GCS bucket where Temporal will send data.
+     */
+    bucketName: pulumi.Input<string>;
+    /**
+     * The GCP project ID associated with the GCS bucket and service account.
+     */
+    gcpProjectId: pulumi.Input<string>;
+    /**
+     * The region of the gcs bucket
+     */
+    region: pulumi.Input<string>;
+    /**
+     * The customer service account ID that Temporal Cloud impersonates for writing records to the customer's GCS bucket.
+     */
+    serviceAccountId: pulumi.Input<string>;
+}
+
+export interface NamespaceExportSinkS3 {
+    /**
+     * The AWS account ID associated with the S3 bucket and the assumed role.
+     */
+    awsAccountId: pulumi.Input<string>;
+    /**
+     * The name of the destination S3 bucket where Temporal will send data.
+     */
+    bucketName: pulumi.Input<string>;
+    /**
+     * The AWS Key Management Service (KMS) ARN used for encryption.
+     */
+    kmsArn: pulumi.Input<string>;
+    /**
+     * The region where the S3 bucket is located.
+     */
+    region: pulumi.Input<string>;
+    /**
+     * The IAM role that Temporal Cloud assumes for writing records to the customer's S3 bucket.
+     */
+    roleName: pulumi.Input<string>;
+}
+
+export interface NamespaceExportSinkTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
 }
 
 export interface NamespaceTimeouts {
