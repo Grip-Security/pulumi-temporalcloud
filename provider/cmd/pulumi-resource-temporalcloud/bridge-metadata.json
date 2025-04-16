@@ -21,6 +21,10 @@
                     }
                 }
             },
+            "temporalcloud_namespace_export_sink": {
+                "current": "temporalcloud:index/namespaceExportSink:NamespaceExportSink",
+                "majorVersion": 1
+            },
             "temporalcloud_namespace_search_attribute": {
                 "current": "temporalcloud:index/namespaceSearchAttribute:NamespaceSearchAttribute",
                 "majorVersion": 1
@@ -54,6 +58,35 @@
             }
         },
         "datasources": {
+            "temporalcloud_namespace": {
+                "current": "temporalcloud:index/getNamespace:getNamespace",
+                "majorVersion": 1,
+                "fields": {
+                    "certificate_filters": {
+                        "maxItemsOne": false
+                    },
+                    "private_connectivities": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "aws_private_link_info": {
+                                    "fields": {
+                                        "allowed_principal_arns": {
+                                            "maxItemsOne": false
+                                        },
+                                        "vpc_endpoint_service_names": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "regions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "temporalcloud_namespaces": {
                 "current": "temporalcloud:index/getNamespaces:getNamespaces",
                 "majorVersion": 1,
@@ -95,6 +128,15 @@
                 "majorVersion": 1,
                 "fields": {
                     "regions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "temporalcloud_service_account": {
+                "current": "temporalcloud:index/getServiceAccount:getServiceAccount",
+                "majorVersion": 1,
+                "fields": {
+                    "namespace_accesses": {
                         "maxItemsOne": false
                     }
                 }
