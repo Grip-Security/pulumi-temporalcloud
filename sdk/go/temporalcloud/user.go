@@ -30,7 +30,7 @@ import (
 type User struct {
 	pulumi.CustomResourceState
 
-	// The role on the account. Must be one of owner, admin, developer, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support.
+	// The role on the account. Must be one of owner, admin, developer, none, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support. none is only valid for users managed via SCIM that derive their roles from group memberships.
 	AccountAccess pulumi.StringOutput `pulumi:"accountAccess"`
 	// The email address for the user.
 	Email pulumi.StringOutput `pulumi:"email"`
@@ -77,7 +77,7 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
-	// The role on the account. Must be one of owner, admin, developer, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support.
+	// The role on the account. Must be one of owner, admin, developer, none, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support. none is only valid for users managed via SCIM that derive their roles from group memberships.
 	AccountAccess *string `pulumi:"accountAccess"`
 	// The email address for the user.
 	Email *string `pulumi:"email"`
@@ -89,7 +89,7 @@ type userState struct {
 }
 
 type UserState struct {
-	// The role on the account. Must be one of owner, admin, developer, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support.
+	// The role on the account. Must be one of owner, admin, developer, none, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support. none is only valid for users managed via SCIM that derive their roles from group memberships.
 	AccountAccess pulumi.StringPtrInput
 	// The email address for the user.
 	Email pulumi.StringPtrInput
@@ -105,7 +105,7 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
-	// The role on the account. Must be one of owner, admin, developer, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support.
+	// The role on the account. Must be one of owner, admin, developer, none, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support. none is only valid for users managed via SCIM that derive their roles from group memberships.
 	AccountAccess string `pulumi:"accountAccess"`
 	// The email address for the user.
 	Email string `pulumi:"email"`
@@ -116,7 +116,7 @@ type userArgs struct {
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
-	// The role on the account. Must be one of owner, admin, developer, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support.
+	// The role on the account. Must be one of owner, admin, developer, none, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support. none is only valid for users managed via SCIM that derive their roles from group memberships.
 	AccountAccess pulumi.StringInput
 	// The email address for the user.
 	Email pulumi.StringInput
@@ -212,7 +212,7 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
-// The role on the account. Must be one of owner, admin, developer, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support.
+// The role on the account. Must be one of owner, admin, developer, none, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support. none is only valid for users managed via SCIM that derive their roles from group memberships.
 func (o UserOutput) AccountAccess() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.AccountAccess }).(pulumi.StringOutput)
 }

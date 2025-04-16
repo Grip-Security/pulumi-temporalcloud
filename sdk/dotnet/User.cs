@@ -31,7 +31,7 @@ namespace GripSecurity.Temporalcloud
     public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The role on the account. Must be one of owner, admin, developer, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support.
+        /// The role on the account. Must be one of owner, admin, developer, none, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support. none is only valid for users managed via SCIM that derive their roles from group memberships.
         /// </summary>
         [Output("accountAccess")]
         public Output<string> AccountAccess { get; private set; } = null!;
@@ -105,7 +105,7 @@ namespace GripSecurity.Temporalcloud
     public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The role on the account. Must be one of owner, admin, developer, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support.
+        /// The role on the account. Must be one of owner, admin, developer, none, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support. none is only valid for users managed via SCIM that derive their roles from group memberships.
         /// </summary>
         [Input("accountAccess", required: true)]
         public Input<string> AccountAccess { get; set; } = null!;
@@ -140,7 +140,7 @@ namespace GripSecurity.Temporalcloud
     public sealed class UserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The role on the account. Must be one of owner, admin, developer, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support.
+        /// The role on the account. Must be one of owner, admin, developer, none, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support. none is only valid for users managed via SCIM that derive their roles from group memberships.
         /// </summary>
         [Input("accountAccess")]
         public Input<string>? AccountAccess { get; set; }

@@ -37,7 +37,7 @@ namespace GripSecurity.Temporalcloud
         public Output<string?> AcceptedClientCa { get; private set; } = null!;
 
         /// <summary>
-        /// If true, Temporal Cloud will use API key authentication for this namespace. If false, mutual TLS (mTLS) authentication will be used.
+        /// If true, Temporal Cloud will enable API key authentication for this namespace.
         /// </summary>
         [Output("apiKeyAuth")]
         public Output<bool> ApiKeyAuth { get; private set; } = null!;
@@ -66,6 +66,9 @@ namespace GripSecurity.Temporalcloud
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The list of regions that this namespace is available in. If more than one region is specified, this namespace is a "Multi-region Namespace". Please note that changing, adding, or removing regions is not supported and the provider will attempt to recreate the namespace. For Multi-region Namespaces the provider will ignore order changes on regions which can happen if the namespace fails over.
+        /// </summary>
         [Output("regions")]
         public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
 
@@ -132,7 +135,7 @@ namespace GripSecurity.Temporalcloud
         public Input<string>? AcceptedClientCa { get; set; }
 
         /// <summary>
-        /// If true, Temporal Cloud will use API key authentication for this namespace. If false, mutual TLS (mTLS) authentication will be used.
+        /// If true, Temporal Cloud will enable API key authentication for this namespace.
         /// </summary>
         [Input("apiKeyAuth")]
         public Input<bool>? ApiKeyAuth { get; set; }
@@ -163,6 +166,10 @@ namespace GripSecurity.Temporalcloud
 
         [Input("regions", required: true)]
         private InputList<string>? _regions;
+
+        /// <summary>
+        /// The list of regions that this namespace is available in. If more than one region is specified, this namespace is a "Multi-region Namespace". Please note that changing, adding, or removing regions is not supported and the provider will attempt to recreate the namespace. For Multi-region Namespaces the provider will ignore order changes on regions which can happen if the namespace fails over.
+        /// </summary>
         public InputList<string> Regions
         {
             get => _regions ?? (_regions = new InputList<string>());
@@ -193,7 +200,7 @@ namespace GripSecurity.Temporalcloud
         public Input<string>? AcceptedClientCa { get; set; }
 
         /// <summary>
-        /// If true, Temporal Cloud will use API key authentication for this namespace. If false, mutual TLS (mTLS) authentication will be used.
+        /// If true, Temporal Cloud will enable API key authentication for this namespace.
         /// </summary>
         [Input("apiKeyAuth")]
         public Input<bool>? ApiKeyAuth { get; set; }
@@ -230,6 +237,10 @@ namespace GripSecurity.Temporalcloud
 
         [Input("regions")]
         private InputList<string>? _regions;
+
+        /// <summary>
+        /// The list of regions that this namespace is available in. If more than one region is specified, this namespace is a "Multi-region Namespace". Please note that changing, adding, or removing regions is not supported and the provider will attempt to recreate the namespace. For Multi-region Namespaces the provider will ignore order changes on regions which can happen if the namespace fails over.
+        /// </summary>
         public InputList<string> Regions
         {
             get => _regions ?? (_regions = new InputList<string>());

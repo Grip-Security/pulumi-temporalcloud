@@ -52,7 +52,7 @@ export class User extends pulumi.CustomResource {
     }
 
     /**
-     * The role on the account. Must be one of owner, admin, developer, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support.
+     * The role on the account. Must be one of owner, admin, developer, none, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support. none is only valid for users managed via SCIM that derive their roles from group memberships.
      */
     public readonly accountAccess!: pulumi.Output<string>;
     /**
@@ -111,7 +111,7 @@ export class User extends pulumi.CustomResource {
  */
 export interface UserState {
     /**
-     * The role on the account. Must be one of owner, admin, developer, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support.
+     * The role on the account. Must be one of owner, admin, developer, none, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support. none is only valid for users managed via SCIM that derive their roles from group memberships.
      */
     accountAccess?: pulumi.Input<string>;
     /**
@@ -134,7 +134,7 @@ export interface UserState {
  */
 export interface UserArgs {
     /**
-     * The role on the account. Must be one of owner, admin, developer, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support.
+     * The role on the account. Must be one of owner, admin, developer, none, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support. none is only valid for users managed via SCIM that derive their roles from group memberships.
      */
     accountAccess: pulumi.Input<string>;
     /**

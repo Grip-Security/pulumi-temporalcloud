@@ -10,6 +10,11 @@ export type Apikey = import("./apikey").Apikey;
 export const Apikey: typeof import("./apikey").Apikey = null as any;
 utilities.lazyLoad(exports, ["Apikey"], () => require("./apikey"));
 
+export { GetNamespaceArgs, GetNamespaceResult, GetNamespaceOutputArgs } from "./getNamespace";
+export const getNamespace: typeof import("./getNamespace").getNamespace = null as any;
+export const getNamespaceOutput: typeof import("./getNamespace").getNamespaceOutput = null as any;
+utilities.lazyLoad(exports, ["getNamespace","getNamespaceOutput"], () => require("./getNamespace"));
+
 export { GetNamespacesResult } from "./getNamespaces";
 export const getNamespaces: typeof import("./getNamespaces").getNamespaces = null as any;
 export const getNamespacesOutput: typeof import("./getNamespaces").getNamespacesOutput = null as any;
@@ -19,6 +24,11 @@ export { GetRegionsResult } from "./getRegions";
 export const getRegions: typeof import("./getRegions").getRegions = null as any;
 export const getRegionsOutput: typeof import("./getRegions").getRegionsOutput = null as any;
 utilities.lazyLoad(exports, ["getRegions","getRegionsOutput"], () => require("./getRegions"));
+
+export { GetServiceAccountArgs, GetServiceAccountResult, GetServiceAccountOutputArgs } from "./getServiceAccount";
+export const getServiceAccount: typeof import("./getServiceAccount").getServiceAccount = null as any;
+export const getServiceAccountOutput: typeof import("./getServiceAccount").getServiceAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceAccount","getServiceAccountOutput"], () => require("./getServiceAccount"));
 
 export { GetServiceAccountsResult } from "./getServiceAccounts";
 export const getServiceAccounts: typeof import("./getServiceAccounts").getServiceAccounts = null as any;
@@ -34,6 +44,11 @@ export { NamespaceArgs, NamespaceState } from "./namespace";
 export type Namespace = import("./namespace").Namespace;
 export const Namespace: typeof import("./namespace").Namespace = null as any;
 utilities.lazyLoad(exports, ["Namespace"], () => require("./namespace"));
+
+export { NamespaceExportSinkArgs, NamespaceExportSinkState } from "./namespaceExportSink";
+export type NamespaceExportSink = import("./namespaceExportSink").NamespaceExportSink;
+export const NamespaceExportSink: typeof import("./namespaceExportSink").NamespaceExportSink = null as any;
+utilities.lazyLoad(exports, ["NamespaceExportSink"], () => require("./namespaceExportSink"));
 
 export { NamespaceSearchAttributeArgs, NamespaceSearchAttributeState } from "./namespaceSearchAttribute";
 export type NamespaceSearchAttribute = import("./namespaceSearchAttribute").NamespaceSearchAttribute;
@@ -80,6 +95,8 @@ const _module = {
                 return new MetricsEndpoint(name, <any>undefined, { urn })
             case "temporalcloud:index/namespace:Namespace":
                 return new Namespace(name, <any>undefined, { urn })
+            case "temporalcloud:index/namespaceExportSink:NamespaceExportSink":
+                return new NamespaceExportSink(name, <any>undefined, { urn })
             case "temporalcloud:index/namespaceSearchAttribute:NamespaceSearchAttribute":
                 return new NamespaceSearchAttribute(name, <any>undefined, { urn })
             case "temporalcloud:index/nexusEndpoint:NexusEndpoint":
@@ -96,6 +113,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("temporalcloud", "index/apikey", _module)
 pulumi.runtime.registerResourceModule("temporalcloud", "index/metricsEndpoint", _module)
 pulumi.runtime.registerResourceModule("temporalcloud", "index/namespace", _module)
+pulumi.runtime.registerResourceModule("temporalcloud", "index/namespaceExportSink", _module)
 pulumi.runtime.registerResourceModule("temporalcloud", "index/namespaceSearchAttribute", _module)
 pulumi.runtime.registerResourceModule("temporalcloud", "index/nexusEndpoint", _module)
 pulumi.runtime.registerResourceModule("temporalcloud", "index/serviceAccount", _module)

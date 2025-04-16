@@ -13,6 +13,8 @@ namespace GripSecurity.Temporalcloud
     public static class GetNamespaces
     {
         /// <summary>
+        /// Fetches details about all Namespaces.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +38,8 @@ namespace GripSecurity.Temporalcloud
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNamespacesResult>("temporalcloud:index/getNamespaces:getNamespaces", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
+        /// Fetches details about all Namespaces.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -59,6 +63,8 @@ namespace GripSecurity.Temporalcloud
             => global::Pulumi.Deployment.Instance.Invoke<GetNamespacesResult>("temporalcloud:index/getNamespaces:getNamespaces", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
+        /// Fetches details about all Namespaces.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

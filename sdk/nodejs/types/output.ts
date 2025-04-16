@@ -16,6 +16,80 @@ export interface ApikeyTimeouts {
     delete?: string;
 }
 
+export interface GetNamespaceCertificateFilter {
+    /**
+     * The certificate's common name.
+     */
+    commonName: string;
+    /**
+     * The certificate's organization.
+     */
+    organization: string;
+    /**
+     * The certificate's organizational unit.
+     */
+    organizationalUnit: string;
+    /**
+     * The certificate's subject alternative name (or SAN).
+     */
+    subjectAlternativeName: string;
+}
+
+export interface GetNamespaceCodecServer {
+    /**
+     * The endpoint of the codec server.
+     */
+    endpoint: string;
+    /**
+     * If true, Temporal Cloud will include cross-origin credentials in requests to the codec server.
+     */
+    includeCrossOriginCredentials: boolean;
+    /**
+     * If true, Temporal Cloud will pass the access token to the codec server upon each request.
+     */
+    passAccessToken: boolean;
+}
+
+export interface GetNamespaceEndpoints {
+    /**
+     * The gRPC hostport address that the temporal workers, clients and tctl connect to.
+     */
+    grpcAddress: string;
+    /**
+     * The web UI address.
+     */
+    webAddress: string;
+}
+
+export interface GetNamespaceLimits {
+    /**
+     * The number of actions per second (APS) that is currently allowed for the namespace. The namespace may be throttled if its APS exceeds the limit.
+     */
+    actionsPerSecondLimit: number;
+}
+
+export interface GetNamespacePrivateConnectivity {
+    /**
+     * The AWS PrivateLink info. This will only be set for namespaces whose cloud provider is AWS.
+     */
+    awsPrivateLinkInfo: outputs.GetNamespacePrivateConnectivityAwsPrivateLinkInfo;
+    /**
+     * The id of the region where the private connectivity applies.
+     */
+    region: string;
+}
+
+export interface GetNamespacePrivateConnectivityAwsPrivateLinkInfo {
+    /**
+     * The list of principal arns that are allowed to access the namespace on the private link.
+     */
+    allowedPrincipalArns: string[];
+    /**
+     * The list of vpc endpoint service names that are associated with the namespace.
+     */
+    vpcEndpointServiceNames: string[];
+}
+
 export interface GetNamespacesNamespace {
     /**
      * The Base64-encoded CA cert in PEM format that clients use when authenticating with Temporal Cloud.
@@ -173,6 +247,17 @@ export interface GetRegionsRegion {
     location: string;
 }
 
+export interface GetServiceAccountNamespaceAccess {
+    /**
+     * The namespace to assign permissions to.
+     */
+    namespaceId: string;
+    /**
+     * The permission to assign. Must be one of admin, write, or read (case-insensitive)
+     */
+    permission: string;
+}
+
 export interface GetServiceAccountsServiceAccount {
     /**
      * The role on the account. Must be one of admin, developer, or read (case-insensitive).
@@ -281,6 +366,59 @@ export interface NamespaceEndpoints {
      * The address in the Temporal Cloud Web UI for the namespace
      */
     webAddress: string;
+}
+
+export interface NamespaceExportSinkGcs {
+    /**
+     * The name of the destination GCS bucket where Temporal will send data.
+     */
+    bucketName: string;
+    /**
+     * The GCP project ID associated with the GCS bucket and service account.
+     */
+    gcpProjectId: string;
+    /**
+     * The region of the gcs bucket
+     */
+    region: string;
+    /**
+     * The customer service account ID that Temporal Cloud impersonates for writing records to the customer's GCS bucket.
+     */
+    serviceAccountId: string;
+}
+
+export interface NamespaceExportSinkS3 {
+    /**
+     * The AWS account ID associated with the S3 bucket and the assumed role.
+     */
+    awsAccountId: string;
+    /**
+     * The name of the destination S3 bucket where Temporal will send data.
+     */
+    bucketName: string;
+    /**
+     * The AWS Key Management Service (KMS) ARN used for encryption.
+     */
+    kmsArn: string;
+    /**
+     * The region where the S3 bucket is located.
+     */
+    region: string;
+    /**
+     * The IAM role that Temporal Cloud assumes for writing records to the customer's S3 bucket.
+     */
+    roleName: string;
+}
+
+export interface NamespaceExportSinkTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
 }
 
 export interface NamespaceTimeouts {
