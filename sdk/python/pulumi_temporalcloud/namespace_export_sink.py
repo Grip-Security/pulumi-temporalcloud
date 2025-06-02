@@ -217,6 +217,7 @@ class _NamespaceExportSinkState:
         pulumi.set(self, "timeouts", value)
 
 
+@pulumi.type_token("temporalcloud:index/namespaceExportSink:NamespaceExportSink")
 class NamespaceExportSink(pulumi.CustomResource):
     @overload
     def __init__(__self__,

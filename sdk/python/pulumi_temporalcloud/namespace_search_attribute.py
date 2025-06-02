@@ -127,6 +127,7 @@ class _NamespaceSearchAttributeState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("temporalcloud:index/namespaceSearchAttribute:NamespaceSearchAttribute")
 class NamespaceSearchAttribute(pulumi.CustomResource):
     @overload
     def __init__(__self__,

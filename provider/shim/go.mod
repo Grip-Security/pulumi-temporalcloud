@@ -4,7 +4,7 @@ go 1.23.0
 
 require (
 	github.com/hashicorp/terraform-plugin-framework v1.14.1
-	github.com/temporalio/terraform-provider-temporalcloud v0.7.0
+	github.com/temporalio/terraform-provider-temporalcloud v0.7.1
 )
 
 require (

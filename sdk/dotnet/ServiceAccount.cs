@@ -37,6 +37,12 @@ namespace GripSecurity.Temporalcloud
         public Output<string> AccountAccess { get; private set; } = null!;
 
         /// <summary>
+        /// The description for the service account.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
         /// The name associated with the service account.
         /// </summary>
         [Output("name")]
@@ -111,6 +117,12 @@ namespace GripSecurity.Temporalcloud
         public Input<string> AccountAccess { get; set; } = null!;
 
         /// <summary>
+        /// The description for the service account.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The name associated with the service account.
         /// </summary>
         [Input("name")]
@@ -144,6 +156,12 @@ namespace GripSecurity.Temporalcloud
         /// </summary>
         [Input("accountAccess")]
         public Input<string>? AccountAccess { get; set; }
+
+        /// <summary>
+        /// The description for the service account.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// The name associated with the service account.

@@ -185,6 +185,7 @@ class _NexusEndpointState:
         pulumi.set(self, "worker_target", value)
 
 
+@pulumi.type_token("temporalcloud:index/nexusEndpoint:NexusEndpoint")
 class NexusEndpoint(pulumi.CustomResource):
     @overload
     def __init__(__self__,

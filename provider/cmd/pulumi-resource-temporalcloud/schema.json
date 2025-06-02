@@ -921,6 +921,9 @@
                 "type": "string",
                 "description": "The endpoint for the Temporal Cloud API. Defaults to `saas-api.tmprl.cloud:443`.\n"
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:temporalcloud/terraformConfig"
         }
     },
     "resources": {
@@ -1488,6 +1491,10 @@
                     "type": "string",
                     "description": "The role on the account. Must be one of admin, developer, or read (case-insensitive).\n"
                 },
+                "description": {
+                    "type": "string",
+                    "description": "The description for the service account.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name associated with the service account.\n"
@@ -1509,6 +1516,7 @@
             },
             "required": [
                 "accountAccess",
+                "description",
                 "name",
                 "state"
             ],
@@ -1516,6 +1524,10 @@
                 "accountAccess": {
                     "type": "string",
                     "description": "The role on the account. Must be one of admin, developer, or read (case-insensitive).\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description for the service account.\n"
                 },
                 "name": {
                     "type": "string",
@@ -1541,6 +1553,10 @@
                     "accountAccess": {
                         "type": "string",
                         "description": "The role on the account. Must be one of admin, developer, or read (case-insensitive).\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description for the service account.\n"
                     },
                     "name": {
                         "type": "string",
@@ -1650,6 +1666,35 @@
         }
     },
     "functions": {
+        "pulumi:providers:temporalcloud/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:temporalcloud"
+                    }
+                },
+                "type": "pulumi:providers:temporalcloud/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
+                ],
+                "type": "object"
+            }
+        },
         "temporalcloud:index/getNamespace:getNamespace": {
             "description": "Fetches details about a Namespace.\n\n",
             "inputs": {

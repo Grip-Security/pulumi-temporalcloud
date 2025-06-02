@@ -297,6 +297,7 @@ class _NamespaceState:
         pulumi.set(self, "timeouts", value)
 
 
+@pulumi.type_token("temporalcloud:index/namespace:Namespace")
 class Namespace(pulumi.CustomResource):
     @overload
     def __init__(__self__,

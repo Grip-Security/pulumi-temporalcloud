@@ -169,6 +169,7 @@ class _UserState:
         pulumi.set(self, "timeouts", value)
 
 
+@pulumi.type_token("temporalcloud:index/user:User")
 class User(pulumi.CustomResource):
     @overload
     def __init__(__self__,
