@@ -56,6 +56,10 @@ export class ServiceAccount extends pulumi.CustomResource {
      */
     public readonly accountAccess!: pulumi.Output<string>;
     /**
+     * The description for the service account.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
      * The name associated with the service account.
      */
     public readonly name!: pulumi.Output<string>;
@@ -83,6 +87,7 @@ export class ServiceAccount extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ServiceAccountState | undefined;
             resourceInputs["accountAccess"] = state ? state.accountAccess : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namespaceAccesses"] = state ? state.namespaceAccesses : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
@@ -93,6 +98,7 @@ export class ServiceAccount extends pulumi.CustomResource {
                 throw new Error("Missing required property 'accountAccess'");
             }
             resourceInputs["accountAccess"] = args ? args.accountAccess : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namespaceAccesses"] = args ? args.namespaceAccesses : undefined;
             resourceInputs["timeouts"] = args ? args.timeouts : undefined;
@@ -111,6 +117,10 @@ export interface ServiceAccountState {
      * The role on the account. Must be one of admin, developer, or read (case-insensitive).
      */
     accountAccess?: pulumi.Input<string>;
+    /**
+     * The description for the service account.
+     */
+    description?: pulumi.Input<string>;
     /**
      * The name associated with the service account.
      */
@@ -134,6 +144,10 @@ export interface ServiceAccountArgs {
      * The role on the account. Must be one of admin, developer, or read (case-insensitive).
      */
     accountAccess: pulumi.Input<string>;
+    /**
+     * The description for the service account.
+     */
+    description?: pulumi.Input<string>;
     /**
      * The name associated with the service account.
      */

@@ -275,6 +275,7 @@ class _ApikeyState:
         pulumi.set(self, "token", value)
 
 
+@pulumi.type_token("temporalcloud:index/apikey:Apikey")
 class Apikey(pulumi.CustomResource):
     @overload
     def __init__(__self__,

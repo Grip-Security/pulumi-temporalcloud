@@ -106,6 +106,7 @@ class _MetricsEndpointState:
         pulumi.set(self, "uri", value)
 
 
+@pulumi.type_token("temporalcloud:index/metricsEndpoint:MetricsEndpoint")
 class MetricsEndpoint(pulumi.CustomResource):
     @overload
     def __init__(__self__,

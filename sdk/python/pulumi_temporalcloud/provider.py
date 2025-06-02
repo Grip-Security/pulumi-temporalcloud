@@ -93,6 +93,7 @@ class ProviderArgs:
         pulumi.set(self, "endpoint", value)
 
 
+@pulumi.type_token("pulumi:providers:temporalcloud")
 class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
@@ -194,4 +195,24 @@ class Provider(pulumi.ProviderResource):
         The endpoint for the Temporal Cloud API. Defaults to `saas-api.tmprl.cloud:443`.
         """
         return pulumi.get(self, "endpoint")
+
+    @pulumi.output_type
+    class TerraformConfigResult:
+        def __init__(__self__, result=None):
+            if result and not isinstance(result, dict):
+                raise TypeError("Expected argument 'result' to be a dict")
+            pulumi.set(__self__, "result", result)
+
+        @property
+        @pulumi.getter
+        def result(self) -> Mapping[str, Any]:
+            return pulumi.get(self, "result")
+
+    def terraform_config(__self__) -> pulumi.Output['Provider.TerraformConfigResult']:
+        """
+        This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+        """
+        __args__ = dict()
+        __args__['__self__'] = __self__
+        return pulumi.runtime.call('pulumi:providers:temporalcloud/terraformConfig', __args__, res=__self__, typ=Provider.TerraformConfigResult)
 
