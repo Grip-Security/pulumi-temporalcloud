@@ -108,8 +108,8 @@ github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+
 github.com/stretchr/testify v1.7.2/go.mod h1:R6va5+xMeoiuVRoj+gSkQ7d3FALtqAAGI1FQKckRals=
 github.com/stretchr/testify v1.10.0 h1:Xv5erBjTwe/5IxqUQTdXv5kgmIvbHo3QQyRwhJsOfJA=
 github.com/stretchr/testify v1.10.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
-github.com/temporalio/terraform-provider-temporalcloud v0.7.0 h1:rkC566w4ASSt+1snmKFNRqiqx5b4O7264Bng6apZrNc=
-github.com/temporalio/terraform-provider-temporalcloud v0.7.0/go.mod h1:OGYk8KfgiYNl5aIdFmmTiNYqYVOLE6W1SqQ/XUTZ/5U=
+github.com/temporalio/terraform-provider-temporalcloud v0.7.1 h1:OpeOVr8r+/k8XYGSg0euBH8tFK+MaouCrUWIQ6gESYY=
+github.com/temporalio/terraform-provider-temporalcloud v0.7.1/go.mod h1:OGYk8KfgiYNl5aIdFmmTiNYqYVOLE6W1SqQ/XUTZ/5U=
 github.com/vmihailenco/msgpack v4.0.4+incompatible h1:dSLoQfGFAo3F6OoNhwUmLwVgaUXK79GlxNBwueZn0xI=
 github.com/vmihailenco/msgpack v4.0.4+incompatible/go.mod h1:fy3FlTQTDXWkZ7Bh6AcGMlsjHatGryHQYUTf1ShIgkk=
 github.com/vmihailenco/msgpack/v5 v5.4.1 h1:cQriyiUvjTwOHg8QZaPihLWeRAAVoCpE00IUPn0Bjt8=
