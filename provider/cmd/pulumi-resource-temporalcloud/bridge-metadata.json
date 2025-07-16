@@ -5,6 +5,15 @@
                 "current": "temporalcloud:index/apikey:Apikey",
                 "majorVersion": 1
             },
+            "temporalcloud_group_access": {
+                "current": "temporalcloud:index/groupAccess:GroupAccess",
+                "majorVersion": 1,
+                "fields": {
+                    "namespace_accesses": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "temporalcloud_metrics_endpoint": {
                 "current": "temporalcloud:index/metricsEndpoint:MetricsEndpoint",
                 "majorVersion": 1
@@ -131,6 +140,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "temporalcloud_scim_group": {
+                "current": "temporalcloud:index/getScimGroup:getScimGroup",
+                "majorVersion": 1
             },
             "temporalcloud_service_account": {
                 "current": "temporalcloud:index/getServiceAccount:getServiceAccount",
