@@ -84,6 +84,36 @@
             },
             "type": "object"
         },
+        "temporalcloud:index/ConnectivityRuleTimeouts:ConnectivityRuleTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "temporalcloud:index/GroupAccessNamespaceAccess:GroupAccessNamespaceAccess": {
+            "properties": {
+                "namespaceId": {
+                    "type": "string",
+                    "description": "The namespace to assign permissions to.\n"
+                },
+                "permission": {
+                    "type": "string",
+                    "description": "The permission to assign. Must be one of admin, write, or read (case-insensitive)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "namespaceId",
+                "permission"
+            ]
+        },
         "temporalcloud:index/MetricsEndpointTimeouts:MetricsEndpointTimeouts": {
             "properties": {
                 "create": {
@@ -185,24 +215,37 @@
                 },
                 "gcpProjectId": {
                     "type": "string",
-                    "description": "The GCP project ID associated with the GCS bucket and service account.\n"
+                    "description": "The GCP project ID associated with the GCS bucket and service account. If not provided, the service*account*email must be provided.\n"
                 },
                 "region": {
                     "type": "string",
                     "description": "The region of the gcs bucket\n"
                 },
+                "serviceAccountEmail": {
+                    "type": "string",
+                    "description": "The service account email associated with the GCS bucket and service account. If not provided, the service*account*id and gcp*project*id must be provided.\n"
+                },
                 "serviceAccountId": {
                     "type": "string",
-                    "description": "The customer service account ID that Temporal Cloud impersonates for writing records to the customer's GCS bucket.\n"
+                    "description": "The customer service account ID that Temporal Cloud impersonates for writing records to the customer's GCS bucket. If not provided, the service*account*email must be provided.\n"
                 }
             },
             "type": "object",
             "required": [
                 "bucketName",
-                "gcpProjectId",
-                "region",
-                "serviceAccountId"
-            ]
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bucketName",
+                        "gcpProjectId",
+                        "region",
+                        "serviceAccountEmail",
+                        "serviceAccountId"
+                    ]
+                }
+            }
         },
         "temporalcloud:index/NamespaceExportSinkS3:NamespaceExportSinkS3": {
             "properties": {
@@ -750,6 +793,106 @@
                 }
             }
         },
+        "temporalcloud:index/getNexusEndpointWorkerTarget:getNexusEndpointWorkerTarget": {
+            "properties": {
+                "namespaceId": {
+                    "type": "string",
+                    "description": "The target cloud namespace to route requests to. Namespace is in same account as the endpoint.\n"
+                },
+                "taskQueue": {
+                    "type": "string",
+                    "description": "The task queue on the cloud namespace to route requests to.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "namespaceId",
+                "taskQueue"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "temporalcloud:index/getNexusEndpointsNexusEndpoint:getNexusEndpointsNexusEndpoint": {
+            "properties": {
+                "allowedCallerNamespaces": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Namespace Id(s) that are allowed to call this Endpoint.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The creation time of the Nexus Endpoint.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the Nexus Endpoint.\n",
+                    "secret": true
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier of the Nexus Endpoint.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the endpoint. Unique within an account and match `^[a-zA-Z][a-zA-Z0-9\\-]*[a-zA-Z0-9]$`\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The current state of the Nexus Endpoint.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The last update time of the Nexus Endpoint.\n"
+                },
+                "workerTarget": {
+                    "$ref": "#/types/temporalcloud:index/getNexusEndpointsNexusEndpointWorkerTarget:getNexusEndpointsNexusEndpointWorkerTarget",
+                    "description": "The target spec for routing nexus requests to a specific cloud namespace worker.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "allowedCallerNamespaces",
+                "createdAt",
+                "description",
+                "id",
+                "name",
+                "state",
+                "updatedAt",
+                "workerTarget"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "temporalcloud:index/getNexusEndpointsNexusEndpointWorkerTarget:getNexusEndpointsNexusEndpointWorkerTarget": {
+            "properties": {
+                "namespaceId": {
+                    "type": "string",
+                    "description": "The target cloud namespace to route requests to. Namespace is in same account as the endpoint.\n"
+                },
+                "taskQueue": {
+                    "type": "string",
+                    "description": "The task queue on the cloud namespace to route requests to.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "namespaceId",
+                "taskQueue"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "temporalcloud:index/getRegionsRegion:getRegionsRegion": {
             "properties": {
                 "cloudProvider": {
@@ -880,6 +1023,100 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "temporalcloud:index/getUserNamespaceAccess:getUserNamespaceAccess": {
+            "properties": {
+                "namespaceId": {
+                    "type": "string",
+                    "description": "The namespace to assign permissions to.\n"
+                },
+                "permission": {
+                    "type": "string",
+                    "description": "The permission to assign. Must be one of admin, write, or read (case-insensitive)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "namespaceId",
+                "permission"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "temporalcloud:index/getUsersUser:getUsersUser": {
+            "properties": {
+                "accountAccess": {
+                    "type": "string",
+                    "description": "The role on the account. Must be one of admin, developer, or read (case-insensitive).\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The creation time of the User.\n"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "The email of the User.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier of the User.\n"
+                },
+                "namespaceAccesses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/temporalcloud:index/getUsersUserNamespaceAccess:getUsersUserNamespaceAccess"
+                    },
+                    "description": "The set of namespace permissions for this user, including each namespace and its role.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The current state of the User.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The last update time of the User.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accountAccess",
+                "createdAt",
+                "email",
+                "id",
+                "namespaceAccesses",
+                "state",
+                "updatedAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "temporalcloud:index/getUsersUserNamespaceAccess:getUsersUserNamespaceAccess": {
+            "properties": {
+                "namespaceId": {
+                    "type": "string",
+                    "description": "The namespace to assign permissions to.\n"
+                },
+                "permission": {
+                    "type": "string",
+                    "description": "The permission to assign. Must be one of admin, write, or read (case-insensitive)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "namespaceId",
+                "permission"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         }
     },
     "provider": {
@@ -921,6 +1158,9 @@
                 "type": "string",
                 "description": "The endpoint for the Temporal Cloud API. Defaults to `saas-api.tmprl.cloud:443`.\n"
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:temporalcloud/terraformConfig"
         }
     },
     "resources": {
@@ -1049,6 +1289,134 @@
                 "type": "object"
             }
         },
+        "temporalcloud:index/connectivityRule:ConnectivityRule": {
+            "description": "Provisions a Temporal Cloud Connectivity Rule.\n",
+            "properties": {
+                "connectionId": {
+                    "type": "string",
+                    "description": "The connection ID of the private connection.\n"
+                },
+                "connectivityType": {
+                    "type": "string",
+                    "description": "The type of connectivity. Must be one of 'public' or 'private'.\n"
+                },
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "The GCP project ID. Required when cloud_provider is 'gcp'.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the connection. Example: 'aws-us-west-2'.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/temporalcloud:index/ConnectivityRuleTimeouts:ConnectivityRuleTimeouts"
+                }
+            },
+            "required": [
+                "connectivityType"
+            ],
+            "inputProperties": {
+                "connectionId": {
+                    "type": "string",
+                    "description": "The connection ID of the private connection.\n"
+                },
+                "connectivityType": {
+                    "type": "string",
+                    "description": "The type of connectivity. Must be one of 'public' or 'private'.\n"
+                },
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "The GCP project ID. Required when cloud_provider is 'gcp'.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the connection. Example: 'aws-us-west-2'.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/temporalcloud:index/ConnectivityRuleTimeouts:ConnectivityRuleTimeouts"
+                }
+            },
+            "requiredInputs": [
+                "connectivityType"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConnectivityRule resources.\n",
+                "properties": {
+                    "connectionId": {
+                        "type": "string",
+                        "description": "The connection ID of the private connection.\n"
+                    },
+                    "connectivityType": {
+                        "type": "string",
+                        "description": "The type of connectivity. Must be one of 'public' or 'private'.\n"
+                    },
+                    "gcpProjectId": {
+                        "type": "string",
+                        "description": "The GCP project ID. Required when cloud_provider is 'gcp'.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region of the connection. Example: 'aws-us-west-2'.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/temporalcloud:index/ConnectivityRuleTimeouts:ConnectivityRuleTimeouts"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "temporalcloud:index/groupAccess:GroupAccess": {
+            "description": "Provisions Temporal Cloud group access.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  test:\n    type: temporalcloud:Namespace\n    properties:\n      name: my-namespace\n      regions:\n        - aws-us-east-1\n      apiKeyAuth: true\n      retentionDays: 7\n  myGroupAccess:\n    type: temporalcloud:GroupAccess\n    name: my_group_access\n    properties:\n      id: ${myScimGroupTemporalcloudScimGroup.id}\n      accountAccess: read\n      namespaceAccesses:\n        - namespace_id: ${test.id}\n          permission: write\nvariables:\n  myScimGroup:\n    fn::invoke:\n      function: temporalcloud:getScimGroup\n      arguments:\n        idpId: usually-group-name\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "accountAccess": {
+                    "type": "string",
+                    "description": "The role on the account. Must be one of owner, admin, developer, none, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support. none is only valid for users managed via SCIM that derive their roles from group memberships or for group access resources.\n"
+                },
+                "namespaceAccesses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/temporalcloud:index/GroupAccessNamespaceAccess:GroupAccessNamespaceAccess"
+                    },
+                    "description": "The set of namespace accesses. Empty sets are not allowed, omit the attribute instead. Users with account*access roles of owner or admin cannot be assigned explicit permissions to namespaces. They implicitly receive access to all Namespaces.\n"
+                }
+            },
+            "required": [
+                "accountAccess"
+            ],
+            "inputProperties": {
+                "accountAccess": {
+                    "type": "string",
+                    "description": "The role on the account. Must be one of owner, admin, developer, none, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support. none is only valid for users managed via SCIM that derive their roles from group memberships or for group access resources.\n"
+                },
+                "namespaceAccesses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/temporalcloud:index/GroupAccessNamespaceAccess:GroupAccessNamespaceAccess"
+                    },
+                    "description": "The set of namespace accesses. Empty sets are not allowed, omit the attribute instead. Users with account*access roles of owner or admin cannot be assigned explicit permissions to namespaces. They implicitly receive access to all Namespaces.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountAccess"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupAccess resources.\n",
+                "properties": {
+                    "accountAccess": {
+                        "type": "string",
+                        "description": "The role on the account. Must be one of owner, admin, developer, none, or read (case-insensitive). owner is only valid for import and cannot be created, updated or deleted without Temporal support. none is only valid for users managed via SCIM that derive their roles from group memberships or for group access resources.\n"
+                    },
+                    "namespaceAccesses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/temporalcloud:index/GroupAccessNamespaceAccess:GroupAccessNamespaceAccess"
+                        },
+                        "description": "The set of namespace accesses. Empty sets are not allowed, omit the attribute instead. Users with account*access roles of owner or admin cannot be assigned explicit permissions to namespaces. They implicitly receive access to all Namespaces.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "temporalcloud:index/metricsEndpoint:MetricsEndpoint": {
             "description": "Configures a Temporal Cloud account's metrics\n\n## Import\n\n```sh\n$ pulumi import temporalcloud:index/metricsEndpoint:MetricsEndpoint terraform terraform.account-11111-metrics\n```\n\n",
             "properties": {
@@ -1099,7 +1467,7 @@
             }
         },
         "temporalcloud:index/namespace:Namespace": {
-            "description": "Provisions a Temporal Cloud namespace.\n\n## Import\n\nNamespace can be imported to incorporate existing Namespaces into your Terraform pipeline. \n\nTo import a Namespace, you need\n\n- a resource configuration in your Terraform configuration file/module to accept the imported Namespace. In the example below, the placeholder is \"temporalcloud_namespace\" \"terraform\"\n\n- the Namespace ID, which includes the Namespace Name and Account ID available at the top of the Namespace's page in the Temporal Cloud UI. In the example below, this is namespaceid.acctid\n\n```sh\n$ pulumi import temporalcloud:index/namespace:Namespace terraform namespaceid.acctid\n```\n\n",
+            "description": "Provisions a Temporal Cloud namespace. \n\nRegions available in Temporal Cloud: https://docs.temporal.io/cloud/regions. \n\nNote that regions are prefixed with the cloud provider (aws-us-east-1, not us-east-1)\n\n## Import\n\nNamespace can be imported to incorporate existing Namespaces into your Terraform pipeline. \n\nTo import a Namespace, you need\n\n- a resource configuration in your Terraform configuration file/module to accept the imported Namespace. In the example below, the placeholder is \"temporalcloud_namespace\" \"terraform\"\n\n- the Namespace ID, which includes the Namespace Name and Account ID available at the top of the Namespace's page in the Temporal Cloud UI. In the example below, this is namespaceid.acctid\n\n```sh\n$ pulumi import temporalcloud:index/namespace:Namespace terraform namespaceid.acctid\n```\n\n",
             "properties": {
                 "acceptedClientCa": {
                     "type": "string",
@@ -1120,6 +1488,13 @@
                     "$ref": "#/types/temporalcloud:index/NamespaceCodecServer:NamespaceCodecServer",
                     "description": "A codec server is used by the Temporal Cloud UI to decode payloads for all users interacting with this namespace, even if the workflow history itself is encrypted.\n"
                 },
+                "connectivityRuleIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The IDs of the connectivity rules for this namespace.\n"
+                },
                 "endpoints": {
                     "$ref": "#/types/temporalcloud:index/NamespaceEndpoints:NamespaceEndpoints",
                     "description": "The endpoints for the namespace.\n"
@@ -1133,7 +1508,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of regions that this namespace is available in. If more than one region is specified, this namespace is a \"Multi-region Namespace\". Please note that changing, adding, or removing regions is not supported and the provider will attempt to recreate the namespace. For Multi-region Namespaces the provider will ignore order changes on regions which can happen if the namespace fails over.\n"
+                    "description": "The list of regions where this namespace is available. Must be one or two regions. See https://docs.temporal.io/cloud/regions for a list of available regions and HA options. Note that regions are prefixed with the cloud provider (aws-us-east-1, not us-east-1). If two regions are specified, the namespace will be replicated across them in a high availability (HA) configuration. Same-region, multi-region, and multi-cloud HA namespaces are supported. Please note that changing, adding, or removing regions for an existing namespace is not currently supported and the provider will throw an error. For HA namespaces the provider will ignore order changes on regions, which can happen if the namespace fails over.\n"
                 },
                 "retentionDays": {
                     "type": "integer",
@@ -1170,6 +1545,13 @@
                     "$ref": "#/types/temporalcloud:index/NamespaceCodecServer:NamespaceCodecServer",
                     "description": "A codec server is used by the Temporal Cloud UI to decode payloads for all users interacting with this namespace, even if the workflow history itself is encrypted.\n"
                 },
+                "connectivityRuleIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The IDs of the connectivity rules for this namespace.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the namespace.\n"
@@ -1179,7 +1561,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of regions that this namespace is available in. If more than one region is specified, this namespace is a \"Multi-region Namespace\". Please note that changing, adding, or removing regions is not supported and the provider will attempt to recreate the namespace. For Multi-region Namespaces the provider will ignore order changes on regions which can happen if the namespace fails over.\n"
+                    "description": "The list of regions where this namespace is available. Must be one or two regions. See https://docs.temporal.io/cloud/regions for a list of available regions and HA options. Note that regions are prefixed with the cloud provider (aws-us-east-1, not us-east-1). If two regions are specified, the namespace will be replicated across them in a high availability (HA) configuration. Same-region, multi-region, and multi-cloud HA namespaces are supported. Please note that changing, adding, or removing regions for an existing namespace is not currently supported and the provider will throw an error. For HA namespaces the provider will ignore order changes on regions, which can happen if the namespace fails over.\n"
                 },
                 "retentionDays": {
                     "type": "integer",
@@ -1215,6 +1597,13 @@
                         "$ref": "#/types/temporalcloud:index/NamespaceCodecServer:NamespaceCodecServer",
                         "description": "A codec server is used by the Temporal Cloud UI to decode payloads for all users interacting with this namespace, even if the workflow history itself is encrypted.\n"
                     },
+                    "connectivityRuleIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The IDs of the connectivity rules for this namespace.\n"
+                    },
                     "endpoints": {
                         "$ref": "#/types/temporalcloud:index/NamespaceEndpoints:NamespaceEndpoints",
                         "description": "The endpoints for the namespace.\n"
@@ -1228,7 +1617,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The list of regions that this namespace is available in. If more than one region is specified, this namespace is a \"Multi-region Namespace\". Please note that changing, adding, or removing regions is not supported and the provider will attempt to recreate the namespace. For Multi-region Namespaces the provider will ignore order changes on regions which can happen if the namespace fails over.\n"
+                        "description": "The list of regions where this namespace is available. Must be one or two regions. See https://docs.temporal.io/cloud/regions for a list of available regions and HA options. Note that regions are prefixed with the cloud provider (aws-us-east-1, not us-east-1). If two regions are specified, the namespace will be replicated across them in a high availability (HA) configuration. Same-region, multi-region, and multi-cloud HA namespaces are supported. Please note that changing, adding, or removing regions for an existing namespace is not currently supported and the provider will throw an error. For HA namespaces the provider will ignore order changes on regions, which can happen if the namespace fails over.\n"
                     },
                     "retentionDays": {
                         "type": "integer",
@@ -1488,6 +1877,10 @@
                     "type": "string",
                     "description": "The role on the account. Must be one of admin, developer, or read (case-insensitive).\n"
                 },
+                "description": {
+                    "type": "string",
+                    "description": "The description for the service account.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name associated with the service account.\n"
@@ -1509,6 +1902,7 @@
             },
             "required": [
                 "accountAccess",
+                "description",
                 "name",
                 "state"
             ],
@@ -1516,6 +1910,10 @@
                 "accountAccess": {
                     "type": "string",
                     "description": "The role on the account. Must be one of admin, developer, or read (case-insensitive).\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description for the service account.\n"
                 },
                 "name": {
                     "type": "string",
@@ -1541,6 +1939,10 @@
                     "accountAccess": {
                         "type": "string",
                         "description": "The role on the account. Must be one of admin, developer, or read (case-insensitive).\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description for the service account.\n"
                     },
                     "name": {
                         "type": "string",
@@ -1650,6 +2052,35 @@
         }
     },
     "functions": {
+        "pulumi:providers:temporalcloud/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:temporalcloud"
+                    }
+                },
+                "type": "pulumi:providers:temporalcloud/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
+                ],
+                "type": "object"
+            }
+        },
         "temporalcloud:index/getNamespace:getNamespace": {
             "description": "Fetches details about a Namespace.\n\n",
             "inputs": {
@@ -1798,7 +2229,7 @@
             }
         },
         "temporalcloud:index/getNamespaces:getNamespaces": {
-            "description": "Fetches details about all Namespaces.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as temporalcloud from \"@pulumi/temporalcloud\";\n\nconst myNamespaces = temporalcloud.getNamespaces({});\nexport const namespaces = myNamespaces.then(myNamespaces =\u003e myNamespaces.namespaces);\n```\n```python\nimport pulumi\nimport pulumi_temporalcloud as temporalcloud\n\nmy_namespaces = temporalcloud.get_namespaces()\npulumi.export(\"namespaces\", my_namespaces.namespaces)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Temporalcloud = Pulumi.Temporalcloud;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myNamespaces = Temporalcloud.GetNamespaces.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"namespaces\"] = myNamespaces.Apply(getNamespacesResult =\u003e getNamespacesResult.Namespaces),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Grip-Security/pulumi-temporalcloud/sdk/go/temporalcloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyNamespaces, err := temporalcloud.GetNamespaces(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"namespaces\", myNamespaces.Namespaces)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.temporalcloud.TemporalcloudFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myNamespaces = TemporalcloudFunctions.getNamespaces(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n        ctx.export(\"namespaces\", myNamespaces.namespaces());\n    }\n}\n```\n```yaml\nvariables:\n  myNamespaces:\n    fn::invoke:\n      function: temporalcloud:getNamespaces\n      arguments: {}\noutputs:\n  namespaces: ${myNamespaces.namespaces}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Fetches details about all Namespaces.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as temporalcloud from \"@grip-security/pulumi-temporalcloud\";\n\nconst myNamespaces = temporalcloud.getNamespaces({});\nexport const namespaces = myNamespaces.then(myNamespaces =\u003e myNamespaces.namespaces);\n```\n```python\nimport pulumi\nimport pulumi_temporalcloud as temporalcloud\n\nmy_namespaces = temporalcloud.get_namespaces()\npulumi.export(\"namespaces\", my_namespaces.namespaces)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Temporalcloud = Pulumi.Temporalcloud;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myNamespaces = Temporalcloud.GetNamespaces.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"namespaces\"] = myNamespaces.Apply(getNamespacesResult =\u003e getNamespacesResult.Namespaces),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Grip-Security/pulumi-temporalcloud/sdk/go/temporalcloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyNamespaces, err := temporalcloud.GetNamespaces(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"namespaces\", myNamespaces.Namespaces)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.temporalcloud.TemporalcloudFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myNamespaces = TemporalcloudFunctions.getNamespaces(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n        ctx.export(\"namespaces\", myNamespaces.namespaces());\n    }\n}\n```\n```yaml\nvariables:\n  myNamespaces:\n    fn::invoke:\n      function: temporalcloud:getNamespaces\n      arguments: {}\noutputs:\n  namespaces: ${myNamespaces.namespaces}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "outputs": {
                 "description": "A collection of values returned by getNamespaces.\n",
                 "properties": {
@@ -1820,8 +2251,105 @@
                 "type": "object"
             }
         },
+        "temporalcloud:index/getNexusEndpoint:getNexusEndpoint": {
+            "description": "Fetches details about a Nexus Endpoint.\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getNexusEndpoint.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the Nexus Endpoint.\n",
+                        "secret": true
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the Nexus Endpoint.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getNexusEndpoint.\n",
+                "properties": {
+                    "allowedCallerNamespaces": {
+                        "description": "Namespace Id(s) that are allowed to call this Endpoint.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "createdAt": {
+                        "description": "The creation time of the Nexus Endpoint.\n",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The description of the Nexus Endpoint.\n",
+                        "secret": true,
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The unique identifier of the Nexus Endpoint.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the endpoint. Unique within an account and match `^[a-zA-Z][a-zA-Z0-9\\-]*[a-zA-Z0-9]$`\n",
+                        "type": "string"
+                    },
+                    "state": {
+                        "description": "The current state of the Nexus Endpoint.\n",
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "description": "The last update time of the Nexus Endpoint.\n",
+                        "type": "string"
+                    },
+                    "workerTarget": {
+                        "$ref": "#/types/temporalcloud:index/getNexusEndpointWorkerTarget:getNexusEndpointWorkerTarget",
+                        "description": "The target spec for routing nexus requests to a specific cloud namespace worker.\n"
+                    }
+                },
+                "required": [
+                    "allowedCallerNamespaces",
+                    "createdAt",
+                    "description",
+                    "id",
+                    "name",
+                    "state",
+                    "updatedAt",
+                    "workerTarget"
+                ],
+                "type": "object"
+            }
+        },
+        "temporalcloud:index/getNexusEndpoints:getNexusEndpoints": {
+            "description": "Fetches details about all Nexus Endpoints.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as temporalcloud from \"@grip-security/pulumi-temporalcloud\";\n\nconst myNexusEndpoints = temporalcloud.getNexusEndpoints({});\nexport const nexusEndpoints = myNexusEndpoints.then(myNexusEndpoints =\u003e myNexusEndpoints.nexusEndpoints);\n```\n```python\nimport pulumi\nimport pulumi_temporalcloud as temporalcloud\n\nmy_nexus_endpoints = temporalcloud.get_nexus_endpoints()\npulumi.export(\"nexusEndpoints\", my_nexus_endpoints.nexus_endpoints)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Temporalcloud = Pulumi.Temporalcloud;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myNexusEndpoints = Temporalcloud.GetNexusEndpoints.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"nexusEndpoints\"] = myNexusEndpoints.Apply(getNexusEndpointsResult =\u003e getNexusEndpointsResult.NexusEndpoints),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Grip-Security/pulumi-temporalcloud/sdk/go/temporalcloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyNexusEndpoints, err := temporalcloud.GetNexusEndpoints(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"nexusEndpoints\", myNexusEndpoints.NexusEndpoints)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.temporalcloud.TemporalcloudFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myNexusEndpoints = TemporalcloudFunctions.getNexusEndpoints(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n        ctx.export(\"nexusEndpoints\", myNexusEndpoints.nexusEndpoints());\n    }\n}\n```\n```yaml\nvariables:\n  myNexusEndpoints:\n    fn::invoke:\n      function: temporalcloud:getNexusEndpoints\n      arguments: {}\noutputs:\n  nexusEndpoints: ${myNexusEndpoints.nexusEndpoints}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "outputs": {
+                "description": "A collection of values returned by getNexusEndpoints.\n",
+                "properties": {
+                    "id": {
+                        "description": "The unique identifier of the Nexus Endpoints data source.\n",
+                        "type": "string"
+                    },
+                    "nexusEndpoints": {
+                        "description": "The list of Nexus Endpoints.\n",
+                        "items": {
+                            "$ref": "#/types/temporalcloud:index/getNexusEndpointsNexusEndpoint:getNexusEndpointsNexusEndpoint"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id",
+                    "nexusEndpoints"
+                ],
+                "type": "object"
+            }
+        },
         "temporalcloud:index/getRegions:getRegions": {
-            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as temporalcloud from \"@pulumi/temporalcloud\";\n\nexport = async () =\u003e {\n    const regions = await temporalcloud.getRegions({});\n    return {\n        regions: regions.regions,\n    };\n}\n```\n```python\nimport pulumi\nimport pulumi_temporalcloud as temporalcloud\n\nregions = temporalcloud.get_regions()\npulumi.export(\"regions\", regions.regions)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Temporalcloud = Pulumi.Temporalcloud;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var regions = Temporalcloud.GetRegions.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"regions\"] = regions.Apply(getRegionsResult =\u003e getRegionsResult.Regions),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Grip-Security/pulumi-temporalcloud/sdk/go/temporalcloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tregions, err := temporalcloud.GetRegions(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"regions\", regions.Regions)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.temporalcloud.TemporalcloudFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var regions = TemporalcloudFunctions.getRegions(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n        ctx.export(\"regions\", regions.regions());\n    }\n}\n```\n```yaml\nvariables:\n  regions:\n    fn::invoke:\n      function: temporalcloud:getRegions\n      arguments: {}\noutputs:\n  regions: ${regions.regions}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as temporalcloud from \"@grip-security/pulumi-temporalcloud\";\n\nexport = async () =\u003e {\n    const regions = await temporalcloud.getRegions({});\n    return {\n        regions: regions.regions,\n    };\n}\n```\n```python\nimport pulumi\nimport pulumi_temporalcloud as temporalcloud\n\nregions = temporalcloud.get_regions()\npulumi.export(\"regions\", regions.regions)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Temporalcloud = Pulumi.Temporalcloud;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var regions = Temporalcloud.GetRegions.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"regions\"] = regions.Apply(getRegionsResult =\u003e getRegionsResult.Regions),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Grip-Security/pulumi-temporalcloud/sdk/go/temporalcloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tregions, err := temporalcloud.GetRegions(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"regions\", regions.Regions)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.temporalcloud.TemporalcloudFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var regions = TemporalcloudFunctions.getRegions(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n        ctx.export(\"regions\", regions.regions());\n    }\n}\n```\n```yaml\nvariables:\n  regions:\n    fn::invoke:\n      function: temporalcloud:getRegions\n      arguments: {}\noutputs:\n  regions: ${regions.regions}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "outputs": {
                 "description": "A collection of values returned by getRegions.\n",
                 "properties": {
@@ -1839,6 +2367,45 @@
                 "required": [
                     "id",
                     "regions"
+                ],
+                "type": "object"
+            }
+        },
+        "temporalcloud:index/getScimGroup:getScimGroup": {
+            "description": "Fetches details about a SCIM group.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as temporalcloud from \"@grip-security/pulumi-temporalcloud\";\n\nconst myScimGroup = new temporalcloud.index.ScimGroup(\"my_scim_group\", {idpId: \"usually-group-name\"});\nexport const scimGroup = myScimGroupTemporalcloudScimGroup;\n```\n```python\nimport pulumi\nimport pulumi_temporalcloud as temporalcloud\n\nmy_scim_group = temporalcloud.index.ScimGroup(\"my_scim_group\", idp_id=usually-group-name)\npulumi.export(\"scimGroup\", my_scim_group_temporalcloud_scim_group)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Temporalcloud = Pulumi.Temporalcloud;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myScimGroup = new Temporalcloud.Index.ScimGroup(\"my_scim_group\", new()\n    {\n        IdpId = \"usually-group-name\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"scimGroup\"] = myScimGroupTemporalcloudScimGroup,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/Grip-Security/pulumi-temporalcloud/sdk/go/temporalcloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := temporalcloud.NewScimGroup(ctx, \"my_scim_group\", \u0026temporalcloud.ScimGroupArgs{\n\t\t\tIdpId: \"usually-group-name\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"scimGroup\", myScimGroupTemporalcloudScimGroup)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.temporalcloud.scimGroup;\nimport com.pulumi.temporalcloud.scimGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myScimGroup = new ScimGroup(\"myScimGroup\", ScimGroupArgs.builder()\n            .idpId(\"usually-group-name\")\n            .build());\n\n        ctx.export(\"scimGroup\", myScimGroupTemporalcloudScimGroup);\n    }\n}\n```\n```yaml\nresources:\n  myScimGroup:\n    type: temporalcloud:scimGroup\n    name: my_scim_group\n    properties:\n      idpId: usually-group-name\noutputs:\n  scimGroup: ${myScimGroupTemporalcloudScimGroup}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getScimGroup.\n",
+                "properties": {
+                    "idpId": {
+                        "type": "string",
+                        "description": "The IDP ID of the SCIM group.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "idpId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getScimGroup.\n",
+                "properties": {
+                    "id": {
+                        "description": "The ID of the SCIM group.\n",
+                        "type": "string"
+                    },
+                    "idpId": {
+                        "description": "The IDP ID of the SCIM group.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the SCIM group.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "idpId",
+                    "name"
                 ],
                 "type": "object"
             }
@@ -1937,6 +2504,99 @@
                 "required": [
                     "id",
                     "serviceAccounts"
+                ],
+                "type": "object"
+            }
+        },
+        "temporalcloud:index/getUser:getUser": {
+            "description": "Fetches details about a User.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getUser.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the User.\n"
+                    },
+                    "namespaceAccesses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/temporalcloud:index/getUserNamespaceAccess:getUserNamespaceAccess"
+                        },
+                        "description": "The set of namespace permissions for this user, including each namespace and its role.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getUser.\n",
+                "properties": {
+                    "accountAccess": {
+                        "description": "The role on the account. Must be one of admin, developer, or read (case-insensitive).\n",
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "description": "The creation time of the User.\n",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The email of the User.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The unique identifier of the User.\n",
+                        "type": "string"
+                    },
+                    "namespaceAccesses": {
+                        "description": "The set of namespace permissions for this user, including each namespace and its role.\n",
+                        "items": {
+                            "$ref": "#/types/temporalcloud:index/getUserNamespaceAccess:getUserNamespaceAccess"
+                        },
+                        "type": "array"
+                    },
+                    "state": {
+                        "description": "The current state of the User.\n",
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "description": "The last update time of the User.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "accountAccess",
+                    "createdAt",
+                    "email",
+                    "id",
+                    "namespaceAccesses",
+                    "state",
+                    "updatedAt"
+                ],
+                "type": "object"
+            }
+        },
+        "temporalcloud:index/getUsers:getUsers": {
+            "description": "Fetches details about all Users.\n",
+            "outputs": {
+                "description": "A collection of values returned by getUsers.\n",
+                "properties": {
+                    "id": {
+                        "description": "The unique identifier of the Users data source.\n",
+                        "type": "string"
+                    },
+                    "users": {
+                        "description": "The list of Users.\n",
+                        "items": {
+                            "$ref": "#/types/temporalcloud:index/getUsersUser:getUsersUser"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id",
+                    "users"
                 ],
                 "type": "object"
             }
