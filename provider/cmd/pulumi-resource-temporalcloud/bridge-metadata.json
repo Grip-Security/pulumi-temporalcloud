@@ -5,6 +5,19 @@
                 "current": "temporalcloud:index/apikey:Apikey",
                 "majorVersion": 1
             },
+            "temporalcloud_connectivity_rule": {
+                "current": "temporalcloud:index/connectivityRule:ConnectivityRule",
+                "majorVersion": 1
+            },
+            "temporalcloud_group_access": {
+                "current": "temporalcloud:index/groupAccess:GroupAccess",
+                "majorVersion": 1,
+                "fields": {
+                    "namespace_accesses": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "temporalcloud_metrics_endpoint": {
                 "current": "temporalcloud:index/metricsEndpoint:MetricsEndpoint",
                 "majorVersion": 1
@@ -14,6 +27,9 @@
                 "majorVersion": 1,
                 "fields": {
                     "certificate_filters": {
+                        "maxItemsOne": false
+                    },
+                    "connectivity_rule_ids": {
                         "maxItemsOne": false
                     },
                     "regions": {
@@ -58,11 +74,18 @@
             }
         },
         "datasources": {
+            "temporalcloud_connectivity_rule": {
+                "current": "temporalcloud:index/getConnectivityRule:getConnectivityRule",
+                "majorVersion": 1
+            },
             "temporalcloud_namespace": {
                 "current": "temporalcloud:index/getNamespace:getNamespace",
                 "majorVersion": 1,
                 "fields": {
                     "certificate_filters": {
+                        "maxItemsOne": false
+                    },
+                    "connectivity_rule_ids": {
                         "maxItemsOne": false
                     },
                     "private_connectivities": {
@@ -98,6 +121,9 @@
                                 "certificate_filters": {
                                     "maxItemsOne": false
                                 },
+                                "connectivity_rule_ids": {
+                                    "maxItemsOne": false
+                                },
                                 "private_connectivities": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -123,6 +149,31 @@
                     }
                 }
             },
+            "temporalcloud_nexus_endpoint": {
+                "current": "temporalcloud:index/getNexusEndpoint:getNexusEndpoint",
+                "majorVersion": 1,
+                "fields": {
+                    "allowed_caller_namespaces": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "temporalcloud_nexus_endpoints": {
+                "current": "temporalcloud:index/getNexusEndpoints:getNexusEndpoints",
+                "majorVersion": 1,
+                "fields": {
+                    "nexus_endpoints": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowed_caller_namespaces": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "temporalcloud_regions": {
                 "current": "temporalcloud:index/getRegions:getRegions",
                 "majorVersion": 1,
@@ -131,6 +182,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "temporalcloud_scim_group": {
+                "current": "temporalcloud:index/getScimGroup:getScimGroup",
+                "majorVersion": 1
             },
             "temporalcloud_service_account": {
                 "current": "temporalcloud:index/getServiceAccount:getServiceAccount",
@@ -146,6 +201,31 @@
                 "majorVersion": 1,
                 "fields": {
                     "service_accounts": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "namespace_accesses": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "temporalcloud_user": {
+                "current": "temporalcloud:index/getUser:getUser",
+                "majorVersion": 1,
+                "fields": {
+                    "namespace_accesses": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "temporalcloud_users": {
+                "current": "temporalcloud:index/getUsers:getUsers",
+                "majorVersion": 1,
+                "fields": {
+                    "users": {
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
